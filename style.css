@@ -6,9 +6,9 @@
     }
     body
     {
-        background-image: url(../bdcoe-trainee-2020/h.jpg);
-        height: 50%;
-        background-size: cover;    
+        background-image: url(../bdcoe-trainee-2020/bigjpg.jpg);
+        background-size: 100%;
+       height: 110vh;  
         background-position: center;
         background-repeat: no-repeat;
         
@@ -22,7 +22,7 @@
         margin-top: 520px;
     }
     .menu-bar{
-        background: rgb(132, 132, 134);
+        background: rgb(27, 14, 105);
         text-align: center;
         
     }
@@ -31,7 +31,7 @@
     {
         display: inline-flex;
         list-style: none;
-        color: rgb(5, 5, 5);
+        color: rgb(240, 235, 238);
     }
     .menu-bar ul li{
         width: 140px;
