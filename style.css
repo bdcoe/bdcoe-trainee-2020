@@ -1,6 +1,43 @@
-.heroc {
-    padding: 0%;
-    margin: auto;
-    color: rgb(175, 64, 64);
-    font-weight: 700;
-}
+    *
+    {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+    body
+    {
+        background-image: url(../bdcoe-trainee-2020/h.jpg);
+        height: 50%;
+        background-size: cover;    
+        background-position: center;
+        background-repeat: no-repeat;
+        
+        
+
+        
+        
+        font-family: serif;
+    }
+    body img{
+        margin-top: 520px;
+    }
+    .menu-bar{
+        background: rgb(132, 132, 134);
+        text-align: center;
+        
+    }
+
+    .menu-bar ul
+    {
+        display: inline-flex;
+        list-style: none;
+        color: rgb(5, 5, 5);
+    }
+    .menu-bar ul li{
+        width: 140px;
+        margin: 10px;
+        padding: 15px;
+        font-size: 1.3rem;
+        font-weight: 600;
+        
+    }
