@@ -1,0 +1,22 @@
+GIT
+
+1) Git is a Version Control System. Git manages our changes in files. 
+2) We can install it in our system, start coding and push our code in your repository, keep making changes to our source files.
+3) Through this, multiple people can work on same file. 
+4) It enables transparency in the team and everyone can view who made what changes.
+5) Repository is just a storage space for your source files.
+6) Git allows you to commit a code throughout the development process, each commits works as a check point. 
+7) So whenever we feel like you have messed up with something, or just we want to do a disposal experiment you revert to any commit
+8) Basic git commands are as follows:
+
+a) SETUP: Download git for Windows
+b) CREATE A NEW REPOSITORY: git init
+c) CHECKOUT A REPOSITORY: git clone /path/to/repository
+d) STATUS OF A REPOSITORY: git status
+e) SET ORIGIN: git remote add origin url
+f) ADD CHANGES: git add .
+g) COMMIT CHANGES: git commit -m "message"
+h) CHECK BRANCH: git branch
+i) PUSH CHANGES: git push origin master
+j) CREATE BRANCH: git checkout -b name
+k) SWITCH TO MASTER: git checkout master
