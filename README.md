@@ -1,2 +1,4 @@
-# bdcoe-trainee-2020
-This repository is for you guys to push your daily work
+# Coffee ordering app 
+# Learning android
+
+Personal Projects for Learning basics of Android.
