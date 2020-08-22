@@ -3,16 +3,22 @@
 {% block content %}
     
         <div class="container">
-            <h1>Welcome to blog application</h1>
+            <h1 class="red"><u>Welcome to blog application</u></h1>
 
             
-            <h5>Latest Articles</h5>
+            <h5>Latest Articles:</h5>
         
-            <ol type='A'>
+            <ol type='1'>
                 {% for article in latest_articles %}
                 <li><a href="{% url 'get_article' article.id %}">{{article}}</a></li>
                 {% endfor %}
             </ul>
+            <br>
+            <h3><a href="{% url 'create_author' %}" class="center"><strong>tap to create new author</strong></a></h3>
+            <br>
+            <h3><a href="{% url 'create_article' %}" class="center"><strong>tap to create new article</strong></a></h3>
+
+            
         </div>
       
             
