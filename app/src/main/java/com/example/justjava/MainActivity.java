@@ -1,5 +1,7 @@
 package com.example.justjava;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.Editable;
 import android.view.View;
@@ -45,7 +47,18 @@ public class MainActivity extends AppCompatActivity {
         EditText nameField= findViewById(R.id.name_field);
         String name=nameField.getText().toString();
         int price=calculatePrice(noc,checkChoco(),checkCream());
-        displayMessage(createOrderSummary(price,checkCream(),checkChoco(),name));
+
+        String message=createOrderSummary(price,checkCream(),checkChoco(),name);
+        Intent intent = new Intent(Intent.ACTION_SENDTO);
+        intent.setData(Uri.parse("mailto:")); // only email apps should handle this
+        intent.putExtra(Intent.EXTRA_SUBJECT, "JustJava app Order for "+name);
+        intent.putExtra(Intent.EXTRA_TEXT,message);
+        if (intent.resolveActivity(getPackageManager()) != null) {
+            startActivity(intent);
+        }
+
+       displayMessage(createOrderSummary(price,checkCream(),checkChoco(),name));
+
     }
 
 
