@@ -40,7 +40,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingLeft="24dp"
-            android:text="Whipped Cream"
+            android:text="Whipped Cream ₹2"
             android:textSize="16sp"
             android:textStyle="bold"
 
@@ -51,7 +51,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingLeft="24dp"
-            android:text="Chocolate"
+            android:text="Chocolate ₹5"
             android:textStyle="bold"
             android:textSize="16sp"
             android:layout_marginBottom="10dp"/>
@@ -86,7 +86,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
-                android:text="0"
+                android:text="1"
                 android:textColor="@android:color/black"
                 android:textSize="19sp"
 

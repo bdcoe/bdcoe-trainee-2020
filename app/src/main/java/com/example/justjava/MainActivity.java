@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
-    int noc = 0;
+    int noc = 1;
 
     /**
      * This method is called when the order button is clicked.
@@ -35,21 +35,33 @@ public class MainActivity extends AppCompatActivity {
         String name=nameField.getText().toString();
         boolean haswhippedCream= whippedCream.isChecked();
         boolean haschocolate= chocolate.isChecked();
-        int price=calculatePrice(noc);
+        int price=calculatePrice(noc,haschocolate,haswhippedCream);
         displayMessage(createOrderSummary(price,haswhippedCream,haschocolate,name));
+    }
+
+    public boolean checkCream(){
+        CheckBox whippedCream= findViewById(R.id.chkbox_whippedcream);
+        boolean haswhippedCream= whippedCream.isChecked();
+        return haswhippedCream;
+    }
+
+    public boolean checkChoco(){
+        CheckBox chocolate= findViewById(R.id.chocolate_checkbox);
+        boolean haschocolate= chocolate.isChecked();
+        return haschocolate;
     }
 
     public void increment(View view) {
         noc++;
         display(noc);
-        displayPrice(noc * 20);
+        displayPrice(calculatePrice(noc,checkChoco(),checkCream()));
     }
 
     public void decrement(View view) {
         if (noc > 0) {
             noc--;
             display(noc);
-            displayPrice(noc * 20);
+            displayPrice(calculatePrice(noc,checkChoco(),checkCream()));
         }
     }
 
@@ -70,9 +82,14 @@ public class MainActivity extends AppCompatActivity {
      *
      * @return the price
      */
-    private int calculatePrice(int quantity) {
-        int price = quantity * 20;
-        return price;
+    private int calculatePrice(int quantity,boolean hasChoco,boolean hasCream) {
+        int price=20;
+        if(hasChoco)
+            price+=5;
+        if(hasCream)
+            price+=2;
+
+        return price*quantity;
     }
 
     /**
