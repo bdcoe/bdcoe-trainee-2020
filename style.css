@@ -38,6 +38,16 @@
         margin: 10px;
         padding: 15px;
         font-size: 1.3rem;
-        font-weight: 600;
+        font-weight: 500;
         
+    }
+    .menu-bar ul li a
+    {
+        text-decoration: none;
+        color: white;
+    }
+    .active, .menu-bar ul li:hover
+    {
+        background: rgb(62, 62, 139);
+        border-radius: 3px;
     }
