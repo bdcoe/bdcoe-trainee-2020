@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -25,20 +26,6 @@ public class MainActivity extends AppCompatActivity {
 
     int noc = 1;
 
-    /**
-     * This method is called when the order button is clicked.
-     */
-    public void submitOrder(View view) {
-        CheckBox whippedCream= findViewById(R.id.chkbox_whippedcream);
-        CheckBox chocolate= findViewById(R.id.chocolate_checkbox);
-        EditText nameField= findViewById(R.id.name_field);
-        String name=nameField.getText().toString();
-        boolean haswhippedCream= whippedCream.isChecked();
-        boolean haschocolate= chocolate.isChecked();
-        int price=calculatePrice(noc,haschocolate,haswhippedCream);
-        displayMessage(createOrderSummary(price,haswhippedCream,haschocolate,name));
-    }
-
     public boolean checkCream(){
         CheckBox whippedCream= findViewById(R.id.chkbox_whippedcream);
         boolean haswhippedCream= whippedCream.isChecked();
@@ -51,18 +38,36 @@ public class MainActivity extends AppCompatActivity {
         return haschocolate;
     }
 
+    /**
+     * This method is called when the order button is clicked.
+     */
+    public void submitOrder(View view) {
+        EditText nameField= findViewById(R.id.name_field);
+        String name=nameField.getText().toString();
+        int price=calculatePrice(noc,checkChoco(),checkCream());
+        displayMessage(createOrderSummary(price,checkCream(),checkChoco(),name));
+    }
+
+
+
     public void increment(View view) {
-        noc++;
-        display(noc);
-        displayPrice(calculatePrice(noc,checkChoco(),checkCream()));
+        if (noc < 100) {
+            noc++;
+            display(noc);
+            displayPrice(calculatePrice(noc, checkChoco(), checkCream()));
+        }
+        else
+            Toast.makeText(this,"You can't have more than 100 cup",Toast.LENGTH_SHORT).show();
     }
 
     public void decrement(View view) {
-        if (noc > 0) {
+        if (noc > 1) {
             noc--;
             display(noc);
             displayPrice(calculatePrice(noc,checkChoco(),checkCream()));
         }
+        else
+            Toast.makeText(this,"You can't have less than 1 cup",Toast.LENGTH_SHORT).show();
     }
 
     private String createOrderSummary(int price,boolean hasCream,boolean haschoco,String nm){
