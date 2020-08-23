@@ -22,13 +22,26 @@ body{
     bottom: 0%;
     left: 0%;
     background-repeat: repeat-x;
+    animation: moveRight 10s linear infinite;
 }
 .car
 {
     position: absolute;
     bottom: 8%;
     left: 24%;
+    animation: suspension 1s linear infinite;
 }
 @keyframes moveRight{
-    100%{transform: translateX(-2927px);}
+    100%{transform: translateX(-2950px);}
+}
+@keyframes suspension{
+    100%{
+        transform: translateY(-1px);
+    }
+    50%{
+        transform: translateY(2px);
+    }
+    0%{
+        transform: translateY(-1px);
+    }
 }
