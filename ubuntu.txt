@@ -1,0 +1,1 @@
+Ubuntu (pronounced oo-BOON-too) is an open source Debian-based Linux distribution. Sponsored by Canonical Ltd., Ubuntu is considered a good distribution for beginners. The operating system was intended primarily for personal computers (PCs) but it can also be used on servers.
