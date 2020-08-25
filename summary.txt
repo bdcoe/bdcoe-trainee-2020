@@ -1,0 +1,36 @@
+    VISUALIZATION
+                     
+                     ~ anushka (cs&it)
+                      
+visualization as the name suggest ,we can run more than one operating system on our single machine.Whenever there is huge client request for a particular software that also in a mean time.We can create copies of the same and distribute to all of them at the same time;this is similar to Visualization.
+
+A Hypervisor is also called VMM(virtual machine monitor).It is a software that creates 
+and run virtual machine.It actually allows one 
+host computer to support multiple guests.It involves sharing of memory and processing.
+
+
+        TWO TYPES OF VISUALIZATION
+
+
+____________________________________________
+   TYPE 1            |         TYPE 2
+_____________________________________________
+_50_ _50_  _50_ _50_    
+:TOTAL ITS CAN BE MORE  _20_ _10_ _40_ 
+THAN INITIALIZED.        some swap space is
+                          there.
+PHONE GAP
+_____________            ___________________ 
+HYPERVISOR   |            HYPERVISOR       |
+_____________|           ___________________|_
+                         >>>>>>>>>>>>>>>>>>                              LINKING		_____________            ___________________
+MACHINE       |          MACHINE            |
+______________|          ____________________|
+
+
+*We can run different os*Although we can run 
+ but data can get lost   diff. os in this,but 
+if any one malfunctions. there is no harm due
+                         to one to other.
+
+            **********************
