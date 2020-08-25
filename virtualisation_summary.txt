@@ -1,0 +1,15 @@
+virtualisation is creating virtual instances of various services like servers or operating systems using own system resources
+
+it is done using hypervisors
+
+we can share our system's resources like RAM and HDD with the virtual machine we use
+
+
+hypervisors are of 2 types 
+type 1
+eg: dual boot
+we can assign greater number of resources than we actually have to the virtual machines but each machine can't be assigned resources greater than total availiable resource
+
+type 2
+eg: vm ware
+these run inside the main os and total memory can't be assigned more than the availiable memory
