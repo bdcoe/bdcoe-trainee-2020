@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Miwok.iml" filepath="$PROJECT_DIR$/.idea/modules/Miwok.iml" group="Miwok" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/app.iml" group="Miwok/app" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Just_Java.iml" filepath="$PROJECT_DIR$/.idea/modules/Just_Java.iml" group="Just_Java" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/app.iml" group="Just Java/app" />
     </modules>
   </component>
 </project>
