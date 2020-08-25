@@ -1,0 +1,20 @@
+
+VIRTUALIZATION:
+
+	Virtualization means creating virtual copies of something.
+It means making multiple copies of the same instance.
+	Using virtualization, we are able to distribute a machine's capability
+among many users or environment.
+	
+	For virtualization to work, softwares called hypervisers are used.
+They separate the physical resources from the virtual environment.
+
+	There are two types of hypervisers:
+		Type 1 and Type 2
+		
+	Type 1: It runs directly on the host machine's physical hardware.
+			It doesn't have to load an underlying OS first.
+			
+	Type 2: It is typically installed on top of an existing OS.
+			It relies on the host machine's pre-existing OS.
+	
