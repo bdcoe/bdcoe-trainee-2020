@@ -1,0 +1,10 @@
+
+
+
+ Virtualization:-
+	One machine is used to make multiple instances and use. Ex: Backend of websites, os virtualiztion
+	Types:(2)
+	Type 1: Use Hypervisor between os and machine. Ex: Using dual boot
+		Advantages: More than available resources can be used. Ex: RAM division 
+	Type 2: Use hosted os between hyypervisor and machine. Ex: Using VMWare
+		Advansges: Protects enire os and machine to destroy. Ex: if a software can potentially damage entire machine, it should be tested on virtual machine
