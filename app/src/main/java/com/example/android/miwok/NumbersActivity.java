@@ -17,9 +17,15 @@ package com.example.android.miwok;
 
 
 import android.os.Bundle;
+import android.text.Layout;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
-;
+;import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class NumbersActivity extends AppCompatActivity {
 
@@ -28,7 +34,15 @@ public class NumbersActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_numbers);
 
-        String words[]={"one","two","three","four","five","six","seven","eight","nine","ten"};
+        List<String> words=new ArrayList<>();
+        words.addAll(Arrays.asList("one","two","three","four","five","six","seven","eight","nine","ten"));
 
+        LinearLayout rootView = (LinearLayout) findViewById(R.id.rootView);
+
+        for(int i=0;i<words.size();i++){
+            TextView wordView = new TextView(this);
+            wordView.setText(words.get(i));
+            rootView.addView(wordView);
+        }
     }
 }
