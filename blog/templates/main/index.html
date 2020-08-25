@@ -3,23 +3,24 @@
 {% block content %}
     
         <div class="container">
-            <h1 class="red"><u>Welcome to blog application</u></h1>
-
-            
-            <h5>Latest Articles:</h5>
-        
-            <ol type='1'>
-                {% for article in latest_articles %}
-                <li><a href="{% url 'get_article' article.id %}">{{article}}</a></li>
-                {% endfor %}
-            </ul>
-            <br>
-            <h5 style="display: inline-block;margin-right: 20%;"><a href="{% url 'create_author' %}" class="center"><strong>tap to create new author</strong></a></h5>
-            
-            <h5 style="display: inline-block;margin-left: 20%;"><a href="{% url 'create_article' %}" class="center"><strong>tap to create new article</strong></a></h5>
-
-            
+            <div class="row">
+                <div class="col s12 m12">
+                  <div class="card azure>
+                    <div class="card-content white-text">
+                        <h1 class="red"><u>Welcome to blog application</u></h1>
+                        <h5>Latest Articles:</h5>      
+                        <ol type='1'>
+                            {% for article in latest_articles %}
+                            <li><a href="{% url 'get_article' article.id %}">{{article}}</a></li>
+                            {% endfor %}
+                        </ul>
+                        <br>
+                        <h5 style="display: inline-block;margin-right: 20%;"><a href="{% url 'create_author' %}" class="center"><strong>tap to create new author</strong></a></h5>
+                        
+                        <h5 style="display: inline-block;margin-left: 20%;"><a href="{% url 'create_article' %}" class="center"><strong>tap to create new article</strong></a></h5>
+                    </div>
+                  </div>
+                </div>
+              </div>            
         </div>
-      
-            
 {% endblock %}
