@@ -1,0 +1,27 @@
+Big DATA & it's Tools
+Big DATA: Data of order petabytes and detabytes
+	Presently online around 20 zetabytes are stored!
+5 V's: Volume, Velocity, Variety, Veracity (Accuracy of dataset), Value
+
+Types of big data:
+>>Structured
+>>Unstructured
+>>Semi-structured 
+Storing big data:
+>>Analyzing data characteristics
+>>Overview of big data stores
+
+Processing big data
+>>Integrating disparate data stores
+>>Employing Hadoop MapSource 
+
+Big Data Tools:
+>>Hadoop Ecosystem
+>>Python
+>>R
+>>MongoDB
+>>Storm
+>>Cloudera
+>>Kaggle
+>>Tableau
+
