@@ -11,6 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         tools:text="lutti"
+        android:id="@+id/default_tv"
 
         />
 
@@ -18,7 +19,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         tools:text="one"
-
+        android:id="@+id/miwok_tv"
         />
 
 </LinearLayout>
