@@ -5,10 +5,14 @@
       <config />
     </shared>
   </component>
+  <component name="AndroidLogFilters">
+    <option name="TOOL_WINDOW_LOG_LEVEL" value="verbose" />
+    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="8c2d8507-26e7-4f2d-a54e-096d99ae8064" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/modules/app/app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/app/app.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/android/miwok/NumbersActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/android/miwok/NumbersActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_numbers.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_numbers.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -102,57 +106,77 @@
       <option name="project" value="LOCAL" />
       <updated>1598375112736</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="added numbers">
+      <created>1598377441485</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1598377441485</updated>
+    </task>
+    <task id="LOCAL-00003" summary="added arrayadapter and ListView to reduce memory usage">
+      <created>1598432147330</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1598432147331</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="New project" />
-    <option name="LAST_COMMIT_MESSAGE" value="New project" />
+    <MESSAGE value="added numbers" />
+    <MESSAGE value="added arrayadapter and ListView to reduce memory usage" />
+    <option name="LAST_COMMIT_MESSAGE" value="added arrayadapter and ListView to reduce memory usage" />
   </component>
   <component name="WindowStateProjectService">
     <state x="361" y="71" key="#Inspections" timestamp="1598364178738">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="361" y="71" key="#Inspections/0.0.1536.824@0.0.1536.824" timestamp="1598364178738" />
-    <state x="172" y="6" key="CommitChangelistDialog2" timestamp="1598375111942">
+    <state x="498" y="215" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1598431820466">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="172" y="6" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1598375111942" />
-    <state width="1491" height="210" key="GridCell.Tab.0.bottom" timestamp="1598377389528">
+    <state x="498" y="215" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.824@0.0.1536.824" timestamp="1598431820466" />
+    <state x="172" y="6" key="CommitChangelistDialog2" timestamp="1598432146665">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1491" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1598377389528" />
-    <state width="1491" height="210" key="GridCell.Tab.0.center" timestamp="1598377389527">
+    <state x="172" y="6" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1598432146665" />
+    <state width="745" height="168" key="GridCell.Tab.0.bottom" timestamp="1598431798518">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1491" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1598377389527" />
-    <state width="1491" height="210" key="GridCell.Tab.0.left" timestamp="1598377389527">
+    <state width="745" height="168" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1598431798518" />
+    <state width="745" height="168" key="GridCell.Tab.0.center" timestamp="1598431798518">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1491" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1598377389527" />
-    <state width="1491" height="210" key="GridCell.Tab.0.right" timestamp="1598377389527">
+    <state width="745" height="168" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1598431798518" />
+    <state width="745" height="168" key="GridCell.Tab.0.left" timestamp="1598431798518">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1491" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1598377389527" />
+    <state width="745" height="168" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1598431798518" />
+    <state width="745" height="168" key="GridCell.Tab.0.right" timestamp="1598431798518">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="745" height="168" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1598431798518" />
     <state x="277" y="55" key="SettingsEditor" timestamp="1598372754444">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="277" y="55" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1598372754444" />
-    <state x="361" y="134" key="Vcs.Push.Dialog.v2" timestamp="1598375119367">
+    <state x="361" y="134" key="Vcs.Push.Dialog.v2" timestamp="1598432151277">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="361" y="134" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1598375119367" />
+    <state x="361" y="134" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1598432151276" />
     <state x="584" y="190" key="chooseDestDirectoryDialog" timestamp="1598364447902">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="584" y="190" key="chooseDestDirectoryDialog/0.0.1536.824@0.0.1536.824" timestamp="1598364447902" />
-    <state x="465" y="236" key="com.intellij.ide.util.TipDialog" timestamp="1598372721121">
+    <state x="465" y="236" key="com.intellij.ide.util.TipDialog" timestamp="1598430226796">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="465" y="236" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1598372721121" />
-    <state x="479" y="204" key="git4idea.merge.GitPullDialog" timestamp="1598375044761">
+    <state x="465" y="236" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1598430226796" />
+    <state x="479" y="204" key="git4idea.merge.GitPullDialog" timestamp="1598432198264">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="479" y="204" key="git4idea.merge.GitPullDialog/0.0.1536.824@0.0.1536.824" timestamp="1598375044761" />
+    <state x="479" y="204" key="git4idea.merge.GitPullDialog/0.0.1536.824@0.0.1536.824" timestamp="1598432198264" />
   </component>
 </project>
