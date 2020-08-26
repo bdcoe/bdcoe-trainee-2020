@@ -1,0 +1,19 @@
+What is Virtualization:
+
+It is the method of running a virtual instance of computer system in a layer abstracted from actual hardware.
+Most commonly, it refers to running multiple operating systems on a computer system simultaneously.
+
+Its benefits:
+
+Virtualization is the process of creating a software-based, or virtual, representation of something, such as virtual applications, servers, storage and networks. 
+It is the single most effective way to reduce IT expenses while boosting efficiency and agility for all size businesses.
+
+1.Reduced capital and operating costs.
+2.Minimized or eliminated downtime.
+3.Increased IT productivity, efficiency, agility and responsiveness.
+4.Faster provisioning of applications and resources.
+5.Greater business continuity and disaster recovery.
+6.Simplified data center management.
+
+There were 3 types in virtualization
+full virtualization, para-virtualization and OS-level virtualization
