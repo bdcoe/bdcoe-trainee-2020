@@ -1,0 +1,9 @@
+                 Virtualisation:-
+
+virtualization means to create a virtual version of something like some software or service so that from one ,including virtual computers , virtual os like ubuntu, networks or storage devices. It has a lot of applications in cloud computing example to provide multiple services from same servers. Hypervisor is the software to make virtual platforms
+
+
+There are two types of virtualization:
+Type 1:- In this hypervisor runs directly on system hardware. Suppose we run windows 10, ubuntu,kali,linux on same computer which have 100GB RAM(let) then we have advantage that we give %)GB RAM to each one so in this way we can allot more than GB in combine all but this can't be done in type 2.
+
+Type 2:- In this hypervisor runs on a host operating system that provide virtualization services, such as I/O device support and memory management. In this we can not give more gb than computer in all otherwise system crash , in this we can give only less than 100 GB ram because we need to allot some ram for host too.
