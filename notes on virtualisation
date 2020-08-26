@@ -1,0 +1,14 @@
+VIRTUALISATION
+
+software used for virtualisation is Hyperwiser
+ex clould computing take use of virtual machines.
+
+There are two types of virtualisation
+1. TYPE 1 
+2. TYPE 2
+
+In type 1 virtualisation :
+when memory is allocated to hyperwiser , the total memory occupied by the software could  be more than the initial memory.
+
+in type 2 virtualisation:
+type 2 runs on the host OS to provide virtualisation management and other services.
