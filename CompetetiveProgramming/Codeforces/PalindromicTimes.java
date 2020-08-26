@@ -12,45 +12,33 @@ public class PalindromicTimes
 		FastReader sc= new FastReader();
 		PrintWriter out = new PrintWriter(System.out);
 
-		int t,n,i,j;
-		String s,m;
+		int n,i,j;
+		String s,m,t,k;
 		
 		s=sc.nextLine();
-		m=s.substring(0,2)+s.substring(3,5);
-		n=Integer.parseInt(m);
-		int temp,temp2=0,ans=0,flag=0;
-		for(i=n+1;i<=2332;i++) {
-			if(i>100) {
-				temp=i;
-				temp2=temp;
-				while(temp>0) {
-					int dig=temp%10;
-					temp/=10;
-					ans=ans*10+dig;
-				}
-				if(ans==temp2) {
-					flag=1;
+		String arr[]= {"01:10","02:20","03:30","04:40","05:50","10:01","11:11","12:21","13:31","14:41","15:51","20:02","21:12","22:22","23:32","00:00","01:10"};
+		
+		m=s.substring(0,2);
+		if(m.equals("06") || m.equals("07") || m.equals("08") || m.equals("09"))
+			out.println(arr[5]);
+		else if(m.equals("16") || m.equals("17") || m.equals("18") ||m.equals("19") )
+			out.println(arr[11]);
+		else {
+		for(i=0;i<arr.length;i++) {
+			if(m.equals(arr[i].substring(0,2))) {
+				t=s.substring(3,5);
+				k=arr[i].substring(3,5);
+				if(t.compareTo(k)<0) {
+					out.println(arr[i]);
 					break;
 				}
-				ans=0;
+				else {
+					out.println(arr[i+1]);
+					break;
+				}
 			}
-			if(flag==1)
-				break;
 		}
-		if(flag==0)
-			out.print("00:00");
-		else {
-			String a="";
-			if(temp2<=1000) {
-				 a=Integer.toString(temp2);
-				a="0"+a;
-			}
-			else {
-				a=Integer.toString(temp2);
-			}
-		out.println(a.substring(0,2)+":"+a.substring(2,4));
 		}
-		
 		out.close();
 	}
 	
