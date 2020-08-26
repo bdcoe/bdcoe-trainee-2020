@@ -1,0 +1,25 @@
+Big Data:
+Big data is a field that treats ways to analyze, systematically extract 
+information from, or otherwise deal with data sets that are too large or complex 
+to be dealt with.
+
+5 V's
+Value: Bulk of data is no use not in use of company has no value
+Volume: Large amount of data petabytes or zetabytes
+Variety: Managing different types of file types
+Versaity: Accuracy of data
+Velocity: Fast handling
+
+Types of big data
+Structured
+Unstructured
+Semi-structured
+
+Tools of managing 
+Adoob
+Python
+R
+Mongo DB
+Storm
+Cloudera
+Kaggle
