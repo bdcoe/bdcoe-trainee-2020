@@ -6,19 +6,16 @@ from django.contrib.auth.views import LoginView, LogoutView
 from auth import forms
 # Create your views here.
 
-class Login(LoginView):
-    template_name = 'auth/login.html'
-    redirect_authenticated_user = True
 
 class Logout(LogoutView):
     template_name = 'auth/logout.html'
-    redirect_authenticated_user = False
+    redirect_authenticated_user = True
 
 def logouts(request):
     return render(request,'auth/logout.html')
     
 
-def login(request):
+def Login(request):
     loginForm= forms.LoginForm()
     error = None
     if request.method == "POST":

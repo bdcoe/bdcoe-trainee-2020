@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container">    <h1 style="color:red;text-align:center;">Create New Author:</h1><br><br>
+
+    {% if success %}
+        <h5>form submitted successfully</h5>
+    {% endif %}
+    <form method="POST">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="exampleInputEmail1"><strong>Enter Student Name:</strong></label>
+            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="title" placeholder="enter student's name">
+
+            <label for="exampleInputEmail1"><strong>Enter Student Roll Number:</strong></label>
+            <input type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="roll" placeholder="enter student's Roll Number">
+          </div>
+          <div class="form-group form-check">
+            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+            <label class="form-check-label" for="exampleCheck1">Check me out</label>
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    <br>
+    <h5><a href="{% url 'sshh'%}">go to main</a></h5>
+</div>
+    
+</body>
+</html>
