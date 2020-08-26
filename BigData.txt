@@ -1,0 +1,65 @@
+Big Data is defined as data that is huge in 
+size. Bigdata is a term used to describe a
+ collection of data that is huge in size and
+ yet growing exponentially with time. 
+Examples of Big Data generation includes 
+stock exchanges, social media sites, jet
+ engines, etc.
+It is approximately 10,000 times of terabyte.
+
+*CHARACTERISTICS OF BIG DATA (5 V'S OF BIG DATA)
+1.VOLUME: It has nearly increased 44 times from
+2009 to 2020.(exponentially increasing )
+
+2.VELOCITY: It is used for Online data analytics.
+
+3.VARITY: Various formats ,types of files are there.
+It could be xls,video,audio ,social media data,
+multidimentional arrays.
+
+4.veracity:It refers to the accuracy of data/
+also contribute to the truthnessof data.
+
+5.VALUE:Location is easily accessible or not`
+
+*TYPES OF BIG DATA :
+1.STURCTURED DATA: ORGANIZED AND EASY TO UNDERSTAND.
+
+2.UNSTRUCTURED DATA:DIFFERENT FILES ,UNORGANIZED
+STRUCTURE(txt.audio.pdfs)
+
+3.SEMI STRUCTURED DATA: FORE.G. XML file . (semi
+organized)
+
+*STORING BIG DATA
+Storing big data is as complex as big data is.
+however with the help of technology,we can easily 
+manage it(but its complex too). It can be done 
+by :
+     >Hadoop distributed file system
+     >HBase
+     >Hive
+     >Data Models
+
+*big data tools :
+
+1data storage is done by HDFS AND HBASE.
+2data processing is done by Map Reduce and Yarn.
+3.data access is done by Hive,Pig,Mahout,Avro.
+4.data management is done   by  Oozie,Chukwa,Flume,Zoo keeper.
+
+
+we can understand Map reduce functionality via vehicles examples.
+  
+* other big data tools:
+ python
+ R
+ Mongo DB
+ Storm 
+ Cloudera
+ Kaggle
+
+ *FUTURE OF BIG DATA 
+Big data is helping companies in different sectors, from marketing to  organizations. By 2020, it is predicted that the amount of data that is worthy of being analyzed, will surprisingly BECOME double. According to Forrester, companies will make an attempt to sell their data. 
+
+**********************************************  
