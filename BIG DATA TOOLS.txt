@@ -1,0 +1,30 @@
+Big Data is Storing of data which is huge in number actually in Petabytes.. X1000 times of terabytes.
+
+5v's:-
+
+~ Volume :- Data is Continiously increasing.. Exponentially.
+आज तक 10-15 zb Data Stored है।
+
+~ Velocity :- Fastly Storing of Data and processing is fast.
+
+~ Varity :- हर तरीके का Data मौजूद है।
+Static Data vs Streaming Data
+
+~ Veracity :- Accuracy कितनी है, कितना Usefull है
+
+~ Value :-  Valur that includes a large volume and variety of data that is easy to access and delivers quality analytics that enables informed decisions.
+
+TYPES OF BIG DATA
+
+STRUCTURED (GOOGLE)
+UNSTRUCTURED (PDF)
+SEMI STRUCTURED (MIXED)
+
+PROCESSING BIG DATA
+
+HDFS, HBase :- Data Storage
+Map Reduce, Yarn :- Data Process
+Hive, pig, Mahout, Sqoop :- Data Access
+Oozie, Chukwa :- Data Management
+
+
