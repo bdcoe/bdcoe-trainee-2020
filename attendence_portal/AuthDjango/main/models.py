@@ -5,6 +5,8 @@ from django.db import models
 class Student(models.Model):
     name=models.CharField(max_length=30)
     roll_number=models.IntegerField()
+    number_of_days_present=models.IntegerField(default=0)
+    total_number_of_days=models.IntegerField(default=0)
     COMPUTER = 'CSE'
     ELECTRONIC = 'ECE'
     MECHANICAL = 'ME'

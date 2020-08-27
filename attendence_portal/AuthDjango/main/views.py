@@ -1,5 +1,5 @@
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render,get_object_or_404
 from django.contrib.auth.decorators import login_required
 # Create your views here.
 @login_required(login_url='auth/login')
@@ -34,3 +34,14 @@ def create_student(request):
         context["success"]= True
         
     return render(request,'main/create_student.html',context)
+
+
+
+def mark_attendence(request):
+    students =models.Student.objects.all()
+    context={
+        "students":students
+    }
+    Student.attendence += 1  
+    Student.save()
+    return  render(request,'main/mark_attendence.html',context)
