@@ -1,0 +1,36 @@
+HADOOP
+Apache Hadoop is a collection of open-source software utilities that facilitate using a network of many computers to solve problems involving massive amounts of data and computation
+
+The base Apache Hadoop framework is composed of the following modules:
+
+Hadoop Common – contains libraries and utilities needed by other Hadoop modules.
+Hadoop Distributed File System (HDFS) – a distributed file-system that stores data on commodity machines, providing very high aggregate bandwidth across the cluster.
+Hadoop YARN – (introduced in 2012) a platform responsible for managing computing resources in clusters and using them for scheduling users' applications.
+Hadoop MapReduce – an implementation of the MapReduce programming model for large-scale data processing.
+
+HDFS is used for storing the data and MapReduce is used for processing data. HDFS has five services as follows:
+
+1.Name Node
+2.econdary Name Node
+3.Job tracker
+4.Data Node
+5.Task Tracker
+
+Difference between Hadoop 1 and Hadoop 2 (YARN)
+
+The biggest difference between Hadoop 1 and Hadoop 2 is the addition of YARN (Yet Another Resource Negotiator), which replaced the MapReduce engine in the first version of Hadoop. YARN strives to allocate resources to various applications effectively. It runs two dæmons, which take care of two different tasks: the resource manager, which does job tracking and resource allocation to applications, the application master, which monitors progress of the execution.
+
+SOME OTHER TOPICS:
+
+problems with traditional data storage system
+effective solution
+apache hadoop master slave architecture
+hdfs namenode primary and secondry 
+fsimage
+checkpointing
+heartbeat 3
+fault tolerence 
+128 mb default
+replicting factor 
+driver code
+yarns componenets
