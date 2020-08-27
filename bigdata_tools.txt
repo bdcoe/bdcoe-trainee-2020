@@ -1,0 +1,30 @@
+What is big data?
+Big data is a field that treats ways to analyze, systematically extract information from, or otherwise deal with data sets that are too large or complex to be dealt with by traditional data-processing application software.
+  
+5 V'S of big data
+
+1. VOLUME:- a particular data can actually be considered as a Big Data or not, is dependent upon the volume of data. 
+2. VELOCITY:-Big Data Velocity deals with the speed at which data flows in from sources like business processes, application logs, networks, and social media sites, sensors, Mobile devices, etc.
+3.VARITY:-Variety refers to heterogeneous sources and the nature of data, both structured and unstructured.data in the form of emails, photos, videos, monitoring devices, PDFs, audio, etc. are also being considered in the analysis applications. This variety of unstructured data poses certain issues for storage, mining and analyzing data.
+4.VERCACITY:-It refers to inconsistencies and uncertainty in data, that is data which is available can sometimes get messy and quality and accuracy are difficult to control.
+5.VALUE:-Value thart include large volume and varity of data that is easy to access and delivers quality analytics that enables informed decisions.
+
+TYPES OF BIG DATA
+
+Structured:-Common examples of structured data are Excel files or SQL databases
+Unstructured:-Texts, pictures, videos etc. are the examples of unstructured data 
+Semi-structured:-Log files,XML,JSON  are the examples of this type of data.
+
+STORING OF BIG DATA
+
+1.Data models
+2.HDFS
+3.HBase
+4.Hive
+5.Big data Tools
+6.Python
+7.R
+8.Mongo DB
+Storm
+Cloudera
+Kaggle
