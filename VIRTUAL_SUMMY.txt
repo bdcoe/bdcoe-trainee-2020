@@ -1,0 +1,16 @@
+                      VIRTUALIZATION
+In computing, virtualization means to create a virtual version of a device or resource, such as a server, storage device, network or even an operating system where the framework divides the resource into one or more execution environments.
+The physical hardware that a hypervisor runs on is typically referred to as a host machine, whereas the VMs the hypervisor creates and supports are collectively called guest machines.
+
+There are two types of hypervisors: Type 1 and Type 2 hypervisors.
+
+TYPES 1:
+A Type 1 hypervisor runs directly on the host machine's physical hardware, and it's referred to as a bare-metal hypervisor; it doesn't have to load an underlying OS first.
+IT give greater storage than the actual storage of hardware.
+ex- dual boot.
+
+
+TYPE 2:
+A Type 2 hypervisor is typically installed on top of an existing OS, and it's called a hosted hypervisor because it relies on the host machine's pre-existing OS to manage calls to CPU, memory, storage and network resources.
+these run inside the main os and total memory can't be assigned more than the availiable memory.
+ex-vm ware
