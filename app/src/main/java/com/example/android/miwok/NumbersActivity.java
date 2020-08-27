@@ -17,26 +17,17 @@ package com.example.android.miwok;
 
 
 import android.os.Bundle;
-import android.text.Layout;
-import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.GridView;
-import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 ;import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 public class NumbersActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_numbers);
+        setContentView(R.layout.word_list);
 
         ArrayList<Word> words=new ArrayList<>();
         words.add(new Word("one","lutti"));
