@@ -1,0 +1,44 @@
+Big Data:
+
+	Big Data means data with a huge size.
+		Big Data generates value from the storage and processing of very large quantities of 
+	digital information that cannot be analyzed with traditional computing techniques.
+
+	5 V's of Big Data:
+		1. Volume:
+			It refers to the huge amount of data.
+		2. Velocity:
+			It refers to the high speed of accumulation of data.
+		3. Variety:
+			It refers to the different sources of the data.
+		4. Veracity:
+			It refers to the uncertainty and inconsistencies in the data.
+		5. Value:
+			It refers to the added values of the data.
+			
+	Types of Big Data:
+	
+		1. Structured data:
+			This data is basically an organized data.
+		It generally refers to data that has defined the length and format of data.
+		
+		2. Semi-Structured Data:
+			This data is basically a semi-organised data.
+		It is generally a form of data that do not conform to the formal structure of data.
+		
+		3. Unstructured Data:
+			This data basically refers to unorganized data.
+		It generally refers to data that doesn’t fit neatly into the traditional 
+		row and column structure of the relational database.
+			
+	
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
