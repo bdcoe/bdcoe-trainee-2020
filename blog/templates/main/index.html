@@ -7,17 +7,15 @@
                 <div class="col s12 m12">
                   <div class="card azure>
                     <div class="card-content white-text">
-                        <h1 class="red"><u>Welcome to blog application</u></h1>
-                        <h5>Latest Articles:</h5>      
-                        <ol type='1'>
+                        <marquee class="red" style="font-size: 50px;"><u><em>Welcome to Blog Application</em></u></marquee>  
+                        <div class="collection">
+                        <h5 class="collection-item active">Top Ten Latest Articles:</h5>    
                             {% for article in latest_articles %}
-                            <li><a href="{% url 'get_article' article.id %}">{{article}}</a></li>
+                            <a href="{% url 'get_article' article.id %}" class="collection-item" style="font-size: 20px;">{{article}}</a>
                             {% endfor %}
-                        </ul>
                         <br>
-                        <h5 style="display: inline-block;margin-right: 20%;"><a href="{% url 'create_author' %}" class="center"><strong>tap to create new author</strong></a></h5>
-                        
-                        <h5 style="display: inline-block;margin-left: 20%;"><a href="{% url 'create_article' %}" class="center"><strong>tap to create new article</strong></a></h5>
+                          <h5 class="left"><a href="{% url 'create_author' %}" class="center"><strong>tap to create new author</strong></a></h5>
+                        <h5 class="right"><a href="{% url 'create_article' %}" class="center"><strong>tap to create new article</strong></a></h5>
                     </div>
                   </div>
                 </div>
