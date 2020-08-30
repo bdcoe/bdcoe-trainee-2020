@@ -10,14 +10,18 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
 
 import java.util.ArrayList;
 
 public class WordAdapter extends ArrayAdapter<Word> {
 
-    public WordAdapter(Activity context, ArrayList<Word> words){
+    private int colorId;
+
+    public WordAdapter(Activity context, ArrayList<Word> words,int colorID){
 
         super(context,0,words);
+        colorId=colorID;
     }
 
     @NonNull
@@ -33,6 +37,13 @@ public class WordAdapter extends ArrayAdapter<Word> {
         // Get the {@link AndroidFlavor} object located at this position in the list
         Word currentWord = getItem(position);
 
+        ImageView imageView=(ImageView) listItemView.findViewById(R.id.image);
+        if(currentWord.hasImage()) {
+            imageView.setImageResource(currentWord.getmImageResourceId());
+            imageView.setVisibility(View.VISIBLE);
+        }
+        else
+            imageView.setVisibility(View.GONE);
         // Find the TextView in the list_item.xml layout with the ID version_name
         TextView defaultTextView = (TextView) listItemView.findViewById(R.id.default_tv);
         // Get the version name from the current AndroidFlavor object and
@@ -44,6 +55,10 @@ public class WordAdapter extends ArrayAdapter<Word> {
         // Get the version number from the current AndroidFlavor object and
         // set this text on the number TextView
         miwokTextView.setText(currentWord.getMiwokTranslation());
+
+        View textContainer = listItemView.findViewById(R.id.text_container);
+        int color= ContextCompat.getColor(getContext(),colorId);
+        textContainer.setBackgroundColor(color);
 
         return listItemView;
 
