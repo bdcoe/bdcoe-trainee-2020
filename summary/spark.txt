@@ -1,0 +1,24 @@
+SPARK
+Apache Spark is a lightning-fast cluster computing technology, designed for fast computation. It is based on Hadoop MapReduce and it extends the MapReduce model to efficiently use it for more types of computations, which includes interactive queries and stream processing. The main feature of Spark is its in-memory cluster computing that increases the processing speed of an application.It is real time processing and use parallel partipation to reduce in time processing.
+
+FEATURES
+
+1.Polyglot:use java,r,python,scala language.
+2.Advanced Analytics: Spark not only supports ‘Map’ and ‘reduce’. It also supports SQL queries, Streaming data, Machine learning (ML), and Graph algorithms.
+3.Hadoop integration to improve speed.
+4.Powerful caching
+5.Hadoop deployment.
+
+MAIN CONCEPT
+
+1.Spark shell.
+2.Spark Session.
+3.Data sources.
+
+SPARK COMPONENT
+
+1.Spark sql
+2.Spark Streaming
+3.MLib
+4.GraphX
+SparkR
