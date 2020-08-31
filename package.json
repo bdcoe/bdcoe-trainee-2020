@@ -1,0 +1,25 @@
+{
+  "name": "bdcoe-trainee-2020",
+  "version": "1.0.0",
+  "description": "This repository is for you guys to push your daily work",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "preinstall": "npm i express"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bdcoe/bdcoe-trainee-2020.git"
+  },
+  "author": "samyak jain",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bdcoe/bdcoe-trainee-2020/issues"
+  },
+  "homepage": "https://github.com/bdcoe/bdcoe-trainee-2020#readme",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1"
+  }
+}
