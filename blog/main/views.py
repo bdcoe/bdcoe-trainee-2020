@@ -37,14 +37,15 @@ def create_article(request):
     if request.method=="POST":
         article_data= {
             "title":request.POST['title'],
-            "Write_article":request.POST['content']
+            "Write_article":request.POST['content'],
+            "email":request.POST['email']
         }
         article = models.Article.objects.create(**article_data)
         author = models.Author.objects.filter(pk= request.POST['author'])
         article.author.set(author)
         context["success"]= True 
         try:
-            send_mail("Congratulations!!", "you have successfully posted new article.", "rabhi1611@gmail.com", ['rohit1910085@akgec.ac.in'])
+            send_mail("Congratulations!!", "you have successfully posted new article.", "rabhi1611@gmail.com", [article_data['email']])
         except BadHeaderError:
             return HttpResponse('Invalid header found.')
         return redirect('mail_2')
@@ -58,12 +59,13 @@ def create_author(request):
     }
     if request.method=="POST":
         author_data= {
-            "first_name":request.POST['title']
+            "first_name":request.POST['title'],
+            "email":request.POST['email']
         }
         author = models.Author.objects.create(**author_data)
         context["success"]= True
         try:
-            send_mail("Congratulations!!", "you have successfully created new author.", "rabhi1611@gmail.com", ['rohit1910085@akgec.ac.in'])
+            send_mail("Congratulations!!", "you have successfully created new author.", "rabhi1611@gmail.com", [author_data['email']])
         except BadHeaderError:
             return HttpResponse('Invalid header found.')
         return redirect('mail_1')
