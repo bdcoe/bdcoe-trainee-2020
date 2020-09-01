@@ -45,7 +45,7 @@ def create_article(request):
         article.author.set(author)
         context["success"]= True 
         try:
-            send_mail("Congratulations!!", "you have successfully posted new article.", "rabhi1611@gmail.com", [article_data['email']])
+            send_mail("Congratulations!!", "Hi ,You have successfully posted new article named {}.".format(article_data['title']), "rabhi1611@gmail.com", [article_data['email']])
         except BadHeaderError:
             return HttpResponse('Invalid header found.')
         return redirect('mail_2')
@@ -65,7 +65,7 @@ def create_author(request):
         author = models.Author.objects.create(**author_data)
         context["success"]= True
         try:
-            send_mail("Congratulations!!", "you have successfully created new author.", "rabhi1611@gmail.com", [author_data['email']])
+            send_mail("Congratulations!!", "Hi {},You have successfully created new author.".format(author_data['first_name']), "rabhi1611@gmail.com", [author_data['email']])
         except BadHeaderError:
             return HttpResponse('Invalid header found.')
         return redirect('mail_1')
