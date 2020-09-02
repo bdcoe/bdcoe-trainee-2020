@@ -131,3 +131,6 @@ EMAIL_HOST_USER = 'rabhi1611@gmail.com'
 EMAIL_HOST_PASSWORD = 'sonybraviaw512'
 EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
+
+LOGIN_REDIRECT_URL = 'index'
+LOGOUT_REDIRECT_URL = 'login'

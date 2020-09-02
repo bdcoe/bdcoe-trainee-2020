@@ -1,0 +1,36 @@
+{% extends 'auth/base.html' %}
+
+{% block content %} 
+<nav>
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo right">Built by Rohit Abhishek</a>
+      <a href="#" class="brand-logo left">Blog Application</a>
+    </div>
+  </nav>
+  <br><br>
+    <div class="container">
+        <td>
+                                {% if form.password.errors %}
+                                      <div id="password_error_div" class="error">You must specify a password.</div>
+                                  {% endif %}
+                                  {% if form.non_field_errors %}
+                                  <div id="password_error_div" class="error"><em>Invalid username or password.</em></div>
+                                  {% endif %}
+                          </td>
+            <div class="col s12 m6">
+                <h4 class="card-title" style="color:#ed6663"><strong><u>Login To Your Account:</u></strong></h4>
+                <div class="card-content">
+                    <form action="" method="post">
+                        {% csrf_token %}
+                            {% for field in form %}
+                            <div class="input-field col s6 ">
+                                {{field}}
+                            </div>
+                            {% endfor %}
+                            <button type="submit" class="waves-effect waves-light btn">login</button>
+                    </form>
+                </div>
+          </div>
+    </div><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <h6 class="center" style="color:#ff7171;">@2020 copyright-text</h6>
+{% endblock %}
