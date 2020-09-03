@@ -1,0 +1,29 @@
+KAFKA
+it is a distributed publish subscribe messaging system and robust queue that can handle a high volume of data and enable you to pass messages from one end to another.
+EVENT STREAMING
+
+FEATURES
+1.Scalability
+2.Fault tolerance
+3.Performance
+5.Distribution
+
+TERMINOLOGY USED IN KAFKA
+Topic 
+Partition
+Message
+Offset
+Leader
+Follower
+
+COMPONENTS USED IN KAFKA
+Replica
+messages
+consumers
+zookeeper
+custers
+
+TYPES OF CLUSTERS
+Single node- Single broker cluster
+Single node- multiple broker cluster
+Multiple node- multiple broker cluster
