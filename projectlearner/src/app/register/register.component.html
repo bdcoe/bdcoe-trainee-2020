@@ -1,8 +1,10 @@
 <p>register works!</p>
 <hr>
-
+<mat-card>
+<mat-form-field>
     <textarea matInput name="samyak" rows="10" [(ngModel)]="newmodel"></textarea>
-
-
+  </mat-form-field>
+  <button mat-button color="primary" (click)="onSave()">Save</button>
+</mat-card>
 <p>{{ newm }}</p>
-<button (click)="onSave()">Save</button>
+
