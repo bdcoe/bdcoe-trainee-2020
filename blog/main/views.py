@@ -45,7 +45,7 @@ def create_article(request):
         article.author.set(author)
         context["success"]= True 
         try:
-            send_mail("Congratulations!!", "Hi ,You have successfully posted new article named {}.".format(article_data['title']), "rabhi1611@gmail.com", [article_data['email']])
+            send_mail("Congratulations!!", "Hi ,You have successfully posted new article named : {}.".format(article_data['title']), "rabhi1611@gmail.com", [article_data['email']])
         except BadHeaderError:
             return HttpResponse('Invalid header found.')
         return redirect('mail_2')

@@ -1,14 +1,15 @@
 {% extends 'auth/base.html' %}
 
-{% block content %} 
+{% block content %}
+<div class="bg"> 
 <nav>
     <div class="nav-wrapper">
       <a href="#" class="brand-logo right">Built by Rohit Abhishek</a>
       <a href="#" class="brand-logo left">Blog Application</a>
     </div>
   </nav>
-  <br><br>
-    <div class="container">
+    <br><br>  
+    <div class="container" style="height: 50%;width: 60%;">
         <td>
                                 {% if form.password.errors %}
                                       <div id="password_error_div" class="error">You must specify a password.</div>
@@ -17,7 +18,7 @@
                                   <div id="password_error_div" class="error"><em>Invalid username or password.</em></div>
                                   {% endif %}
                           </td>
-            <div class="col s12 m6">
+            <div class="col s12 m6" style="background-color: rgb(223, 217, 217);">
                 <h4 class="card-title" style="color:#ed6663"><strong><u>Login To Your Account:</u></strong></h4>
                 <div class="card-content">
                     <form action="" method="post">
@@ -31,6 +32,7 @@
                     </form>
                 </div>
           </div>
-    </div><br><br><br><br><br><br><br><br><br><br><br><br><br>
-    <h6 class="center" style="color:#ff7171;">@2020 copyright-text</h6>
+    </div><br><br><br><br><br><br><br><br><br>
+    <h6 class="center" style="color:#ff0033;">@2020 copyright-text: Rohit</h6>
+    </div>
 {% endblock %}

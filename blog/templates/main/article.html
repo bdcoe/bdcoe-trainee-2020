@@ -2,7 +2,7 @@
 
 
 {% block content %} 
- 
+<div class="bg">     
 <div class="container">
 <div class="row">
     <div class="col s12 m12">
@@ -34,7 +34,9 @@
               <h6 style="color:blue;">{{article.Write_article}}</h6>
             </div>
           </div>
+          <h5 style="text-align: center;"><a href="{% url 'index' %}">go to main</a></h5>
         </div>
       </div>
     </div>
+  </div>
 {% endblock %}
