@@ -2,19 +2,19 @@
   <form novalidate #registerForm='ngForm' (submit)="regiser(registerForm)">
   <div class="register">
   <mat-form-field>
-    <input matInput type="text" placeholder="Full Name" name="name" #name="ngModel" ngModel>
+    <input matInput type="text" placeholder="Full Name" name="name" #name="ngModel" ngModel required >
   </mat-form-field>
   <br>
   <mat-form-field>
-    <input matInput type="text" placeholder="Email ID" name="email" #email="ngModel" ngModel>
+    <input matInput type="text" placeholder="Email ID" name="email" #email="ngModel" ngModel required email>
   </mat-form-field>
   <br>
   <mat-form-field>
-    <input matInput type="password" placeholder="Password" name="password" #password="ngModel" ngModel>
+    <input matInput type="password" placeholder="Password" name="password" #password="ngModel" ngModel required>
   </mat-form-field>
   <br>
   <mat-form-field>
-    <input matInput type="text" placeholder="Mobile Number" name="phone" #phone="ngModel" ngModel>
+    <input matInput type="number" placeholder="Mobile Number" name="phone" #phone="ngModel" ngModel required>
   </mat-form-field>
   <br>
     <button mat-raised-button color="accent" type="submit">
