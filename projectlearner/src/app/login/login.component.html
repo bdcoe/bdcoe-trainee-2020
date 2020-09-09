@@ -1,0 +1,13 @@
+<mat-card>
+  <form novalidate #loginForm='ngForm' (submit)="login(loginForm)">
+  <mat-form-field>
+    <input matInput placeholder="Email" name="email" #email='ngModel' ngModel>
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <input matInput type="password" placeholder="Password" name="password" #password='ngModel' ngModel>
+  </mat-form-field>
+  <br>
+  <button mat-raised-button color="primary" type="submit">Login</button>
+</form>
+</mat-card>

@@ -6,7 +6,7 @@ router.get('/',async (req,res)=>{
   res.json({message:"yes"})
 })
 router.post('/', async (req, res) => {
-  console.log('Req')
+
   const newRegister = new Register({
     name: req.body.name,
     email: req.body.email,
@@ -16,9 +16,10 @@ router.post('/', async (req, res) => {
   newRegister.save().then(ele => {
     return res.status(201).json({
       message: "registration successful"
-    }).catch(errpr => {
-      return res.status(400).json({ message: "resgistration failed Please Contact to Technical department" })
     })
+    // .catch(errpr => {
+    //   return res.status(400).json({ message: "resgistration failed Please Contact to Technical department" })
+    // })
   })
 })
 module.exports = router

@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from '../shared/User';
 import { NgForm } from '@angular/forms';
 import { RegisterComp } from '../shared/regiser.service'
 import { Subscription } from 'rxjs';
@@ -14,7 +13,8 @@ export class RegisterComponent implements OnInit {
   constructor(public Registerf:RegisterComp) { }
 
   register(form:NgForm){
-    this.Registerf.onRegisterPost(form)
+    this.Registerf.onRegisterPost(form.value);
+    form.resetForm();
   }
   ngOnInit(): void{
   }
