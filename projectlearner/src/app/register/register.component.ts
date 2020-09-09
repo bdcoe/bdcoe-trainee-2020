@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { User } from '../shared/User';
 import { NgForm } from '@angular/forms';
 import { RegisterComp } from '../shared/regiser.service'
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-register',
@@ -9,14 +10,13 @@ import { RegisterComp } from '../shared/regiser.service'
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
+  private RegisterSubs:Subscription;
+  constructor(public Registerf:RegisterComp) { }
 
-  regiser(form: NgForm) {
-    this.regiser(form)
+  register(form:NgForm){
+    this.Registerf.onRegisterPost(form)
   }
-
-  constructor() { }
-
-  ngOnInit(): void {
+  ngOnInit(): void{
   }
 
 }
