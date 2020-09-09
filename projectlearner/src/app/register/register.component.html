@@ -1,10 +1,25 @@
-<p>register works!</p>
-<hr>
 <mat-card>
-<mat-form-field>
-    <textarea matInput name="samyak" rows="10" [(ngModel)]="newmodel"></textarea>
+  <form novalidate #registerForm='ngForm' (submit)="regiser(registerForm)">
+  <div class="register">
+  <mat-form-field>
+    <input matInput type="text" placeholder="Full Name" name="name" #name="ngModel" ngModel>
   </mat-form-field>
-  <button mat-button color="primary" (click)="onSave()">Save</button>
+  <br>
+  <mat-form-field>
+    <input matInput type="text" placeholder="Email ID" name="email" #email="ngModel" ngModel>
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <input matInput type="password" placeholder="Password" name="password" #password="ngModel" ngModel>
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <input matInput type="text" placeholder="Mobile Number" name="phone" #phone="ngModel" ngModel>
+  </mat-form-field>
+  <br>
+    <button mat-raised-button color="accent" type="submit">
+      Save
+    </button>
+  </div>
+</form>
 </mat-card>
-<p>{{ newm }}</p>
-

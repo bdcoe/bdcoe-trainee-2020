@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from '../shared/User';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-register',
@@ -7,12 +9,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RegisterComponent implements OnInit {
 
-  newmodel="";
-  newm=""
-
-  onSave(){
-    this.newm=this.newmodel
+  regiser(form: NgForm) {
+    console.log(form.value)
   }
+
   constructor() { }
 
   ngOnInit(): void {
