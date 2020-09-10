@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { RegisterComp } from '../shared/regiser.service'
-import { Subscription } from 'rxjs';
+
 
 @Component({
   selector: 'app-register',
@@ -9,7 +9,6 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-  private RegisterSubs:Subscription;
   constructor(public Registerf:RegisterComp) { }
 
   register(form:NgForm){

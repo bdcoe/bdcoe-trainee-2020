@@ -1,5 +1,5 @@
 import { Injectable, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http'
+import { HttpClient,HttpHeaders } from '@angular/common/http'
 
 @Injectable({providedIn:'root'})
 export class RegisterComp implements OnInit {
@@ -7,7 +7,8 @@ export class RegisterComp implements OnInit {
   constructor(private http: HttpClient) {}
 
   onRegisterPost(post){
-    this.http.post('http://localhost:3000/',post).subscribe(()=>{
+    const headers=new HttpHeaders({'Content-Type':'application/json'})
+    this.http.post('http://localhost:3000/register',post,{headers:headers}).subscribe(()=>{
       console.log('success')
     })
   }

@@ -1,15 +1,17 @@
 import {Component, OnInit} from '@angular/core';
 import { NgForm } from '@angular/forms';
+import {LoginComp} from '../shared/login.service'
 
 @Component({
   selector:'app-login',
   templateUrl:'./login.component.html',
   styleUrls:['./login.component.css']
 })
-export class loginComoponent implements OnInit{
+export class loginComponent implements OnInit{
 
+  constructor(public Loginf:LoginComp){}
   login(data:NgForm){
-    console.log(data.value)
+    this.Loginf.onlogin(data.value)
     data.resetForm();
   }
 

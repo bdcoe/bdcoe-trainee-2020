@@ -1,15 +1,17 @@
 import { Injectable, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http'
+import { HttpClient, HttpHeaders } from '@angular/common/http'
 
 @Injectable({ providedIn: 'root' })
 export class LoginComp implements OnInit {
 
   constructor(private http:HttpClient){}
-  login() {
-
+  onlogin(post) {
+    const headers = new HttpHeaders({'Content-Type':'application/json'})
+    this.http.post('http://localhost:3000/',post)
+    .subscribe((response)=>{
+      console.log(response)
+    })
   }
 
-  ngOnInit() {
-
-  }
+  ngOnInit() {  }
 }
