@@ -12,14 +12,28 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { HttpClientModule } from '@angular/common/http';
 import { loginComponent } from './login/login.component';
-import { DashboardComponent } from './dashboard/dashboard.component'
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { ProfileComponent } from './profile/profile.component';
+import { SolutionComponent } from './solution/solution.component';
+import { WorkComponent } from './work/work.component';
+import { LeaderboardComponent } from './leaderboard/leaderboard.component';
+import { ProblemsComponent } from './problems/problems.component';
+import { TechsupportComponent } from './techsupport/techsupport.component';
+import { AllproblemsComponent } from './allproblems/allproblems.component'
 
 @NgModule({
   declarations: [
     AppComponent,
     RegisterComponent,
     loginComponent,
-    DashboardComponent
+    DashboardComponent,
+    ProfileComponent,
+    SolutionComponent,
+    WorkComponent,
+    LeaderboardComponent,
+    ProblemsComponent,
+    TechsupportComponent,
+    AllproblemsComponent
   ],
   imports: [
     BrowserModule,
