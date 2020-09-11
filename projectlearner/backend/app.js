@@ -22,6 +22,9 @@ router.post("/register", async (req, res) => {
 router.get("/dashboard", checkauth, (req, res) => {
   res.status(200).json({ message: "yeah" });
 });
+router.get('/profile',checkauth,(req,res)=>{
+  res.status(200).json({message:'yes'})
+})
 router.post("/techsupport", (req, res) => {
   const NewTechSupport = new TechSupportModel({
     title:req.body.title,
