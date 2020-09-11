@@ -8,3 +8,12 @@ export class User{
   ){}
 
 }
+export class TechSuppModel {
+  constructor(
+    private title:string,
+    private subject:string,
+    private content:string
+  ){}
+
+}
+

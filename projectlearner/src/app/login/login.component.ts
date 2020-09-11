@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import { NgForm } from '@angular/forms';
-import {LoginComp} from '../shared/login.service'
+import {ServiceComp} from '../shared/service.service'
 
 @Component({
   selector:'app-login',
@@ -9,7 +9,7 @@ import {LoginComp} from '../shared/login.service'
 })
 export class loginComponent implements OnInit{
 
-  constructor(public Loginf:LoginComp){}
+  constructor(public Loginf:ServiceComp){}
   login(data:NgForm){
     this.Loginf.onlogin(data.value)
     data.resetForm();

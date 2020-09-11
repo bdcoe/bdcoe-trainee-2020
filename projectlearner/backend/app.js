@@ -4,6 +4,7 @@ const router = express.Router();
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const checkauth = require("./checkauth");
+const TechSupportModel = require("./models/techsupport");
 router.post("/register", async (req, res) => {
   var t = bcrypt.hashSync(req.body.password.toString(), 10);
   const newRegister = new Register({
@@ -20,6 +21,20 @@ router.post("/register", async (req, res) => {
 });
 router.get("/dashboard", checkauth, (req, res) => {
   res.status(200).json({ message: "yeah" });
+});
+router.post("/techsupport", (req, res) => {
+  const NewTechSupport = new TechSupportModel({
+    title:req.body.title,
+    subject:req.body.subject,
+    content:req.body.content
+  });
+  NewTechSupport.save()
+    .then((ele) => {
+      return res.status(200).json({ message: "Issue Registered" });
+    })
+    .catch((error) => {
+      return res.status(404).json({ message: error });
+    });
 });
 
 router.post("/", async (req, res) => {

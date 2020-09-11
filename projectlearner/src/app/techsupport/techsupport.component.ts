@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { ServiceComp } from '../shared/service.service';
 
 @Component({
   selector: 'app-techsupport',
@@ -8,11 +9,13 @@ import { NgForm } from '@angular/forms';
 })
 export class TechsupportComponent implements OnInit {
 
-  techsubmit(data:NgForm){
-    console.log(data.value)
-  }
 
-  constructor() { }
+  constructor(public Techs:ServiceComp) { }
+
+
+  techsubmit(data:NgForm){
+    this.Techs.onTechPost(data.value)
+  }
 
   ngOnInit(): void {
   }

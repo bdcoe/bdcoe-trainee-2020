@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { RegisterComp } from '../shared/regiser.service'
+import { ServiceComp } from '../shared/service.service';
 
 
 @Component({
@@ -9,7 +9,7 @@ import { RegisterComp } from '../shared/regiser.service'
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-  constructor(public Registerf:RegisterComp) { }
+  constructor(public Registerf:ServiceComp) { }
 
   register(form:NgForm){
     this.Registerf.onRegisterPost(form.value);
