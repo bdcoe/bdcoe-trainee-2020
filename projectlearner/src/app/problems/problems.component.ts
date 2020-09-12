@@ -15,7 +15,7 @@ export class ProblemsComponent implements OnInit {
   constructor(private res: ServiceComp, private router: Router,private dialog:MatDialog) { }
 
   AddProblem(){
-   this.dialog.open(AddproblemComponent,{width:'400px',height:'500px'})
+   this.dialog.open(AddproblemComponent,{width:'60%',height:'auto'})
   }
   ngOnInit(): void {
     if (!this.res.isloggedin()) {

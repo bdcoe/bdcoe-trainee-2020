@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { ServiceComp } from '../shared/service.service'
 
 @Component({
   selector: 'app-addproblem',
@@ -7,7 +9,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddproblemComponent implements OnInit {
 
-  constructor() { }
+  addproblem(data: NgForm) {
+    this.res.onaddproblem(data.value)
+  }
+  constructor(private res: ServiceComp) { }
 
   ngOnInit(): void {
   }

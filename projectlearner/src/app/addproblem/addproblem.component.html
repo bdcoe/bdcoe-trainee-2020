@@ -1,19 +1,24 @@
-<mat-form-field>
-<input type='text' matInput list="apps" placeholder="Tech" id='tech'>
-<datalist id='apps'>
-</datalist>
-</mat-form-field>
-<br>
-<mat-form-field>
-<input type="text" matInput placeholder='Title' id="title">
-</mat-form-field>
-<br>
-<mat-form-field>
-    <input type="text" matInput placeholder="Explain Your Problem">
-</mat-form-field>
-<br>
-<mat-form-field>
-    <textarea matInput placeholder="Code"></textarea>
-</mat-form-field>
-<br>
-<button mat-raised-button color='primary'>Submit Problem</button>
+<form novalidate #addProblem='ngForm' (submit)='addproblem(addProblem)'>
+    <mat-form-field>
+        <input type='text' matInput list="apps" name=tech
+         placeholder="Tech" id='tech' #name='ngModel' ngModel>
+        <datalist id='apps'>
+        </datalist>
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+        <input type="text" matInput placeholder='Title' name='title' #title='ngModel'
+         id="title" ngModel>
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+        <input type="text" matInput placeholder="Explain Your Problem"
+        #explain='ngModel' name='explain' ngModel>
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+        <textarea matInput placeholder="Code" name='code' #code='ngModel' ngModel></textarea>
+    </mat-form-field>
+    <br>
+    <button mat-raised-button mat-dialog-close type="submit" color='primary'>Submit Problem</button>
+</form>
