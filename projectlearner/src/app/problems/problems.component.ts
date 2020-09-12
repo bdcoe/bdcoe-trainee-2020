@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ServiceComp } from '../shared/service.service';
 import { Router } from '@angular/router'
+import { MatDialog } from '@angular/material/dialog';
+import { AddproblemComponent } from '../addproblem/addproblem.component';
 
 
 @Component({
@@ -9,9 +11,12 @@ import { Router } from '@angular/router'
   styleUrls: ['./problems.component.css']
 })
 export class ProblemsComponent implements OnInit {
+  problems:{[keys:string]:any}
+  constructor(private res: ServiceComp, private router: Router,private dialog:MatDialog) { }
 
-  constructor(private res: ServiceComp, private router: Router) { }
-
+  AddProblem(){
+   this.dialog.open(AddproblemComponent,{width:'400px',height:'500px'})
+  }
   ngOnInit(): void {
     if (!this.res.isloggedin()) {
       this.router.navigate([''])

@@ -8,7 +8,8 @@ const TechSupportModel = require("./models/techsupport");
 router.post("/register", async (req, res) => {
   var t = bcrypt.hashSync(req.body.password.toString(), 10);
   const newRegister = new Register({
-    name: req.body.name,
+    fname: req.body.fname,
+    lname: req.body.lname,
     email: req.body.email.toLowerCase(),
     phone: req.body.phone,
     password: t,
@@ -19,17 +20,30 @@ router.post("/register", async (req, res) => {
     });
   });
 });
+router.put('/register',checkauth,async (req,res)=>{
+  const token = req.headers.authorization.split(' ')[1];
+  var userId = jwt.decode(token)['userId'];
+  console.log(userId,req.body)
+  Register.updateOne({_id:userId},{fname:req.body.fname,lname:req.body.lname,phone:req.body.phone}).then(ele=>{
+    console.log('yes',ele)
+  })
+})
 router.get("/dashboard", checkauth, (req, res) => {
   res.status(200).json({ message: "yeah" });
 });
-router.get('/profile',checkauth,(req,res)=>{
-  res.status(200).json({message:'yes'})
+router.get('/profile', checkauth, async (req, res) => {
+  const token = req.headers.authorization.split(' ')[1];
+  var userId = jwt.decode(token)['userId']
+  let user = await Register.findOne({ _id: userId });
+  delete user['password']
+  console.log(user)
+  res.status(200).json(user)
 })
 router.post("/techsupport", (req, res) => {
   const NewTechSupport = new TechSupportModel({
-    title:req.body.title,
-    subject:req.body.subject,
-    content:req.body.content
+    title: req.body.title,
+    subject: req.body.subject,
+    content: req.body.content
   });
   NewTechSupport.save()
     .then((ele) => {

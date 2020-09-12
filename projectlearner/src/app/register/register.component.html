@@ -2,9 +2,13 @@
   <form novalidate #registerForm='ngForm' (submit)="register(registerForm)">
   <div class="register">
   <mat-form-field>
-    <input matInput type="text" placeholder="Full Name" name="name" #name="ngModel" ngModel required >
+    <input matInput type="text" placeholder="First Name" name="fname" #fname="ngModel" ngModel required >
   </mat-form-field>
   <br>
+  <mat-form-field>
+  <input matInput type="text" placeholder="Last Name" name="lname" #lname="ngModel" ngModel required >
+</mat-form-field>
+<br>
   <mat-form-field>
     <input matInput type="text" placeholder="Email ID" name="email" #email="ngModel" ngModel required email>
   </mat-form-field>

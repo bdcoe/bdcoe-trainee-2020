@@ -19,7 +19,10 @@ import { WorkComponent } from './work/work.component';
 import { LeaderboardComponent } from './leaderboard/leaderboard.component';
 import { ProblemsComponent } from './problems/problems.component';
 import { TechsupportComponent } from './techsupport/techsupport.component';
-import { AllproblemsComponent } from './allproblems/allproblems.component'
+import { AllproblemsComponent } from './allproblems/allproblems.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { ProfileEditDialogComponent } from './profile-edit-dialog/profile-edit-dialog.component';
+import { AddproblemComponent } from './addproblem/addproblem.component'
 
 @NgModule({
   declarations: [
@@ -33,7 +36,9 @@ import { AllproblemsComponent } from './allproblems/allproblems.component'
     LeaderboardComponent,
     ProblemsComponent,
     TechsupportComponent,
-    AllproblemsComponent
+    AllproblemsComponent,
+    ProfileEditDialogComponent,
+    AddproblemComponent
   ],
   imports: [
     BrowserModule,
@@ -45,8 +50,9 @@ import { AllproblemsComponent } from './allproblems/allproblems.component'
     MatButtonModule,
     MatFormFieldModule,
     MatCheckboxModule,
-    HttpClientModule
-  ],
+    HttpClientModule,
+    MatDialogModule
+  ], entryComponents: [ProfileEditDialogComponent,AddproblemComponent],
   providers: [],
   bootstrap: [AppComponent]
 })

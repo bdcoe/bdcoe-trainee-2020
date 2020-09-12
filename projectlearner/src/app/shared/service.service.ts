@@ -11,16 +11,21 @@ export class ServiceComp implements OnInit {
 
   profileFetch() {
     const headers = new HttpHeaders({ 'authorization': `Bearer ${localStorage.getItem('token')}` })
-    // const headers = ({'authorization':`Bearer ${localStorage.getItem('token')}`})
-    this.http.get('http://localhost:3000/profile', { headers: headers }).subscribe(value => {
-      console.log(value)
+    return this.http.get('http://localhost:3000/profile', { headers: headers })
+  }
+
+  oneditprofile(post) {
+    console.log(post)
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json', 'authorization': `Bearer ${localStorage.getItem('token')}` })
+    this.http.put('http://localhost:3000/register', post, { headers: headers }).subscribe(()=>{
+      console.log('yup')
     })
   }
 
   onlogin(post) {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' })
     console.log(post)
-    this.http.post('http://localhost:3000/', post)
+    this.http.post('http://localhost:3000/', post, { headers: headers })
       .subscribe(
         (response: any) => {
           localStorage.setItem('token', response['token'])

@@ -1,9 +1,14 @@
 const mongoose = require("mongoose");
 const registerSchema = mongoose.Schema({
-  name: {
+  fname: {
     type: String,
     required: false,
   },
+  lname:{
+    type:String,
+    required:false
+  }
+  ,
   email: {
     type: String,
     required: false,
@@ -16,6 +21,16 @@ const registerSchema = mongoose.Schema({
     type: Number,
     required: false,
   },
+  myquestion:{
+    type:Number,
+    required:true,
+    default:0
+  },
+  mysolution:{
+    type:Number,
+    required:true,
+    default:0
+  }
 });
 var Register = mongoose.model("register", registerSchema);
 module.exports = Register;
