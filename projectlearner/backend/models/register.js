@@ -30,6 +30,10 @@ const registerSchema = mongoose.Schema({
     type:Number,
     required:true,
     default:0
+  },
+  language:{
+    type:Array,
+    required:false
   }
 });
 var Register = mongoose.model("register", registerSchema);

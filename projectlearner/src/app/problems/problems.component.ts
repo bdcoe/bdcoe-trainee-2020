@@ -12,15 +12,19 @@ import { AddproblemComponent } from '../addproblem/addproblem.component';
 })
 export class ProblemsComponent implements OnInit {
   problems:{[keys:string]:any}
-  constructor(private res: ServiceComp, private router: Router,private dialog:MatDialog) { }
+  constructor(private res: ServiceComp, private router: Router,public dialog:MatDialog) { }
 
-  AddProblem(){
+  Problem(){
    this.dialog.open(AddproblemComponent,{width:'60%',height:'auto'})
   }
   ngOnInit(): void {
     if (!this.res.isloggedin()) {
       this.router.navigate([''])
     }
+
+    this.res.fetchmyproblem().subscribe(element=>{
+     this.problems=element
+    })
   }
 
 }

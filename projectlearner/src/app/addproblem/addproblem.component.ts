@@ -9,12 +9,17 @@ import { ServiceComp } from '../shared/service.service'
 })
 export class AddproblemComponent implements OnInit {
 
+  tech
   addproblem(data: NgForm) {
     this.res.onaddproblem(data.value)
   }
   constructor(private res: ServiceComp) { }
 
   ngOnInit(): void {
+    this.res.ongetaddproblem().subscribe(ele=>{
+      this.tech = ele['message'];
+      console.log(this.tech)
+    })
   }
 
 }

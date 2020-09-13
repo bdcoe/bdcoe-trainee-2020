@@ -14,12 +14,27 @@ export class ServiceComp implements OnInit {
     return this.http.get('http://localhost:3000/profile', { headers: headers })
   }
 
-  onaddproblem(post) {
+  fetchmyproblem() {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'authorization': `Bearer ${localStorage.getItem('token')}`
     })
-    this.http.post('http://localhost:3000/addproblem', post, { headers: headers })
+    return this.http.get('http://localhost:3000/problem', { headers: headers })
+  }
+  onaddproblem(post) {
+    console.log(post, 'yes')
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'authorization': `Bearer ${localStorage.getItem('token')}`
+    })
+    this.http.post('http://localhost:3000/addproblem/', post, { headers: headers })
+      .subscribe(() => {
+        console.log('yewadafjokln')
+      })
+  }
+  ongetaddproblem() {
+    const headers = new HttpHeaders({ 'authorization': `Beared ${localStorage.getItem('token')}` })
+    return this.http.get('http://localhost:3000/addproblem/', { headers: headers })
   }
 
   oneditprofile(post) {
@@ -38,7 +53,6 @@ export class ServiceComp implements OnInit {
         (response: any) => {
           localStorage.setItem('token', response['token'])
           this.router.navigate(['/dashboard'])
-          // console.log(localStorage.getItem('token'))
         }
         , (error) => {
           console.log(error.error.message)

@@ -7,7 +7,6 @@ const checkauth = require('./checkauth');
 const TechSupportModel = require('./models/techsupport');
 const ProblemModel = require('./models/problem');
 
-
 router.post('/register', async (req, res) => {
   var t = bcrypt.hashSync(req.body.password.toString(), 10);
   const newRegister = new Register({
@@ -23,14 +22,14 @@ router.post('/register', async (req, res) => {
     });
   });
 });
-router.put('/register',checkauth,async (req,res)=>{
+router.put('/register', checkauth, async (req, res) => {
   const token = req.headers.authorization.split(' ')[1];
   var userId = jwt.decode(token)['userId'];
-  console.log(userId,req.body)
-  Register.updateOne({_id:userId},{fname:req.body.fname,lname:req.body.lname,phone:req.body.phone}).then(ele=>{
-    console.log('yes',ele)
+  console.log(userId, req.body)
+  Register.updateOne({ _id: userId }, { fname: req.body.fname, lname: req.body.lname, phone: req.body.phone }).then(ele => {
+    console.log('yes', ele)
   })
-})
+});
 router.get('/dashboard', checkauth, (req, res) => {
   res.status(200).json({ message: 'yeah' });
 });
@@ -38,11 +37,13 @@ router.get('/profile', checkauth, async (req, res) => {
   const token = req.headers.authorization.split(' ')[1];
   var userId = jwt.decode(token)['userId']
   let user = await Register.findOne({ _id: userId });
+  let count = await ProblemModel.find({owner:userId}).count()
   delete user['password']
+  user.myquestion=count;
   console.log(user)
   res.status(200).json(user)
-})
-router.post('/techsupport', (req, res) => {
+});
+router.post('/techsupport', checkauth, (req, res) => {
   const NewTechSupport = new TechSupportModel({
     title: req.body.title,
     subject: req.body.subject,
@@ -55,6 +56,39 @@ router.post('/techsupport', (req, res) => {
     .catch((error) => {
       return res.status(404).json({ message: error });
     });
+});
+router.post('/addproblem',checkauth ,async (req, res) => {
+  console.log('add problem called')
+  const token = req.headers.authorization.split(' ')[1];
+  var userId = jwt.decode(token)['userId']
+  const AddNewProblem = new ProblemModel({
+    tech: req.body.tech,
+    title: req.body.title,
+    explain: req.body.explain,
+    code: req.body.code,
+    owner: userId
+  })
+  AddNewProblem.save().then(ele => {
+    return res.status(200).json({ message: 'saved' })
+  }).catch(error => {
+    return res.status(401).json({ message: error })
+  })
+});
+router.get('/addproblem',checkauth, async (req,res)=>{
+ 
+  var problems = await ProblemModel.find();
+  problems = problems.map(ele=>{
+    return ele['tech']
+  })
+  return res.status(200).json({message:problems})
+
+})
+router.get('/problem', checkauth, async (req, res) => {
+
+  const token = req.headers.authorization.split(' ')[1];
+  const userId = jwt.decode(token)['userId'];
+  var problems = await ProblemModel.find({ owner: userId });
+  return res.status(200).json({ problems: problems })
 });
 router.post('/', async (req, res) => {
   console.log(req.body);
@@ -77,17 +111,4 @@ router.post('/', async (req, res) => {
     res.status(200).json({ token: token });
   }
 });
-router.post('/addproblem',checkauth,async (req,res)=>{
-  const AddNewProblem = new ProblemModel({
-    tech:req.body.tech,
-    title:req.body.title,
-    explain:req.body.explain,
-    code:req.body.code
-  })
-  AddNewProblem.save().then(ele=>{
-    return res.status(200).json({message:'saved'})
-  }).catch(error=>{
-    return res.status(401).json({message:error})
-  })
-})
 module.exports = router;

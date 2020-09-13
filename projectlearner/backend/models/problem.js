@@ -15,6 +15,10 @@ const ProblemSchema = mongoose.Schema({
     code:{
         type:String,
         required:false
+    },
+    owner:{
+        type:String,
+        required:false
     }
 })
 

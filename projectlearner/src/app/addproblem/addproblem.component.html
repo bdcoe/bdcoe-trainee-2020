@@ -2,7 +2,10 @@
     <mat-form-field>
         <input type='text' matInput list="apps" name=tech
          placeholder="Tech" id='tech' #name='ngModel' ngModel>
-        <datalist id='apps'>
+        <datalist id='apps' *ngIf='tech'>
+            <option *ngFor="let t of tech">
+                {{t}}
+            </option>
         </datalist>
     </mat-form-field>
     <br>
