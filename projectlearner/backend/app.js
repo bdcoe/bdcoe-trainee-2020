@@ -6,6 +6,7 @@ const jwt = require('jsonwebtoken');
 const checkauth = require('./checkauth');
 const TechSupportModel = require('./models/techsupport');
 const ProblemModel = require('./models/problem');
+const SolutionModel = require('./models/solution');
 
 router.post('/register', async (req, res) => {
   var t = bcrypt.hashSync(req.body.password.toString(), 10);
@@ -43,6 +44,17 @@ router.get('/profile', checkauth, async (req, res) => {
   console.log(user)
   res.status(200).json(user)
 });
+router.get('/solution',checkauth,async (req,res)=>{
+  const token = req.headers.authorization.split(' ')[1];
+  var userId = jwt.decode(token)['userId'];
+  var solution = await SolutionModel.find({owner:userId});
+  // solution = solution.map(ele=>{return ele['Qid']});
+  // solution.forEach( async ele=>{
+  //    var t=await ProblemModel.find({_id:ele});
+  //    t.forEach(async )
+  // })
+
+})
 router.post('/techsupport', checkauth, (req, res) => {
   const NewTechSupport = new TechSupportModel({
     title: req.body.title,
@@ -101,13 +113,19 @@ router.get('/allproblem', checkauth, async (req, res) => {
   var problems = await ProblemModel.find()
   return res.json({ 'message': problems })
 })
-router.put('/solution', checkauth, async (req, res) => {
-  var QId = req.body.QId;
-  var problem = ProblemModel.findOne({ _id: QId })
-  var sol = problem['solution']
-  sol.push({ solapp: req.body.solapp, app: req.body.app, QId: QId });
-  await ProblemModel.findOneAndUpdate({ _id: QId }, { solution: sol })
-  return res.status(200).json({'message':'Done'})
+router.post('/solution', checkauth, async (req, res) => {
+  const token = req.headers.authorization.split(' ')[1];
+  var userId = jwt.decode(token)['userId'];
+  const NewSolution= new SolutionModel({
+    solapp:req.body.solapp,
+    sol:req.body.sol,
+    Qid:req.body.QId,
+    owner:userId
+  })
+  NewSolution.save().then(ele=>{
+    return res.status(200).json({'message':'Done'})
+  })
+  
 })
 router.post('/', async (req, res) => {
   console.log(req.body);

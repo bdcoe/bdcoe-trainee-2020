@@ -19,11 +19,17 @@ export class ServiceComp implements OnInit {
       'Content-Type': 'application/json',
       'authorization': `Bearer ${localStorage.getItem('token')}`
     })
-    this.http.put('http://localhost:3000/solution', post, { headers: headers }).subscribe(()=>{
+    this.http.post('http://localhost:3000/solution', post, { headers: headers }).subscribe(() => {
       console.log('solution added')
     })
   }
-
+  fetchSolution() {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'authorization': `Bearer ${localStorage.getItem('token')}`
+    })
+    return this.http.get('http://localhost:3000/solution', { headers: headers })
+  }
   fetchmyproblem() {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
