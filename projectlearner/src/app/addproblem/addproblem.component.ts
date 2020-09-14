@@ -18,7 +18,6 @@ export class AddproblemComponent implements OnInit {
   ngOnInit(): void {
     this.res.ongetaddproblem().subscribe(ele=>{
       this.tech = ele['message'];
-      console.log(this.tech)
     })
   }
 

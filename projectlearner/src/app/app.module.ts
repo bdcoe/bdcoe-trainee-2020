@@ -22,7 +22,8 @@ import { TechsupportComponent } from './techsupport/techsupport.component';
 import { AllproblemsComponent } from './allproblems/allproblems.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ProfileEditDialogComponent } from './profile-edit-dialog/profile-edit-dialog.component';
-import { AddproblemComponent } from './addproblem/addproblem.component'
+import { AddproblemComponent } from './addproblem/addproblem.component';
+import { AddsolutionComponent } from './addsolution/addsolution.component'
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { AddproblemComponent } from './addproblem/addproblem.component'
     TechsupportComponent,
     AllproblemsComponent,
     ProfileEditDialogComponent,
-    AddproblemComponent
+    AddproblemComponent,
+    AddsolutionComponent
   ],
   imports: [
     BrowserModule,
@@ -52,7 +54,7 @@ import { AddproblemComponent } from './addproblem/addproblem.component'
     MatCheckboxModule,
     HttpClientModule,
     MatDialogModule
-  ], entryComponents: [ProfileEditDialogComponent,AddproblemComponent],
+  ], entryComponents: [ProfileEditDialogComponent, AddproblemComponent, AddsolutionComponent],
   providers: [],
   bootstrap: [AppComponent]
 })

@@ -19,6 +19,11 @@ const ProblemSchema = mongoose.Schema({
     owner:{
         type:String,
         required:false
+    },
+    solution:{
+        type:Array,
+        required:false,
+        default:[]
     }
 })
 

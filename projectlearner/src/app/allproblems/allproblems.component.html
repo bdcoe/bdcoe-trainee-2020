@@ -1,1 +1,4 @@
-<p>allproblems works!</p>
+<mat-card *ngFor="let problem of AllProblems">
+<p>{{problem['_id']}}</p>
+<button mat-stroked-button type="button" (click)='addsolution(problem["_id"])'>Submit Solution</button>
+</mat-card>

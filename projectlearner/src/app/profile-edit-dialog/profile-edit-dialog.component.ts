@@ -8,6 +8,10 @@ import { ServiceComp } from '../shared/service.service'
   styleUrls: ['./profile-edit-dialog.component.css']
 })
 export class ProfileEditDialogComponent implements OnInit {
+  fname:String
+  lname:String
+  phone:String
+  language
 
   constructor(private res:ServiceComp) { }
 
@@ -16,6 +20,13 @@ export class ProfileEditDialogComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.res.profileFetch().subscribe((data)=>{
+      this.fname=data['fname'];
+      this.lname=data['lname'];
+      this.phone=data['phone'];
+      this.language=data['language'];
+      console.log(this.fname)
+    })
   }
 
 }

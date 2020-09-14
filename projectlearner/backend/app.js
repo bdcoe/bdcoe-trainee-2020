@@ -37,9 +37,9 @@ router.get('/profile', checkauth, async (req, res) => {
   const token = req.headers.authorization.split(' ')[1];
   var userId = jwt.decode(token)['userId']
   let user = await Register.findOne({ _id: userId });
-  let count = await ProblemModel.find({owner:userId}).count()
+  let count = await ProblemModel.find({ owner: userId }).count()
   delete user['password']
-  user.myquestion=count;
+  user.myquestion = count;
   console.log(user)
   res.status(200).json(user)
 });
@@ -57,7 +57,7 @@ router.post('/techsupport', checkauth, (req, res) => {
       return res.status(404).json({ message: error });
     });
 });
-router.post('/addproblem',checkauth ,async (req, res) => {
+router.post('/addproblem', checkauth, async (req, res) => {
   console.log('add problem called')
   const token = req.headers.authorization.split(' ')[1];
   var userId = jwt.decode(token)['userId']
@@ -74,13 +74,20 @@ router.post('/addproblem',checkauth ,async (req, res) => {
     return res.status(401).json({ message: error })
   })
 });
-router.get('/addproblem',checkauth, async (req,res)=>{
- 
+router.get('/addproblem', checkauth, async (req, res) => {
+
   var problems = await ProblemModel.find();
-  problems = problems.map(ele=>{
+  problems = problems.map(ele => {
     return ele['tech']
   })
-  return res.status(200).json({message:problems})
+  var lang = await Register.find();
+  lang = lang.map(ele => {
+    return ele['language']
+  })
+  lang.forEach(ele => {
+    problems.push(ele)
+  })
+  return res.status(200).json({ message: problems })
 
 })
 router.get('/problem', checkauth, async (req, res) => {
@@ -90,6 +97,18 @@ router.get('/problem', checkauth, async (req, res) => {
   var problems = await ProblemModel.find({ owner: userId });
   return res.status(200).json({ problems: problems })
 });
+router.get('/allproblem', checkauth, async (req, res) => {
+  var problems = await ProblemModel.find()
+  return res.json({ 'message': problems })
+})
+router.put('/solution', checkauth, async (req, res) => {
+  var QId = req.body.QId;
+  var problem = ProblemModel.findOne({ _id: QId })
+  var sol = problem['solution']
+  sol.push({ solapp: req.body.solapp, app: req.body.app, QId: QId });
+  await ProblemModel.findOneAndUpdate({ _id: QId }, { solution: sol })
+  return res.status(200).json({'message':'Done'})
+})
 router.post('/', async (req, res) => {
   console.log(req.body);
   const email = req.body.email;
@@ -111,4 +130,5 @@ router.post('/', async (req, res) => {
     res.status(200).json({ token: token });
   }
 });
+
 module.exports = router;
