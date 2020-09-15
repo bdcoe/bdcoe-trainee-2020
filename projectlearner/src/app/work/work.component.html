@@ -1,1 +1,5 @@
-<p>work works!</p>
+<mat-card *ngFor="let wor of work">
+    <p >{{wor['_id']}}</p>
+    <button mat-stroked-button type="button" (click)='addsolution(wor["_id"])'>Submit Solution</button>
+</mat-card>
+

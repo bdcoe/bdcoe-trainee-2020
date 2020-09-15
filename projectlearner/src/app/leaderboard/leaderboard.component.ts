@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {ServiceComp} from '../shared/service.service';
-import {Router} from '@angular/router'
+import { ServiceComp } from '../shared/service.service';
+import { Router } from '@angular/router'
 
 
 
@@ -11,11 +11,14 @@ import {Router} from '@angular/router'
 })
 export class LeaderboardComponent implements OnInit {
 
-  constructor(private res:ServiceComp,private router:Router) { }
+  constructor(private res: ServiceComp, private router: Router) { }
 
   ngOnInit(): void {
-    if(!this.res.isloggedin()){
+    if (!this.res.isloggedin()) {
       this.router.navigate([''])
+    }
+  this.res.fetchleaderboard().subscribe(ele=>{
+    console.log(ele)
+  })
   }
-}
 }

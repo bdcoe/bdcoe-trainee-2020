@@ -7,6 +7,8 @@ const checkauth = require('./checkauth');
 const TechSupportModel = require('./models/techsupport');
 const ProblemModel = require('./models/problem');
 const SolutionModel = require('./models/solution');
+const { updateSourceFile } = require('typescript');
+const { checkServerIdentity } = require('tls');
 
 router.post('/register', async (req, res) => {
   var t = bcrypt.hashSync(req.body.password.toString(), 10);
@@ -26,10 +28,8 @@ router.post('/register', async (req, res) => {
 router.put('/register', checkauth, async (req, res) => {
   const token = req.headers.authorization.split(' ')[1];
   var userId = jwt.decode(token)['userId'];
-  console.log(userId, req.body)
-  Register.updateOne({ _id: userId }, { fname: req.body.fname, lname: req.body.lname, phone: req.body.phone }).then(ele => {
-    console.log('yes', ele)
-  })
+  await Register.updateOne({ _id: userId }, { fname: req.body.fname, lname: req.body.lname, phone: req.body.phone,language:req.body.language })
+  return res.status(200).json({message:'Done'})
 });
 router.get('/dashboard', checkauth, (req, res) => {
   res.status(200).json({ message: 'yeah' });
@@ -44,15 +44,19 @@ router.get('/profile', checkauth, async (req, res) => {
   console.log(user)
   res.status(200).json(user)
 });
-router.get('/solution',checkauth,async (req,res)=>{
+router.get('/solution', checkauth, async (req, res) => {
   const token = req.headers.authorization.split(' ')[1];
   var userId = jwt.decode(token)['userId'];
-  var solution = await SolutionModel.find({owner:userId});
-  // solution = solution.map(ele=>{return ele['Qid']});
-  // solution.forEach( async ele=>{
-  //    var t=await ProblemModel.find({_id:ele});
-  //    t.forEach(async )
-  // })
+  var solution = await SolutionModel.find({ owner: userId });
+  var final=[]
+  solution.forEach(async ele=>{
+    var problem = await ProblemModel.findOne({_id:ele['Qid']})
+    final.push({problem:problem,solution:ele})
+  })
+
+  setTimeout(()=>{
+    return res.status(200).json({message:final})
+  },1000)
 
 })
 router.post('/techsupport', checkauth, (req, res) => {
@@ -116,15 +120,30 @@ router.get('/allproblem', checkauth, async (req, res) => {
 router.post('/solution', checkauth, async (req, res) => {
   const token = req.headers.authorization.split(' ')[1];
   var userId = jwt.decode(token)['userId'];
-  const NewSolution= new SolutionModel({
-    solapp:req.body.solapp,
-    sol:req.body.sol,
-    Qid:req.body.QId,
-    owner:userId
+  const NewSolution = new SolutionModel({
+    solapp: req.body.solapp,
+    sol: req.body.sol,
+    Qid: req.body.QId,
+    owner: userId
   })
-  NewSolution.save().then(ele=>{
-    return res.status(200).json({'message':'Done'})
+  NewSolution.save().then(ele => {
+    return res.status(200).json({ 'message': 'Done' })
   })
+
+})
+router.get('/work',checkauth,async(req,res)=>{
+  const token = req.headers.authorization.split(' ')[1];
+  var userId = jwt.decode(token)['userId'];
+  console.log(userId)
+  var user = await Register.findOne({_id:userId});
+  console.log(user)
+  var exp  = new RegExp(user['language'],'ig');
+  console.log(exp)
+  var problem = await ProblemModel.find({tech:exp});
+  console.log(problem)
+  return res.status(200).json({message:problem})
+})
+router.get('/leaderboard',checkauth,async (req,res)=>{
   
 })
 router.post('/', async (req, res) => {

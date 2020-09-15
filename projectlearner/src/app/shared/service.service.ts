@@ -9,6 +9,22 @@ export class ServiceComp implements OnInit {
   public error;
   constructor(private http: HttpClient, private router: Router) { }
 
+  fetchwork() {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'authorization': `Bearer ${localStorage.getItem('token')}`
+    })
+    return this.http.get('http://localhost:3000/work', { headers: headers })
+  }
+
+  fetchleaderboard() {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'authorization': `Bearer ${localStorage.getItem('token')}`
+    })
+    return this.http.get('http://localhost:3000/leaderboard', { headers: headers })
+  }
+
   profileFetch() {
     const headers = new HttpHeaders({ 'authorization': `Bearer ${localStorage.getItem('token')}` })
     return this.http.get('http://localhost:3000/profile', { headers: headers })

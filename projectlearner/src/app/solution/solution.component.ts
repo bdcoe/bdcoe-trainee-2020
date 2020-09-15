@@ -11,10 +11,16 @@ import {Router} from '@angular/router'
 export class SolutionComponent implements OnInit {
 
   constructor(private res:ServiceComp,private router:Router) { }
+  
+  QA;
 
   ngOnInit(): void {
     if(!this.res.isloggedin()){
       this.router.navigate([''])
   }
+  this.res.fetchSolution().subscribe(element=>{
+    this.QA = element['message'];
+    console.log(this.QA)
+  })
 }
 }
