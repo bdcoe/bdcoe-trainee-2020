@@ -1,0 +1,9 @@
+mat-card{
+    width: 80%;
+    left: 10%;
+    top: 15%;
+}
+.btn{
+    position: relative;
+    left:80%;
+}

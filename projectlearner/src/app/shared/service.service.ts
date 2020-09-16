@@ -9,6 +9,15 @@ export class ServiceComp implements OnInit {
   public error;
   constructor(private http: HttpClient, private router: Router) { }
 
+
+  ondeleteProblem(post) {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'authorization': `Bearer ${localStorage.getItem('token')}`,
+      'body': `${post}`
+    })
+    return this.http.delete('http://localhost:3000/problem', { headers: headers })
+  }
   fetchwork() {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
@@ -72,16 +81,19 @@ export class ServiceComp implements OnInit {
       })
   }
   ongetaddproblem() {
-    const headers = new HttpHeaders({ 'authorization': `Beared ${localStorage.getItem('token')}` })
+    const headers = new HttpHeaders({ 'authorization': `Bearer ${localStorage.getItem('token')}` })
     return this.http.get('http://localhost:3000/addproblem/', { headers: headers })
+  }
+  oneditProblem(post){
+    console.log(post)
+    const headers = new HttpHeaders({ 'authorization': `Bearer ${localStorage.getItem('token')}` })
+    return this.http.put('http://localhost:3000/problem',post,{headers:headers})
   }
 
   oneditprofile(post) {
     console.log(post)
     const headers = new HttpHeaders({ 'Content-Type': 'application/json', 'authorization': `Bearer ${localStorage.getItem('token')}` })
-    this.http.put('http://localhost:3000/register', post, { headers: headers }).subscribe(() => {
-      console.log('yup')
-    })
+     return this.http.put('http://localhost:3000/register', post, { headers: headers })
   }
 
   onlogin(post) {

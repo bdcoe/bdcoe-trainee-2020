@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ServiceComp } from '../shared/service.service';
-import { Router } from '@angular/router'
+import { Router } from '@angular/router';
+import { MatExpansionModule } from '@angular/material/expansion'
 
 
 
@@ -10,15 +11,19 @@ import { Router } from '@angular/router'
   styleUrls: ['./leaderboard.component.css']
 })
 export class LeaderboardComponent implements OnInit {
+  leaders;
+  panelOpenState:boolean;
 
   constructor(private res: ServiceComp, private router: Router) { }
 
   ngOnInit(): void {
     if (!this.res.isloggedin()) {
-      this.router.navigate([''])
+      this.router.navigate(['']);
     }
-  this.res.fetchleaderboard().subscribe(ele=>{
-    console.log(ele)
-  })
+    console.log('ngonitleadercomponent')
+    this.res.fetchleaderboard().subscribe(ele => {
+      this.leaders = ele['message'];
+      console.log(ele['message']);
+    })
   }
 }

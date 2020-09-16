@@ -1,5 +1,9 @@
-<mat-card *ngFor="let wor of work">
-    <p >{{wor['_id']}}</p>
-    <button mat-stroked-button type="button" (click)='addsolution(wor["_id"])'>Submit Solution</button>
-</mat-card>
-
+<div *ngFor="let wor of work">
+    <mat-card>
+        <h3>{{wor['title']}}</h3>
+        <h4>{{wor['tech']}}</h4>
+        <h4>{{wor['explain']}}</h4>
+        <h4 class='code'>{{wor['code']}}</h4>
+        <button mat-stroked-button class="btn" type="button" (click)='addsolution(wor["_id"])'>Submit Solution</button>
+    </mat-card>
+</div>

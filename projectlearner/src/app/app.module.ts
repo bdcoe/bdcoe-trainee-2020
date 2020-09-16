@@ -23,8 +23,10 @@ import { AllproblemsComponent } from './allproblems/allproblems.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ProfileEditDialogComponent } from './profile-edit-dialog/profile-edit-dialog.component';
 import { AddproblemComponent } from './addproblem/addproblem.component';
-import { AddsolutionComponent } from './addsolution/addsolution.component'
-
+import { AddsolutionComponent } from './addsolution/addsolution.component';
+import { MatExpansionModule } from '@angular/material/expansion';
+import {MatGridListModule} from '@angular/material/grid-list';
+import { ConfirmationComponent } from './confirmation/confirmation.component'
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,7 +42,8 @@ import { AddsolutionComponent } from './addsolution/addsolution.component'
     AllproblemsComponent,
     ProfileEditDialogComponent,
     AddproblemComponent,
-    AddsolutionComponent
+    AddsolutionComponent,
+    ConfirmationComponent
   ],
   imports: [
     BrowserModule,
@@ -53,8 +56,10 @@ import { AddsolutionComponent } from './addsolution/addsolution.component'
     MatFormFieldModule,
     MatCheckboxModule,
     HttpClientModule,
-    MatDialogModule
-  ], entryComponents: [ProfileEditDialogComponent, AddproblemComponent, AddsolutionComponent],
+    MatDialogModule,
+    MatExpansionModule,
+    MatGridListModule
+  ], entryComponents: [ProfileEditDialogComponent, AddproblemComponent, AddsolutionComponent,ConfirmationComponent],
   providers: [],
   bootstrap: [AppComponent]
 })

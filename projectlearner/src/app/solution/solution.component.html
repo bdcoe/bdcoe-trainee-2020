@@ -1,3 +1,8 @@
-<p>
-   yeah {{QA}}
-</p>
+<div *ngFor="let item of QA">
+<p>{{item['problem']['title']}}</p>
+<p>{{item['problem']['tech']}}</p>
+<p>{{item['problem']['explain']}}</p>
+<p>{{item['problem']['code']}}</p>
+<p>{{item['solution']['solapp']}}</p>
+<p>{{item['solution']['sol']}}</p>
+</div>

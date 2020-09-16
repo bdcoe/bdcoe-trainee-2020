@@ -1,1 +1,18 @@
-<p>leaderboard works!</p>
+<div class='leaderboard'>
+<mat-accordion *ngFor="let leader of leaders">
+  <mat-expansion-panel (opened)="panelOpenState = true"
+                       (closed)="panelOpenState = false">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+         {{leader.fname}} {{leader.lname}}
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <mat-grid-list cols="2" rowHeight="2:1">
+      <mat-grid-tile>Languages known: {{leader.language}}</mat-grid-tile>
+      <mat-grid-tile>Email: {{leader.email}}</mat-grid-tile>
+      <mat-grid-tile>No.of Question Raised: {{leader.myquestion}}</mat-grid-tile>
+      <mat-grid-tile>No.of Solution: {{leader.mysolution}}</mat-grid-tile>
+    </mat-grid-list>
+  </mat-expansion-panel>
+</mat-accordion>
+</div>

@@ -1,0 +1,20 @@
+mat-expansion-panel{
+    width: 70%;
+    margin: 1rem auto;
+}
+mat-panel-title{
+    color:rgb(12, 89, 99);
+    font-weight: 500;
+    font-size: 21px;
+
+}
+mat-grid-tile {
+    background: lightblue;
+    font-size: 18px;
+    font-weight: 400;
+  }
+.leaderboard{
+    position: relative;
+    top: 150px;
+    /* margin: 0 auto; */
+}

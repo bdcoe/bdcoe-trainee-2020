@@ -7,8 +7,6 @@ const checkauth = require('./checkauth');
 const TechSupportModel = require('./models/techsupport');
 const ProblemModel = require('./models/problem');
 const SolutionModel = require('./models/solution');
-const { updateSourceFile } = require('typescript');
-const { checkServerIdentity } = require('tls');
 
 router.post('/register', async (req, res) => {
   var t = bcrypt.hashSync(req.body.password.toString(), 10);
@@ -28,8 +26,8 @@ router.post('/register', async (req, res) => {
 router.put('/register', checkauth, async (req, res) => {
   const token = req.headers.authorization.split(' ')[1];
   var userId = jwt.decode(token)['userId'];
-  await Register.updateOne({ _id: userId }, { fname: req.body.fname, lname: req.body.lname, phone: req.body.phone,language:req.body.language })
-  return res.status(200).json({message:'Done'})
+  await Register.updateOne({ _id: userId }, { fname: req.body.fname, lname: req.body.lname, phone: req.body.phone, language: req.body.language })
+  return res.status(200).json({ message: 'Done' })
 });
 router.get('/dashboard', checkauth, (req, res) => {
   res.status(200).json({ message: 'yeah' });
@@ -48,15 +46,15 @@ router.get('/solution', checkauth, async (req, res) => {
   const token = req.headers.authorization.split(' ')[1];
   var userId = jwt.decode(token)['userId'];
   var solution = await SolutionModel.find({ owner: userId });
-  var final=[]
-  solution.forEach(async ele=>{
-    var problem = await ProblemModel.findOne({_id:ele['Qid']})
-    final.push({problem:problem,solution:ele})
+  var final = []
+  solution.forEach(async ele => {
+    var problem = await ProblemModel.findOne({ _id: ele['Qid'] })
+    final.push({ problem: problem, solution: ele })
   })
 
-  setTimeout(()=>{
-    return res.status(200).json({message:final})
-  },1000)
+  setTimeout(() => {
+    return res.status(200).json({ message: final })
+  }, 1000)
 
 })
 router.post('/techsupport', checkauth, (req, res) => {
@@ -131,20 +129,44 @@ router.post('/solution', checkauth, async (req, res) => {
   })
 
 })
-router.get('/work',checkauth,async(req,res)=>{
+router.get('/work', checkauth, async (req, res) => {
   const token = req.headers.authorization.split(' ')[1];
   var userId = jwt.decode(token)['userId'];
   console.log(userId)
-  var user = await Register.findOne({_id:userId});
+  var user = await Register.findOne({ _id: userId });
   console.log(user)
-  var exp  = new RegExp(user['language'],'ig');
+  var exp = new RegExp(user['language'], 'ig');
   console.log(exp)
-  var problem = await ProblemModel.find({tech:exp});
+  var problem = await ProblemModel.find({ tech: exp });
   console.log(problem)
-  return res.status(200).json({message:problem})
+  return res.status(200).json({ message: problem })
 })
-router.get('/leaderboard',checkauth,async (req,res)=>{
-  
+router.get('/leaderboard', checkauth, async (req, res) => {
+  var star = await Register.find().sort({ mysolution: -1 }).limit(5)
+  return res.status(200).json({ 'message': star })
+})
+router.delete('/problem', async (req, res) => {
+
+  const body = req.headers.body;
+  await ProblemModel.deleteOne({ _id: body }).then(ele => {
+    return res.status(200).json({ message: 'Deleted' })
+  }).catch(error => {
+    return res.status(401).json({ message: error })
+  })
+
+})
+router.put('/problem', async (req, res) => {
+  console.log(req.body)
+  ProblemModel.updateOne({ _id: req.body.update }, {
+    tech: req.body.tech,
+    title: req.body.title,
+    explain: req.body.explain,
+    code:req.body.code  
+  }).then(ele => {
+    return res.status(200).json({ message: 'Success' })
+  }).catch(error => {
+    return res.status(400).json({ message: error })
+  })
 })
 router.post('/', async (req, res) => {
   console.log(req.body);

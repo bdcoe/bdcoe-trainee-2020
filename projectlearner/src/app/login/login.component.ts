@@ -16,5 +16,9 @@ export class loginComponent implements OnInit{
   }
 
   ngOnInit(): void{
+    if(localStorage.getItem('token')!=null)
+    {
+      localStorage.removeItem('token')
+    }
   }
 }

@@ -21,6 +21,8 @@ export class SolutionComponent implements OnInit {
   this.res.fetchSolution().subscribe(element=>{
     this.QA = element['message'];
     console.log(this.QA)
+  },error=>{
+    this.router.navigate([''])
   })
 }
 }
