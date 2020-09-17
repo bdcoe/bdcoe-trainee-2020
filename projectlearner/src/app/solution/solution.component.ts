@@ -14,6 +14,7 @@ export class SolutionComponent implements OnInit {
 
   QA;
   spinner: boolean = false
+  error:String=''
 
   ngOnInit(): void {
     if (!this.res.isloggedin()) {
@@ -23,6 +24,9 @@ export class SolutionComponent implements OnInit {
     this.res.fetchSolution().subscribe(element => {
       this.spinner = false
       this.QA = element['message'];
+      if(this.QA.length==0){
+        this.error='No Problem solved by Your Side'
+      }
       console.log(this.QA)
     }, error => {
       this.router.navigate([''])

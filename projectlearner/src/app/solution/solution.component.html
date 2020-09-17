@@ -1,4 +1,5 @@
 <mat-spinner *ngIf='spinner'></mat-spinner>
+<div *ngIf="error">{{error}}</div>
 <mat-accordion *ngFor="let item of QA">
     <mat-expansion-panel (opened)="panelOpenState = true"
                          (closed)="panelOpenState = false">

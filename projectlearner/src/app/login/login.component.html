@@ -5,7 +5,10 @@
   </mat-form-field>
   <br>
   <mat-form-field>
-    <input matInput type="password" placeholder="Password" name="password" #password='ngModel' ngModel>
+    <input matInput [type]="hide ? 'password' : 'text'" placeholder="Password" name="password" #password='ngModel' ngModel>
+    <button mat-icon-button matSuffix type='button' (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+      <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>  
+    </button>
   </mat-form-field>
   <br>
   <button mat-raised-button color="primary" type="submit">Login</button>

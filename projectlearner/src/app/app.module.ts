@@ -29,7 +29,8 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { ConfirmationComponent } from './confirmation/confirmation.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatIconModule } from '@angular/material/icon'
+import { MatIconModule } from '@angular/material/icon';
+import { MatSnackBarModule} from '@angular/material/snack-bar'
 @NgModule({
   declarations: [
     AppComponent,
@@ -64,7 +65,8 @@ import { MatIconModule } from '@angular/material/icon'
     MatGridListModule,
     MatProgressSpinnerModule,
     MatToolbarModule,
-    MatIconModule
+    MatIconModule,
+    MatSnackBarModule
   ], entryComponents: [ProfileEditDialogComponent, AddproblemComponent, AddsolutionComponent, ConfirmationComponent],
   providers: [],
   bootstrap: [AppComponent]

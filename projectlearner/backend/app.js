@@ -8,13 +8,13 @@ const ProblemModel = require('./models/problem');
 const SolutionModel = require('./models/solution');
 const Register = require('./models/register');
 router.post('/register', async (req, res) => {
-  if(req.body.fname==''||req.body.lname==''||req.body.email==''||req.body.phone==null||req.body.password==''){
-    return res.status(401).json({message:'Invalid Input'})
+  if (req.body.fname == '' || req.body.lname == '' || req.body.email == '' || req.body.phone == null || req.body.password == '') {
+    return res.status(401).json({ message: 'Invalid Input' })
   }
-   var ele = await Register.findOne({email:req.body.email.toLowerCase()})
-     if(ele!=null){
-       return res.status(404).json({message:'User Already exist with same Email'})
-     } 
+  var ele = await Register.findOne({ email: req.body.email.toLowerCase() })
+  if (ele != null) {
+    return res.status(404).json({ message: 'User Already exist with same Email' })
+  }
   var t = bcrypt.hashSync(req.body.password.toString(), 10);
   const newRegister = new Register({
     fname: req.body.fname,
@@ -134,7 +134,7 @@ router.post('/solution', checkauth, async (req, res) => {
   })
   NewSolution.save().then(async ele => {
     var t = await SolutionModel.find({ owner: userId }).count();
-    await Register.updateOne({ _id: userId }, { mysolution: t ,rating: t * 100 })
+    await Register.updateOne({ _id: userId }, { mysolution: t, rating: t * 100 })
     return res.status(200).json({ 'message': 'Done' })
   })
 
@@ -181,13 +181,16 @@ router.put('/problem', async (req, res) => {
 router.post('/', async (req, res) => {
   const email = req.body.email;
   const password = req.body.password;
+  if(email==null||password==null||email==''||password==''){
+    return res.status(401).json({message:'Empty Email Or Password'})
+  }
   var x = await Register.findOne({ email: email.toLowerCase() });
   if (x == null || x == undefined || x.length <= 0) {
     return res.status(401).json({ message: 'Invalid User Id' });
   } else {
     var t = bcrypt.compareSync(password.toString(), x['password']);
     if (!t) {
-      return res.json({ message: 'Login failure' });
+      return res.status(401).json({ message: 'Login failure' });
     }
     const token = jwt.sign(
       { email: x['email'], userId: x['_id'] },

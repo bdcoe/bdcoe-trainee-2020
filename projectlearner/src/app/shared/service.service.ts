@@ -99,20 +99,14 @@ export class ServiceComp implements OnInit {
   onlogin(post) {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' })
     console.log(post)
-    this.http.post('http://localhost:3000/', post, { headers: headers })
-      .subscribe(
-        (response: any) => {
-          localStorage.setItem('token', response['token'])
-          this.router.navigate(['/dashboard'])
-        }
-        , (error) => {
-          console.log(error.error.message)
-        })
+    return this.http.post('http://localhost:3000/', post, { headers: headers })
   }
+
   onRegisterPost(post: User) {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' })
     return this.http.post('http://localhost:3000/register/', post, { headers: headers })
   }
+  
   onTechPost(post: TechSuppModel) {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' })
     this.http.post('http://localhost:3000/techsupport/', post, { headers: headers }).subscribe(() => {

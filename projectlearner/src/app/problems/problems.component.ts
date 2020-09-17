@@ -32,6 +32,7 @@ export class ProblemsComponent implements OnInit {
   Problem() {
     this.dialog.open(AddproblemComponent, { width: '60%', height: 'auto' })
   }
+  error:string=''
   ngOnInit(): void {
     if (!this.res.isloggedin()) {
       this.router.navigate([''])
@@ -40,7 +41,9 @@ export class ProblemsComponent implements OnInit {
     this.res.fetchmyproblem().subscribe(element => {
       this.spinner= false
       this.problems = element['problems']
-      console.log(this.problems)
+      if(this.problems.length==0){
+        this.error='No problems Posted Yet'
+      }
     },error=>{
       this.router.navigate([''])
     })
