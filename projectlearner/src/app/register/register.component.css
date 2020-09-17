@@ -4,4 +4,5 @@ mat-card{
 }
 mat-form-field{
   margin:0.5rem 0.5rem;
+  width: 95%;
 }

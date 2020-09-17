@@ -2,7 +2,7 @@
   <form novalidate #registerForm='ngForm' (submit)="register(registerForm)">
   <div class="register">
   <mat-form-field>
-    <input matInput type="text" placeholder="First Name" name="fname" #fname="ngModel" ngModel required >
+    <input matInput type="text" placeholder="First Name" name="fname" #fname="ngModel" ngModel required>
   </mat-form-field>
   <br>
   <mat-form-field>
@@ -13,8 +13,15 @@
     <input matInput type="text" placeholder="Email ID" name="email" #email="ngModel" ngModel required email>
   </mat-form-field>
   <br>
+    <mat-form-field>
+    <input matInput placeholder="Password" [type]="hide ? 'password' : 'text'" name="password" #password="ngModel" ngModel required>
+    <button mat-icon-button matSuffix type='button' (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+      <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>  
+    </button>
+  </mat-form-field>
+  <br>
   <mat-form-field>
-    <input matInput type="password" placeholder="Password" name="password" #password="ngModel" ngModel required>
+    <input matInput placeholder="Confirm Password" type="text" name="cpassword" #cpassword="ngModel" ngModel required>
   </mat-form-field>
   <br>
   <mat-form-field>
@@ -25,5 +32,6 @@
       Save
     </button>
   </div>
+  <p>{{error}}</p>
 </form>
 </mat-card>

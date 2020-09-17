@@ -111,9 +111,7 @@ export class ServiceComp implements OnInit {
   }
   onRegisterPost(post: User) {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' })
-    this.http.post('http://localhost:3000/register/', post, { headers: headers }).subscribe(() => {
-      console.log('success')
-    })
+    return this.http.post('http://localhost:3000/register/', post, { headers: headers })
   }
   onTechPost(post: TechSuppModel) {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' })

@@ -7,8 +7,14 @@ const TechSupportModel = require('./models/techsupport');
 const ProblemModel = require('./models/problem');
 const SolutionModel = require('./models/solution');
 const Register = require('./models/register');
-
 router.post('/register', async (req, res) => {
+  if(req.body.fname==''||req.body.lname==''||req.body.email==''||req.body.phone==null||req.body.password==''){
+    return res.status(401).json({message:'Invalid Input'})
+  }
+   var ele = await Register.findOne({email:req.body.email.toLowerCase()})
+     if(ele!=null){
+       return res.status(404).json({message:'User Already exist with same Email'})
+     } 
   var t = bcrypt.hashSync(req.body.password.toString(), 10);
   const newRegister = new Register({
     fname: req.body.fname,
@@ -36,10 +42,10 @@ router.get('/profile', checkauth, async (req, res) => {
   const token = req.headers.authorization.split(' ')[1];
   var userId = jwt.decode(token)['userId']
   let user = await Register.findOne({ _id: userId });
-  let count = await ProblemModel.find({ owner: userId }).count()
-  delete user['password']
-  user.myquestion = count;
-  console.log(user)
+  // let count = await ProblemModel.find({ owner: userId }).count()
+  // delete user['password']
+  // user.myquestion = count;
+  // console.log(user)
   res.status(200).json(user)
 });
 router.get('/solution', checkauth, async (req, res) => {
@@ -128,8 +134,7 @@ router.post('/solution', checkauth, async (req, res) => {
   })
   NewSolution.save().then(async ele => {
     var t = await SolutionModel.find({ owner: userId }).count();
-    console.log(t)
-    await Register.updateOne({ _id: userId }, { mysolution: t })
+    await Register.updateOne({ _id: userId }, { mysolution: t ,rating: t * 100 })
     return res.status(200).json({ 'message': 'Done' })
   })
 
@@ -147,7 +152,7 @@ router.get('/work', checkauth, async (req, res) => {
   return res.status(200).json({ message: problem })
 })
 router.get('/leaderboard', checkauth, async (req, res) => {
-  var star = await Register.find().sort({ mysolution: -1 }).limit(5)
+  var star = await Register.find().sort({ rating: -1 }).limit(5)
   return res.status(200).json({ 'message': star })
 })
 router.delete('/problem', async (req, res) => {
@@ -174,12 +179,10 @@ router.put('/problem', async (req, res) => {
   })
 })
 router.post('/', async (req, res) => {
-  console.log(req.body);
   const email = req.body.email;
   const password = req.body.password;
   var x = await Register.findOne({ email: email.toLowerCase() });
   if (x == null || x == undefined || x.length <= 0) {
-    console.log('Wrong Id');
     return res.status(401).json({ message: 'Invalid User Id' });
   } else {
     var t = bcrypt.compareSync(password.toString(), x['password']);
