@@ -14,7 +14,7 @@ import { AddsolutionComponent } from '../addsolution/addsolution.component';
 export class WorkComponent implements OnInit {
 
   constructor(private res: ServiceComp, private router: Router,private dialog:MatDialog) { }
-  work;
+  work; spinner=false;
   addsolution(post) {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.data= post;
@@ -26,9 +26,12 @@ export class WorkComponent implements OnInit {
     if (!this.res.isloggedin()) {
       this.router.navigate([''])
     }
+this.spinner=true;
     this.res.fetchwork().subscribe(ele => {
+      this.spinner=false
       this.work = ele['message']
-      console.log(this.work)
+    },error=>{
+      this.router.navigate([''])
     })
   }
 

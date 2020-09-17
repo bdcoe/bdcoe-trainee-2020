@@ -4,9 +4,9 @@ const registerSchema = mongoose.Schema({
     type: String,
     required: false,
   },
-  lname:{
-    type:String,
-    required:false
+  lname: {
+    type: String,
+    required: false
   }
   ,
   email: {
@@ -21,20 +21,25 @@ const registerSchema = mongoose.Schema({
     type: Number,
     required: false,
   },
-  myquestion:{
-    type:Number,
-    required:true,
-    default:0
+  myquestion: {
+    type: Number,
+    required: true,
+    default: 0
   },
-  mysolution:{
-    type:Number,
-    required:true,
-    default:0
+  mysolution: {
+    type: Number,
+    required: true,
+    default: 0
   },
-  language:{
-    type:String,
-    required:false,
-    default:''
+  rating: {
+    type: Number,
+    required: false,
+    default: 0
+  },
+  language: {
+    type: String,
+    required: false,
+    default: ''
   }
 });
 var Register = mongoose.model("register", registerSchema);

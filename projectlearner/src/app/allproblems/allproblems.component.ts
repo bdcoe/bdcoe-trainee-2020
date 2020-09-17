@@ -22,13 +22,17 @@ export class AllproblemsComponent implements OnInit {
     this.dialog.open(AddsolutionComponent,dialogConfig)
   }
   AllProblems: []
+  spinner:boolean=false;
   ngOnInit(): void {
     if (!this.res.isloggedin()) {
       this.router.navigate([''])
     }
+    this.spinner=true;
     this.res.fetchallProblem().subscribe(ele => {
+      this.spinner=false
       this.AllProblems = ele['message']
-      console.log(this.AllProblems)
+    },error=>{
+      this.router.navigate([''])
     })
   }
 }

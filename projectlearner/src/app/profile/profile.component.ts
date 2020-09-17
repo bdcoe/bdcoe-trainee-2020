@@ -21,20 +21,24 @@ export class ProfileComponent implements OnInit {
   this.dialog.open(ProfileEditDialogComponent)
   }
   constructor(private res: ServiceComp, private router: Router,private dialog:MatDialog) {
-   
   }
+  spinner:boolean=false
 
   ngOnInit(): void {
     if (!this.res.isloggedin()) {
       this.router.navigate([''])
     }
+    this.spinner=true
     this.res.profileFetch().subscribe(user=>{
+      this.spinner=false
     this.fname=user['fname'];
     this.lname=user['lname'];
     this.phone=user['phone'];
     this.email=user['email'];
     this.myquestion=user['myquestion'];
     this.mysolution=user['mysolution']
+    },error=>{
+      this.router.navigate([''])
     })
 
   }

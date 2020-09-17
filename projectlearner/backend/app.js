@@ -1,5 +1,4 @@
 const express = require('express');
-const Register = require('./models/register');
 const router = express.Router();
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
@@ -7,6 +6,7 @@ const checkauth = require('./checkauth');
 const TechSupportModel = require('./models/techsupport');
 const ProblemModel = require('./models/problem');
 const SolutionModel = require('./models/solution');
+const Register = require('./models/register');
 
 router.post('/register', async (req, res) => {
   var t = bcrypt.hashSync(req.body.password.toString(), 10);
@@ -74,7 +74,8 @@ router.post('/techsupport', checkauth, (req, res) => {
 router.post('/addproblem', checkauth, async (req, res) => {
   console.log('add problem called')
   const token = req.headers.authorization.split(' ')[1];
-  var userId = jwt.decode(token)['userId']
+  var userId = jwt.decode(token)['userId'];
+  var t = await ProblemModel.find({ owner: userId }).count();
   const AddNewProblem = new ProblemModel({
     tech: req.body.tech,
     title: req.body.title,
@@ -82,7 +83,8 @@ router.post('/addproblem', checkauth, async (req, res) => {
     code: req.body.code,
     owner: userId
   })
-  AddNewProblem.save().then(ele => {
+  AddNewProblem.save().then(async ele => {
+    await Register.updateOne({ _id: userId }, { myquestion: ++t })
     return res.status(200).json({ message: 'saved' })
   }).catch(error => {
     return res.status(401).json({ message: error })
@@ -124,7 +126,10 @@ router.post('/solution', checkauth, async (req, res) => {
     Qid: req.body.QId,
     owner: userId
   })
-  NewSolution.save().then(ele => {
+  NewSolution.save().then(async ele => {
+    var t = await SolutionModel.find({ owner: userId }).count();
+    console.log(t)
+    await Register.updateOne({ _id: userId }, { mysolution: t })
     return res.status(200).json({ 'message': 'Done' })
   })
 
@@ -161,7 +166,7 @@ router.put('/problem', async (req, res) => {
     tech: req.body.tech,
     title: req.body.title,
     explain: req.body.explain,
-    code:req.body.code  
+    code: req.body.code
   }).then(ele => {
     return res.status(200).json({ message: 'Success' })
   }).catch(error => {

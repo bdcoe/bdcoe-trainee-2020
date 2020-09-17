@@ -7,3 +7,6 @@ mat-card{
     position: relative;
     left:80%;
 }
+mat-spinner{
+    margin: 20% auto;
+}

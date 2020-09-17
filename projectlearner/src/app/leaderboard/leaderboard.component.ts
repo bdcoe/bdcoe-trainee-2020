@@ -13,6 +13,7 @@ import { MatExpansionModule } from '@angular/material/expansion'
 export class LeaderboardComponent implements OnInit {
   leaders;
   panelOpenState:boolean;
+  spinner:boolean=false
 
   constructor(private res: ServiceComp, private router: Router) { }
 
@@ -20,10 +21,12 @@ export class LeaderboardComponent implements OnInit {
     if (!this.res.isloggedin()) {
       this.router.navigate(['']);
     }
-    console.log('ngonitleadercomponent')
+    this.spinner=true
     this.res.fetchleaderboard().subscribe(ele => {
+      this.spinner=false
       this.leaders = ele['message'];
-      console.log(ele['message']);
+    },error=>{
+      this.router.navigate([''])
     })
   }
 }

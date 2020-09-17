@@ -1,3 +1,6 @@
 input[type='file']{
 visibility: hidden;
 }
+mat-spinner{
+    margin: 20% auto;
+}

@@ -25,8 +25,10 @@ import { ProfileEditDialogComponent } from './profile-edit-dialog/profile-edit-d
 import { AddproblemComponent } from './addproblem/addproblem.component';
 import { AddsolutionComponent } from './addsolution/addsolution.component';
 import { MatExpansionModule } from '@angular/material/expansion';
-import {MatGridListModule} from '@angular/material/grid-list';
-import { ConfirmationComponent } from './confirmation/confirmation.component'
+import { MatGridListModule } from '@angular/material/grid-list';
+import { ConfirmationComponent } from './confirmation/confirmation.component';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatToolbarModule } from '@angular/material/toolbar'
 @NgModule({
   declarations: [
     AppComponent,
@@ -58,8 +60,10 @@ import { ConfirmationComponent } from './confirmation/confirmation.component'
     HttpClientModule,
     MatDialogModule,
     MatExpansionModule,
-    MatGridListModule
-  ], entryComponents: [ProfileEditDialogComponent, AddproblemComponent, AddsolutionComponent,ConfirmationComponent],
+    MatGridListModule,
+    MatProgressSpinnerModule,
+    MatToolbarModule
+  ], entryComponents: [ProfileEditDialogComponent, AddproblemComponent, AddsolutionComponent, ConfirmationComponent],
   providers: [],
   bootstrap: [AppComponent]
 })

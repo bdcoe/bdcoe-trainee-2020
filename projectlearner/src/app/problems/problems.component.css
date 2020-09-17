@@ -5,3 +5,6 @@ mat-expansion-panel{
 .btn{
     margin: 0 0.5rem;
 }
+mat-spinner{
+    margin: 20% auto;
+}

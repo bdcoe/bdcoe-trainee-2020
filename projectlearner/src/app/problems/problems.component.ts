@@ -16,6 +16,7 @@ export class ProblemsComponent implements OnInit {
   problems: { [keys: string]: any }
   constructor(private res: ServiceComp, private router: Router, public dialog: MatDialog) { }
   panelOpenState
+  spinner:boolean= false
   onConfirmation(_id) {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.data = _id;
@@ -35,8 +36,9 @@ export class ProblemsComponent implements OnInit {
     if (!this.res.isloggedin()) {
       this.router.navigate([''])
     }
-    
+    this.spinner=true
     this.res.fetchmyproblem().subscribe(element => {
+      this.spinner= false
       this.problems = element['problems']
       console.log(this.problems)
     },error=>{

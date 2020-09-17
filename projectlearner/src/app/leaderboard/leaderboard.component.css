@@ -6,7 +6,6 @@ mat-panel-title{
     color:rgb(12, 89, 99);
     font-weight: 500;
     font-size: 21px;
-
 }
 mat-grid-tile {
     background: lightblue;
@@ -16,5 +15,7 @@ mat-grid-tile {
 .leaderboard{
     position: relative;
     top: 150px;
-    /* margin: 0 auto; */
+}
+mat-spinner{
+    margin: 20% auto;
 }

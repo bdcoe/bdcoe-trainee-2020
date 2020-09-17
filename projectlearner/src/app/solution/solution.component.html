@@ -1,8 +1,24 @@
-<div *ngFor="let item of QA">
-<p>{{item['problem']['title']}}</p>
-<p>{{item['problem']['tech']}}</p>
-<p>{{item['problem']['explain']}}</p>
-<p>{{item['problem']['code']}}</p>
-<p>{{item['solution']['solapp']}}</p>
-<p>{{item['solution']['sol']}}</p>
-</div>
+<mat-spinner *ngIf='spinner'></mat-spinner>
+<mat-accordion *ngFor="let item of QA">
+    <mat-expansion-panel (opened)="panelOpenState = true"
+                         (closed)="panelOpenState = false">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <h3>{{item['problem']['title']}}</h3>
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <h4>{{item['problem']['tech']}}</h4>
+      <h4>{{item['problem']['explain']}}</h4>
+      <h4 >{{item['problem']['code']}}</h4>
+      <h4>
+        {{item['solution']['solapp']}}
+      </h4>
+      <h4>{{item['solution']['sol']}}</h4>
+    <!-- <button matInput class='btn' mat-stroked-button (click)='editproblem(problem["_id"])' color='primary'>
+        Edit Problem
+    </button>
+    <button  matInput class='btn' mat-raised-button (click)='onConfirmation(problem["_id"])' color='warn'>
+        Delete Problem
+    </button> -->
+    </mat-expansion-panel>
+  </mat-accordion>
