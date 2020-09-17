@@ -1,0 +1,71 @@
+// QUEUE IMPLEMENTATION USING TWO STACK
+
+#include <iostream>
+#include <stack>
+using namespace std;
+template<typename T>
+class queue{
+    stack<T>s1;
+    stack<T>s2;
+    public:
+    void push(T x){
+        s1.push(x);
+    }
+    void pop(){
+        while(!s1.empty()){
+            T x=s1.top();
+            s1.pop();
+            s2.push(x);
+        }
+        s2.pop();
+        while(!s2.empty()){
+            T y=s2.top();
+            s2.pop();
+            s1.push(y);
+        }
+    }
+    T front(){
+        while(!s1.empty()){
+            T x=s1.top();
+            s1.pop();
+            s2.push(x);
+        }
+        int element=s2.top();
+        while(!s2.empty()){
+            T y=s2.top();
+            s2.pop();
+            s1.push(y);
+        }
+        return element;
+    }
+    bool empty(){
+        return s1.size()==0;
+    }
+};
+int main() {
+    queue<int>q;
+    int n;
+    cin>>n;
+    for(int i=0;i<n;i++){
+        int a;
+        cin>>a;
+        q.push(a);
+    }
+    while(!q.empty()){
+        cout<<q.front()<<" ";
+        q.pop();
+    }
+    return 0;
+}
+
+
+
+
+INPUT:
+
+5
+1 2 3 4 5
+
+OUTPUT:
+
+1 2 3 4 5 

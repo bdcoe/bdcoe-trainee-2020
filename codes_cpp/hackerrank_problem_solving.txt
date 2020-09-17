@@ -1,0 +1,62 @@
+// appendAndDelete :TO CONFIRM IF WE CAN MAKE STRING A EQUAL TO B IN LESS THAN K MOVE USING APPEND AND DELETE.
+
+#include <bits/stdc++.h>
+
+using namespace std;
+
+// Complete the appendAndDelete function below.
+string appendAndDelete(string s, string t, int k) {
+    int a=0,a1=s.length();
+    int b=0,b1=t.length();
+    while((a<s.length() && b<t.length()) && s[a]==t[b]){
+        a++;b++;
+    }
+    int count=0;cout<<a1<<" "<<a<<" "<<b1<<" "<<b<<endl; 
+    if(a1==a && b1==b){
+        count+=(s.length()+1+t.length());
+    }
+    else if(a1!=a && b1==b){
+        count+=a1-a;
+    }
+    else if(a1!=a && b1!=b){
+        count+=a1-a;
+        count+=b1-b;
+    }
+    else if(a1==a && b1!=b){
+        count+=b1-b;
+    }
+    cout<<count<<endl;
+    if(count<=k){
+        return "Yes";
+    }
+    else{
+        return "No";
+    }
+
+}
+
+int main()
+{
+    string s;
+    getline(cin, s);
+
+    string t;
+    getline(cin, t);
+
+    int k;
+    cin >> k;
+    cout<<appendAndDelete(s,t,k);
+
+    return 0;
+}
+
+
+INPUT: 
+y
+yu
+2
+
+OUTPUT:
+1 1 2 1
+1
+Yes

@@ -7,21 +7,21 @@
                 <div class="col s12 m12">
                   <div class="card azure>
                     <div class="card-content white-text">
-                        <marquee class="red" style="font-size: 50px;"><u><em>Welcome to Blog Application</em></u></marquee>  
+                        <marquee class="red" style="font-size: 50px;color:whitesmoke"><strong><em>Welcome to Blog Application</em></strong></marquee>  
                         <div class="collection">
                         <h5 class="collection-item active">Top Ten Latest Articles:</h5>    
                             {% for article in latest_articles %}
-                            <a href="{% url 'get_article' article.id %}" class="collection-item" style="font-size: 20px;text-align: center;">{{article}}</a>
+                            <a href="{% url 'get_article' article.id %}" class="collection-item" style="font-size: 20px;text-align: left;">{{article}}</a>
                             {% endfor %}
                         <br>
-                          <h5 class="left"><a href="{% url 'create_author' %}" class="center"><strong>tap to create new author</strong></a></h5>
-                        <h5 class="right"><a href="{% url 'create_article' %}" class="center"><strong>tap to create new article</strong></a></h5>
+                          <h5 class="left" style="padding: 0px 0px 0px 10px;"><a href="{% url 'create_author' %}" class="center"><strong>tap to create new author</strong></a></h5>
+                        <h5 class="right" style="padding: 0px 10px 0px 0px;"><a href="{% url 'create_article' %}" class="center"><strong>tap to create new article</strong></a></h5>
                     </div>
                   </div>
                 </div>
               </div> 
               <div class='collection'>
-                <h5 class="center" ><a href="{% url 'logout' %}" class="collection-item">Logout</a></h5>
+                <h5 class="center" style="padding: 0px;margin: 0px;"><a href="{% url 'logout' %}" class="collection-item">Logout</a></h5>
             </div>           
         </div>
       </div>

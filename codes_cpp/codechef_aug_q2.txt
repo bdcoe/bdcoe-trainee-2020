@@ -1,0 +1,57 @@
+// codechef aug-B
+
+#include <bits/stdc++.h>
+using namespace std;
+#define ll long long
+ll find_winner_nd_digit(ll pc){
+
+   ll arr[]={9,8,7,6,5,4,3,2,1};
+   ll i=0,sum=0,count=0,ans=0;
+   while(i<=8){
+        count+=(pc/arr[i]);
+        ans+=count;
+        sum+=(arr[i]*count);
+        count=0;
+        pc=pc%arr[i];
+    i++;
+   }
+   return ans;
+}
+void compute(ll a,ll b){
+    if(a>b){
+        cout<<1<<" "<<b<<endl;
+    }
+    else if(a<b){
+        cout<<0<<" "<<a<<endl;
+    }
+    else{
+        cout<<1<<" "<<b<<endl;
+    }
+}
+int main() {
+    ll t;
+    cin>>t;
+    for(ll i=0;i<t;i++){
+        ll pc,pr;
+        cin>>pc>>pr;
+        ll a=find_winner_nd_digit(pc);
+        ll b=find_winner_nd_digit(pr);
+        compute(a,b);
+        }
+    return 0;
+}
+
+
+
+input:
+
+3
+3 5
+28 18
+14 24
+
+output:
+
+1 1
+1 2
+0 2

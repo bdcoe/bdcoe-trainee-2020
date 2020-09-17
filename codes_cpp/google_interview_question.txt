@@ -1,0 +1,41 @@
+//PRINT NEXT PERMUTATION OF ARRAY WHICH ARE LEXICOGRAPHICALLY GREATER THAN INITIAL ARRAY;
+// IF ARRAY INTIALLY IS GREATEST ,THEN PRINT SMALLEST ONE.
+
+
+
+#include <bits/stdc++.h>
+using namespace std;
+int main() {
+    int d,i=0;
+    int arr[100];
+    while(cin>>d){
+        arr[i]=d;
+        i++;
+    }
+    int arr1[100];
+    for(int j=0;j<i;j++){
+        arr1[j]=arr[j];
+    }
+    int count=0;
+    while(next_permutation(arr,arr+i)){
+        if(arr<arr1){
+            for(int j=0;j<i;j++){
+            cout<<arr[j]<<" ";
+            }
+        cout<<endl;count++;
+        break;
+        }
+        else{
+            break;
+        }
+    }
+    return 0;
+}
+
+
+
+INPUT: 1 3 2
+OUTPUT: 2 1 3 
+
+INPUT: 3 2 1
+OUTPUT: 1 2 3

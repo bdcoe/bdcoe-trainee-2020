@@ -1,3 +1,6 @@
+// queue using linked list
+
+
 #include <iostream>
 using namespace std;
 class node{
@@ -64,3 +67,15 @@ int main() {
     cout<<q.isEmpty();
     return 0;
 }
+
+
+
+
+input: 
+
+5
+1 2 3 4 5
+
+output:
+
+3->4->5->0

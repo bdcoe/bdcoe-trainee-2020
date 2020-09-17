@@ -1,0 +1,83 @@
+// INSERT AT HEAD AND TAAIL OF A LINKED LIST
+
+
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#include <stdbool.h>
+struct node{
+    int data;
+    struct node* next;
+};
+struct node* create_linkedList(struct node*head,int d){
+    if(head==NULL){
+        head=(struct node*)malloc(sizeof(struct node));
+        head->data=d;
+        head->next=NULL;
+        return head; 
+    }
+    struct node* t=head;
+    while(t->next!=NULL){
+        t=t->next;
+    }
+    t->next=(struct node*)malloc(sizeof(struct node));
+    t=t->next;
+    t->data=d;
+    t->next=NULL;
+    return head;
+}
+struct node* insert_at_tail(struct node*head,int d){
+    struct node* t=head;
+    while(t->next!=NULL){
+        t=t->next;
+    }
+    t->next=(struct node*)malloc(sizeof(struct node));
+    t=t->next;
+    t->data=d;
+    t->next=NULL;
+    return head;
+}
+struct node* insert_at_head(struct node*head,int d){
+    struct node* t=(struct node*)malloc(sizeof(struct node));
+    t->data=d;
+    t->next=head;
+    head=t;
+    return head;
+}
+void print(struct node* head){
+    while(head!=NULL){
+        printf("%d ",head->data);
+        head=head->next;
+    }
+}
+int main() {
+    int n;
+    scanf("%d",&n);
+    struct node* head=NULL;
+    for(int i=0;i<n;i++){
+        int a;scanf("%d",&a);
+        head=create_linkedList(head,a);
+    }
+    print(head);
+    int d;scanf("%d",&d);
+    head=insert_at_tail(head,d);
+    printf("\n");
+    print(head);
+    int athead;
+    scanf("%d",&athead);
+    head=insert_at_head(head,athead);
+    printf("\n");
+    print(head);
+    return 0;
+}
+
+
+
+INPUT:  6
+		1 2 3 4 5 6
+		10
+		12
+		
+OUTPUT: 1 2 3 4 5 6 
+		1 2 3 4 5 6 10 
+		12 1 2 3 4 5 6 10 

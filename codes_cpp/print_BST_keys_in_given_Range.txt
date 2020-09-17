@@ -1,0 +1,88 @@
+//PRINT BINARY TREE KEYS IN A GIVEN RANGE.
+
+#include <bits/stdc++.h>
+using namespace std;
+class node{
+    public:
+    node* left;
+    int data;
+    node* right;
+    node(int d){
+        left=NULL;
+        data=d;
+        right=NULL;
+    }
+};
+node* built_bst(node*& tree,int d){
+    if(tree==NULL){
+        tree=new node(d);
+        return tree;
+    }
+    if(d<=tree->data){
+        tree->left=built_bst(tree->left,d);
+    }
+    else{
+        tree->right=built_bst(tree->right,d);
+    }
+    return tree;
+}
+ void print(node* head,int k1,int k2,vector<int>&v){
+    if(head==NULL){
+        return;
+    }
+
+    cout<<head->data<<" ";
+    print(head->left,k1,k2,v);
+    if(head->data>=k1 && head->data<=k2){
+        v.push_back(head->data);
+    }
+    print(head->right,k1,k2,v);
+}
+/*
+void print_inrange(node* tree,int k1,int k2,vector<int>&v){
+    if(tree==NULL){
+        return;
+    }
+    if(tree->data>=k1 && tree->data<=k2){
+        v.push_back(tree->data);
+    }
+    print_inrange(tree->left,k1,k2,v);
+    print_inrange(tree->right,k1,k2,v);
+}*/
+int main() {
+    int t;
+    cin>>t;
+    for(int k=0;k<t;k++){
+        int n;
+        cin>>n;
+        node* tree=NULL;
+        for(int i=0;i<n;i++){
+            int a;
+            cin>>a;
+            tree=built_bst(tree,a);
+        }
+
+        int k1,k2;
+        cin>>k1>>k2;
+        vector<int>v;
+        cout<<"# Preorder : ";
+        print(tree,k1,k2,v);
+        //print_inrange(tree,k1,k2,v);
+        cout<<endl;
+        cout<<"# Nodes within range are : ";
+        for(auto x:v){
+            cout<<x<<" ";
+        }
+        cout<<endl;
+    }
+    return 0;
+}
+
+
+INPUT: 1
+5
+4 3 2 5 6
+3 5
+
+OUTPUT: # Preorder : 4 3 2 5 6 
+		# Nodes within range are : 3 4 5 

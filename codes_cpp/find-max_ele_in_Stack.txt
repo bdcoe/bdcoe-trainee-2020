@@ -1,0 +1,68 @@
+// FIND MAXIMUM ELEMENT IN A STACK
+
+#include<bits/stdc++.h>
+using namespace std;
+
+
+int main() {
+     int n;
+     cin>>n;
+     stack<int>v;
+     stack<int>s;
+     for(int i=0;i<n;i++){
+         int a;
+         cin>>a;
+         if(a==1){
+             int ele;
+             cin>>ele;
+             s.push(ele);
+             if(v.size()==0){
+                 v.push(ele);
+                 continue;
+             }
+             if(ele>v.top()){
+                 v.push(ele);
+             }   
+         }
+         else if(a==2){
+            if(v.size()!=0 && s.size()!=0 && v.top()==s.top())
+                v.pop();
+            if(s.size()!=0)
+                s.pop();
+         }
+         else{
+             if(v.size()!=0)
+             cout<<v.top()<<endl;
+         }
+     }
+     //cout<<v.top();  
+    return 0;
+}
+
+
+INPUT:
+ 
+16
+1 5
+2
+3
+1 9
+1 8
+3
+1 11
+1 10
+2
+3
+2
+3
+2
+3
+1 15
+1 43
+
+OUTPUT:
+
+9
+11
+9
+9

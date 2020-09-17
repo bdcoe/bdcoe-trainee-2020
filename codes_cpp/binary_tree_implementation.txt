@@ -1,0 +1,44 @@
+// BINARY TREE IMPLEMENTATION
+
+#include <iostream>
+using namespace std;
+
+class node{
+    public:
+    int data;
+    node* left;
+    node* right;
+    node(int d){
+        data=d;
+        left=NULL;
+        right=NULL;
+    }
+};
+node * binary_tree(){
+    int d;cin>>d;
+    if(d==-1){
+        return NULL;
+    }
+    node* tree=new node(d);
+    tree->left=binary_tree();
+    tree->right=binary_tree();
+    return tree;
+}
+void print(node *t){
+    if(t==NULL){
+        return;
+    }
+    cout<<(t->data)<<" ";
+    print(t->left);
+    print(t->right);
+}
+int main() {
+    node *t=binary_tree();
+    print(t);
+   return 0;
+}
+
+
+
+INPUT: 3 4 -1 6 -1 -1 5 1 -1 -1 -1
+OUTPUT: 3 4 6 5 1 

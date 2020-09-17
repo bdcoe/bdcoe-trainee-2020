@@ -1,0 +1,89 @@
+// BUILDING TWO BINARY TREE AND CHECKING IF TWO THE TWO OF THEM ARE IDENTICAL OR NOT!
+
+#include<bits/stdc++.h>
+using namespace std;
+class tree{
+	public:
+	int data;
+	tree* left;
+	tree* right;
+	tree(int d){
+		data=d;
+		left=NULL;
+		right=NULL;
+	}
+};
+void build_tree(tree*& t,vector<string>&v){
+	if(t==NULL){
+		int d;
+		cin>>d;
+		t=new tree(d);
+        }
+        string exist;cin>>exist;v.push_back(exist);
+        if(exist=="true"){
+            if(t->left==NULL){
+                int d;
+                cin>>d;
+                t->left=new tree(d);
+                build_tree(t->left,v);
+            }
+            string ele;cin>>ele;v.push_back(ele);
+            if(ele=="true"){
+                int d;
+                cin>>d;
+                t->right=new tree(d);
+                build_tree(t->right,v);
+                return;
+            }
+            else if(ele=="false"){
+                return;
+            }   
+        }
+        else if(exist=="false"){
+            string ele;cin>>ele;v.push_back(ele);
+            if(ele=="true"){
+                int d;
+                cin>>d;
+                t->right=new tree(d);
+                build_tree(t->right,v);
+            }
+            else if(ele=="false"){
+                return;
+            }
+        }
+}
+void print(tree* t){
+	if(t==NULL){
+		return;
+	}
+	cout<<t->data<<" ";
+	print(t->left);
+	print(t->right);
+}
+int main() {
+	tree* t=NULL;
+    tree* r=NULL;
+    vector<string>v1;vector<string>v2;
+	build_tree(t,v1);
+    build_tree(r,v2);
+    if(v1==v2){
+
+        cout<<"true"<<endl;
+    }
+    else{
+        cout<<"false"<<endl;
+    }
+	return 0;
+} 
+
+
+
+
+input: 
+10 true 20 true 40 false false true 60 false false true 30 true 60 false false true 73 false false
+10 true 20 true 40 false false true 50 false false true 30 true 60 false false true 73 false false
+
+
+output: true
+
+if not identical ,then, program will print false.

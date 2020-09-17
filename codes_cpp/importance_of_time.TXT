@@ -1,0 +1,44 @@
+// IMPORTANCE OF TIME
+
+#include<bits/stdc++.h>
+using namespace std;
+int main() {
+	int n;
+	cin>>n;
+	deque<int>dq;
+	int answer=0;
+	int ideal[n]={0};
+	for(int i=0;i<n;i++){
+		int a;
+		cin>>a;
+		dq.push_back(a);
+	}
+	int j=0;
+	for(int i=0;i<n;i++){
+		cin>>ideal[i];
+		while(ideal[j]!=dq.front()){
+			int a=dq.front();
+			dq.pop_front();
+			dq.push_back(a);
+			answer++;
+		}
+		dq.pop_front();
+		answer++;
+		j++;
+	}
+	cout<<answer<<endl;
+	return 0;
+}
+
+
+
+
+INPUT: 
+
+5
+5 4 2 3 1
+5 2 1 4 3
+
+OUTPUT:
+
+7
