@@ -20,7 +20,7 @@ const routes: Routes = [
   { path: 'problems', component: ProblemsComponent },
   { path: 'profile', component: ProfileComponent },
   { path: 'solution', component: SolutionComponent },
-  { path: 'techsupport', component: TechsupportComponent },
+  // { path: 'techsupport', component: TechsupportComponent },
   { path: 'work', component: WorkComponent }
 ];
 

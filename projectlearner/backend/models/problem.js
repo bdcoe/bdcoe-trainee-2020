@@ -24,6 +24,11 @@ const ProblemSchema = mongoose.Schema({
         type:Array,
         required:false,
         default:[]
+    },
+    date:{
+        type:Date,
+        required:false,
+        default:Date()
     }
 })
 

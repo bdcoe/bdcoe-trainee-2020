@@ -27,7 +27,6 @@ export class SolutionComponent implements OnInit {
       if(this.QA.length==0){
         this.error='No Problem solved by Your Side'
       }
-      console.log(this.QA)
     }, error => {
       this.router.navigate([''])
     })

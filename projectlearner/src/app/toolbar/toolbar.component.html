@@ -1,0 +1,31 @@
+<mat-toolbar color='primary'>
+    <div class='btn'>
+    <button type="button" mat-button [routerLink]="['/profile']" routerLinkActive="router-link-active">
+        My Profile
+    </button>
+    <button type="button" mat-button [routerLink]="['/solution']" routerLinkActive="router-link-active">
+        My Solution
+    </button>
+    <button type="button" mat-button [routerLink]="['/work']" routerLinkActive="router-link-active">
+        My Work
+    </button>
+    <button type="button" mat-button [routerLink]="['/leaderboard']" routerLinkActive="router-link-active">
+        Leaderboard
+    </button>
+    <button type="button" mat-button [routerLink]="['/problems']" routerLinkActive="router-link-active">
+        My Problems
+    </button>
+    <button type="button" mat-button  (click)='techSup()'>
+        Support
+    </button>
+    <button type="button" mat-button [routerLink]="['/allproblems']" routerLinkActive="router-link-active">
+        All Problems
+    </button>
+</div>
+<div>
+    <button mat-raised-button color='warn' class='logout' (click)='logout()' type='button'>
+        Log Out
+    </button>
+</div>
+    
+</mat-toolbar>

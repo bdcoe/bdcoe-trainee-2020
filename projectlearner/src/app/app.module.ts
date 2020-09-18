@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms'
+import { FormsModule,ReactiveFormsModule } from '@angular/forms'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -30,7 +30,8 @@ import { ConfirmationComponent } from './confirmation/confirmation.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
-import { MatSnackBarModule} from '@angular/material/snack-bar'
+import { MatSnackBarModule} from '@angular/material/snack-bar';
+import { ToolbarComponent } from './toolbar/toolbar.component'
 @NgModule({
   declarations: [
     AppComponent,
@@ -47,7 +48,8 @@ import { MatSnackBarModule} from '@angular/material/snack-bar'
     ProfileEditDialogComponent,
     AddproblemComponent,
     AddsolutionComponent,
-    ConfirmationComponent
+    ConfirmationComponent,
+    ToolbarComponent
   ],
   imports: [
     BrowserModule,
@@ -66,7 +68,8 @@ import { MatSnackBarModule} from '@angular/material/snack-bar'
     MatProgressSpinnerModule,
     MatToolbarModule,
     MatIconModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    ReactiveFormsModule
   ], entryComponents: [ProfileEditDialogComponent, AddproblemComponent, AddsolutionComponent, ConfirmationComponent],
   providers: [],
   bootstrap: [AppComponent]

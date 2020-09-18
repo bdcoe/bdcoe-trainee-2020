@@ -16,7 +16,9 @@ export class AddsolutionComponent implements OnInit {
   }
   onaddSol(post:NgForm){
     post.value.QId=this.ID
-    this.res.onaddsolution(post.value)
+    this.res.onaddsolution(post.value).subscribe(ele=>{
+      console.log(ele)
+    })
   }
   ngOnInit(): void {
   }

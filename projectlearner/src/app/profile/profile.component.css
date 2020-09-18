@@ -4,3 +4,6 @@ visibility: hidden;
 mat-spinner{
     margin: 20% auto;
 }
+.init{
+    margin-top: 1rem;
+}

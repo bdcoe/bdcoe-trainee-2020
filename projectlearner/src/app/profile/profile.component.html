@@ -32,9 +32,15 @@
             <div class="text-center">
                 <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle img-thumbnail"
                     alt="avatar">
-                <h6>Upload a different photo...</h6>
-                <button mat-raised-button color='accent' (click)='filebutton.click()'>Upload Picture</button>
-                <input type="file" class="text-center center-block file-upload" #filebutton>
+                <!-- <button mat-raised-button color='accent' (click)='filebutton.click()'>Upload Picture</button>
+                <input type="file" 
+                accept="image/*"
+                class="text-center center-block file-upload" 
+                (change)="processFile(imageInput)"
+                #filebutton> -->
+                <button mat-raised-button color='primary' class='init' (click)='openEditForm()' name='editf' #edit='ngModel' ngModel>
+                    Edit Profile
+                </button>
             </div>
 
             <!-- <div class="panel panel-default">
@@ -126,11 +132,11 @@
                             <label for="Languages">
                                 <h4>Languages</h4>
                             </label>
-                           <ul>
-                               <li>
-                                   {{email}}
-                               </li>
-                           </ul>
+                            <ul>
+                                <li>
+                                    {{language}}
+                                </li>
+                            </ul>
                         </div>
                     </div>
                     <!-- </form> -->
@@ -148,9 +154,5 @@
             </div>
         </div>
     </div>
-<button mat-raised-button color='primary' 
-(click)='openEditForm()' name='edit'
-#edit='ngModel' ngModel>
-    Edit Profile
-</button>
+
 </div>

@@ -2,11 +2,32 @@ const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const checkauth = require('./checkauth');
 const TechSupportModel = require('./models/techsupport');
 const ProblemModel = require('./models/problem');
 const SolutionModel = require('./models/solution');
 const Register = require('./models/register');
+const { headers, Score, checkauth } = require('./functions/func');
+const multer = require('multer');
+const MIME_TYPE_MAP = {
+  'image/png': 'png',
+  'image/jpeg': 'jpg',
+  'image/jpg': 'jpg'
+}
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    const isValid=MIME_TYPE_MAP[file.mimetype];
+    let error = new Error('Invalid mimeType');
+    if(isValid){
+      error=null
+    }
+    cb(error, 'backend/images');
+  },
+  filename: (req, file, cb) => {
+    const name = file.originalname.toLowerCase().split(' ').join('-')
+    const ext = MIME_TYPE_MAP[file.mimetype];
+    cb(name+'-'+Date.now()+'.'+ext);
+  }
+})
 router.post('/register', async (req, res) => {
   if (req.body.fname == '' || req.body.lname == '' || req.body.email == '' || req.body.phone == null || req.body.password == '') {
     return res.status(401).json({ message: 'Invalid Input' })
@@ -29,9 +50,8 @@ router.post('/register', async (req, res) => {
     });
   });
 });
-router.put('/register', checkauth, async (req, res) => {
-  const token = req.headers.authorization.split(' ')[1];
-  var userId = jwt.decode(token)['userId'];
+router.put('/register', checkauth,multer({storage:storage}).single('image'), async (req, res) => {
+  var userId = headers(req, res);
   await Register.updateOne({ _id: userId }, { fname: req.body.fname, lname: req.body.lname, phone: req.body.phone, language: req.body.language })
   return res.status(200).json({ message: 'Done' })
 });
@@ -39,8 +59,7 @@ router.get('/dashboard', checkauth, (req, res) => {
   res.status(200).json({ message: 'yeah' });
 });
 router.get('/profile', checkauth, async (req, res) => {
-  const token = req.headers.authorization.split(' ')[1];
-  var userId = jwt.decode(token)['userId']
+  var userId = headers(req, res);
   let user = await Register.findOne({ _id: userId });
   // let count = await ProblemModel.find({ owner: userId }).count()
   // delete user['password']
@@ -49,18 +68,14 @@ router.get('/profile', checkauth, async (req, res) => {
   res.status(200).json(user)
 });
 router.get('/solution', checkauth, async (req, res) => {
-  const token = req.headers.authorization.split(' ')[1];
-  var userId = jwt.decode(token)['userId'];
+  var userId = headers(req, res);
   var solution = await SolutionModel.find({ owner: userId });
   var final = []
   solution.forEach(async ele => {
     var problem = await ProblemModel.findOne({ _id: ele['Qid'] })
     final.push({ problem: problem, solution: ele })
   })
-
-  setTimeout(() => {
-    return res.status(200).json({ message: final })
-  }, 1000)
+  return res.status(200).json({ message: final })
 
 })
 router.post('/techsupport', checkauth, (req, res) => {
@@ -79,15 +94,16 @@ router.post('/techsupport', checkauth, (req, res) => {
 });
 router.post('/addproblem', checkauth, async (req, res) => {
   console.log('add problem called')
-  const token = req.headers.authorization.split(' ')[1];
-  var userId = jwt.decode(token)['userId'];
+  var userId = headers(req, res);
   var t = await ProblemModel.find({ owner: userId }).count();
+  var date = new Date();
   const AddNewProblem = new ProblemModel({
     tech: req.body.tech,
     title: req.body.title,
     explain: req.body.explain,
     code: req.body.code,
-    owner: userId
+    owner: userId,
+    date: date
   })
   AddNewProblem.save().then(async ele => {
     await Register.updateOne({ _id: userId }, { myquestion: ++t })
@@ -124,8 +140,11 @@ router.get('/allproblem', checkauth, async (req, res) => {
   return res.json({ 'message': problems })
 })
 router.post('/solution', checkauth, async (req, res) => {
-  const token = req.headers.authorization.split(' ')[1];
-  var userId = jwt.decode(token)['userId'];
+  var userId = headers(req, res);
+  var t = await Register.findOne({ _id: userId })
+  var score = t['rating'];
+  var d = await ProblemModel.findOne({ _id: req.body.Qid })
+  var date = d['date']
   const NewSolution = new SolutionModel({
     solapp: req.body.solapp,
     sol: req.body.sol,
@@ -133,18 +152,18 @@ router.post('/solution', checkauth, async (req, res) => {
     owner: userId
   })
   NewSolution.save().then(async ele => {
-    var t = await SolutionModel.find({ owner: userId }).count();
-    await Register.updateOne({ _id: userId }, { mysolution: t, rating: t * 100 })
+    var finalScore = Score(date, score)
+    await Register.updateOne({ _id: userId }, { mysolution: t, rating: finalScore })
     return res.status(200).json({ 'message': 'Done' })
   })
 
 })
 router.get('/work', checkauth, async (req, res) => {
-  const token = req.headers.authorization.split(' ')[1];
-  var userId = jwt.decode(token)['userId'];
-  console.log(userId)
+  var userId = headers(req, res);
   var user = await Register.findOne({ _id: userId });
-  console.log(user)
+  if (user['language'] == '') {
+    return res.status(401).json({ message: 'Please set Your Tech' })
+  }
   var exp = new RegExp(user['language'], 'ig');
   console.log(exp)
   var problem = await ProblemModel.find({ tech: exp });
@@ -181,8 +200,8 @@ router.put('/problem', async (req, res) => {
 router.post('/', async (req, res) => {
   const email = req.body.email;
   const password = req.body.password;
-  if(email==null||password==null||email==''||password==''){
-    return res.status(401).json({message:'Empty Email Or Password'})
+  if (email == null || password == null || email == '' || password == '') {
+    return res.status(401).json({ message: 'Empty Email Or Password' })
   }
   var x = await Register.findOne({ email: email.toLowerCase() });
   if (x == null || x == undefined || x.length <= 0) {

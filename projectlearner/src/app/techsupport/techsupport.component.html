@@ -1,18 +1,18 @@
 <mat-card>
-  <form novalidate #TechForm='ngForm' (submit)='techsubmit(TechForm)'>
+  <form #TechForm='ngForm' (submit)='techsubmit(TechForm)'>
     <mat-form-field>
-      <input matInput type='text' placeholder='Title' name='title' #title='ngModel' ngModel>
+      <input matInput type='text' placeholder='Title' name='title' #title='ngModel' ngModel required>
     </mat-form-field>
     <br>
     <mat-form-field>
-      <input matInput type='text' placeholder="Subject" name='subject' #subject='ngModel' ngModel>
+      <input matInput type='text' placeholder="Subject" name='subject' #subject='ngModel' ngModel required>
     </mat-form-field>
     <br>
     <mat-form-field>
-      <textarea matInput placeholder="Content" rows="6" name='content' #content='ngModel' ngModel>
+      <textarea matInput placeholder="Content" rows="6" name='content' #content='ngModel' ngModel required>
       </textarea>
     </mat-form-field>
     <br>
-    <button mat-raised-button color='primary'>Send Issue</button>
+    <button mat-raised-button mat-dialog-close color='primary'>Send Issue</button>
   </form>
 </mat-card>

@@ -16,31 +16,39 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 
-<form novalidate #edituser='ngForm' (submit)='editForm(edituser)'>
+<form [formGroup]='form' (submit)='editForm()'>
 <div class="form-group">
 <div class="col-xs-6">
     <label for="fame"><h4>First name</h4></label>
-    <input type="text" class="form-control" name="fname" id="fname" placeholder="first name" title="enter your first name if any." #fname='ngModel' ngModel>
+    <input type="text" class="form-control" 
+    formControlName="fname" placeholder="first name">
 </div>
 </div>
 <div class="form-group">
 
 <div class="col-xs-6">
   <label for="lname"><h4>Last name</h4></label>
-    <input type="text" class="form-control" name="lname" id="lname" placeholder="last name" title="enter your last name if any." #lname='ngModel' ngModel>
+    <input type="text" class="form-control" formControlName="lname" placeholder="last name">
 </div>
 </div>
 <div class="form-group">
     <div class="col-xs-12">
         <label for="language"><h4>Languages</h4></label>
-          <input type="text" class="form-control" name="language" id="language" placeholder="Languages" title="enter your Languages if any." #language='ngModel' ngModel>
+          <input type="text" class="form-control" formControlName="language"  placeholder="Languages" >
       </div>
       </div>
       <div class="form-group">
 
 <div class="col-xs-12">
     <label for="phone"><h4>Phone</h4></label>
-    <input type="number" class="form-control" name="phone" id="phone" placeholder="enter phone" title="enter your phone number if any." #phone='ngModel' ngModel>
+    <input type="number" class="form-control" formControlName='phone' placeholder="enter phone" title="enter your phone number if any." >
+</div>
+</div>
+<div class="col-xs-12 image">
+    <button type='button' mat-raised-button (click)='filepicker.click()' color='accent'>Edit Image</button>
+<input type="file" name='image' #filepicker (change)='onimagepick($event)'>
+<div class='image-preview' *ngIf="imagePreview!==''&&imagePreview">
+    <img [src]='imagePreview'>
 </div>
 </div>
 <div class="form-group">
@@ -50,4 +58,5 @@
          <button class="btn btn-lg" type="reset"><i class="glyphicon glyphicon-repeat"></i> Reset</button>
      </div>
 </div>
+
 </form>
