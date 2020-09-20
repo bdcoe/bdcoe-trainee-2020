@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatDialogRef } from '@angular/material/dialog';
 import { ServiceComp } from '../shared/service.service'
 
 @Component({
@@ -16,19 +17,18 @@ export class ProfileEditDialogComponent implements OnInit {
   image
   imagePreview
 
-  constructor(private res: ServiceComp) {
+  constructor(private res: ServiceComp,public dialogRef: MatDialogRef<ProfileEditDialogComponent>) {
 
   }
-
   editForm() {
     if(this.form.invalid){
       return;
     }else{
       console.log(this.form.value)
-      this.res.oneditprofile(this.form.value).subscribe(()=>{
-        console.log('success')
+      return this.res.oneditprofile(this.form.value).subscribe((ele)=>{
+        this.fname=ele['fname']
       },error=>{
-        console.log('error')
+        console.log(error)
       })
     }
   }
@@ -44,16 +44,6 @@ export class ProfileEditDialogComponent implements OnInit {
     }
     reader.readAsDataURL(file)
   }
-
-  // editForm(data: NgForm) {
-  //   console.log('Edit Form Called')
-  //  this.res.oneditprofile(data.value).subscribe(()=>{
-  //    console.log('Success')
-  //  },error=>{
-  //    console.log('Error')
-  //  })
-  // }
-
   ngOnInit(): void {
     this.form = new FormGroup({
       'fname': new FormControl(null, { validators: [Validators.required] }),

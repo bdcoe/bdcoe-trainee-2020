@@ -17,59 +17,36 @@
 </head>
 
 
+
+<app-toolbar>
+
+</app-toolbar>
 <hr>
 <mat-spinner *ngIf="spinner"></mat-spinner>
 <div class="container bootstrap snippet">
-    <!-- <div class="row">
-        <div class="col-sm-10"><h1>Hiii</h1></div>
-        <div class="col-sm-2"><a href="/users" class="pull-right"><img title="profile image" class="img-circle img-responsive" src="http://www.gravatar.com/avatar/28fd20ccec6865e2d5f0e1f4446eb7bf?s=100"></a></div>
-    </div> -->
-
     <div class="row">
         <div class="col-sm-3">
 
 
             <div class="text-center">
-                <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle img-thumbnail"
-                    alt="avatar">
-                <!-- <button mat-raised-button color='accent' (click)='filebutton.click()'>Upload Picture</button>
-                <input type="file" 
-                accept="image/*"
-                class="text-center center-block file-upload" 
-                (change)="processFile(imageInput)"
-                #filebutton> -->
-                <button mat-raised-button color='primary' class='init' (click)='openEditForm()' name='editf' #edit='ngModel' ngModel>
+                <div *ngIf='img!=""'>
+                    <img src="{{img}}" class="avatar img-circle img-thumbnail"
+                        alt="avatar">
+                </div>
+                <div *ngIf='img==""'>
+                    <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle img-thumbnail"
+                        alt="avatar">
+                </div>
+                <button mat-raised-button color='primary' class='init' (click)='openEditForm()'>
                     Edit Profile
                 </button>
             </div>
-
-            <!-- <div class="panel panel-default">
-            <div class="panel-heading">Website <i class="fa fa-link fa-1x"></i></div>
-            <div class="panel-body"><a href="www.github.com">Github profile</a></div>
-          </div> -->
-
-            <!--            
-          <ul class="list-group">
-            <li class="list-group-item text-muted">Activity <i class="fa fa-dashboard fa-1x"></i></li>
-            <li class="list-group-item text-right"><span class="pull-left"><strong>Shares</strong></span> 125</li>
-            <li class="list-group-item text-right"><span class="pull-left"><strong>Likes</strong></span> 13</li>
-            <li class="list-group-item text-right"><span class="pull-left"><strong>Posts</strong></span> 37</li>
-            <li class="list-group-item text-right"><span class="pull-left"><strong>Followers</strong></span> 78</li>
-          </ul>  -->
-
-            <!-- <div class="panel panel-default">
-            <div class="panel-heading">Social Media</div>
-            <div class="panel-body">
-                <i class="fa fa-facebook fa-2x"></i> <i class="fa fa-github fa-2x"></i> <i class="fa fa-twitter fa-2x"></i> <i class="fa fa-pinterest fa-2x"></i> <i class="fa fa-google-plus fa-2x"></i>
-            </div>
-          </div> -->
 
         </div>
         <div class="col-sm-9">
             <div class="tab-content">
                 <div class="tab-pane active" id="home">
                     <hr>
-                    <!-- <form class="form" action="##" method="post" id="registrationForm"> -->
                     <div class="form-group">
 
                         <div class="col-xs-6">
@@ -139,17 +116,11 @@
                             </ul>
                         </div>
                     </div>
-                    <!-- </form> -->
+                 
 
                     <hr>
 
                 </div>
-                <!-- <div class="tab-pane" id="settings">
-                    
-                
-                  <hr>
-
-              </div> -->
 
             </div>
         </div>

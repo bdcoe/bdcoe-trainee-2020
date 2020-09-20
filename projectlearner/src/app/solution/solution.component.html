@@ -1,3 +1,5 @@
+<app-toolbar>
+</app-toolbar>
 <mat-spinner *ngIf='spinner'></mat-spinner>
 <div *ngIf="error">{{error}}</div>
 <mat-accordion *ngFor="let item of QA">
@@ -15,11 +17,11 @@
         {{item['solution']['solapp']}}
       </h4>
       <h4>{{item['solution']['sol']}}</h4>
-    <!-- <button matInput class='btn' mat-stroked-button (click)='editproblem(problem["_id"])' color='primary'>
+    <button matInput class='btn' mat-stroked-button (click)='editsolution(item["solution"]["_id"])' color='primary'>
         Edit Problem
     </button>
-    <button  matInput class='btn' mat-raised-button (click)='onConfirmation(problem["_id"])' color='warn'>
+    <button  matInput class='btn' (click)='onConfirmation(item["solution"]["_id"])' mat-raised-button color='warn'>
         Delete Problem
-    </button> -->
+    </button>
     </mat-expansion-panel>
   </mat-accordion>

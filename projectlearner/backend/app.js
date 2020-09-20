@@ -8,27 +8,31 @@ const SolutionModel = require('./models/solution');
 const Register = require('./models/register');
 const { headers, Score, checkauth } = require('./functions/func');
 const multer = require('multer');
+const { json } = require('body-parser');
 const MIME_TYPE_MAP = {
   'image/png': 'png',
   'image/jpeg': 'jpg',
   'image/jpg': 'jpg'
 }
-const storage = multer.diskStorage({
+var storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    const isValid=MIME_TYPE_MAP[file.mimetype];
+    const isValid = MIME_TYPE_MAP[file.mimetype];
     let error = new Error('Invalid mimeType');
-    if(isValid){
-      error=null
+    if (isValid) {
+      error = null
     }
-    cb(error, 'backend/images');
+    cb(error, './backend/image/')
   },
   filename: (req, file, cb) => {
-    const name = file.originalname.toLowerCase().split(' ').join('-')
     const ext = MIME_TYPE_MAP[file.mimetype];
-    cb(name+'-'+Date.now()+'.'+ext);
+    cb(null, Date.now() + file.originalname + "." + ext)
   }
 })
-router.post('/register', async (req, res) => {
+var upload = multer({ storage: storage })
+
+
+router.post('/register', async (req, res, next) => {
+  console.log(req.file)
   if (req.body.fname == '' || req.body.lname == '' || req.body.email == '' || req.body.phone == null || req.body.password == '') {
     return res.status(401).json({ message: 'Invalid Input' })
   }
@@ -50,10 +54,29 @@ router.post('/register', async (req, res) => {
     });
   });
 });
-router.put('/register', checkauth,multer({storage:storage}).single('image'), async (req, res) => {
+router.put('/register', checkauth, upload.single('image'), async (req, res, next) => {
+  console.log(req.file)
   var userId = headers(req, res);
-  await Register.updateOne({ _id: userId }, { fname: req.body.fname, lname: req.body.lname, phone: req.body.phone, language: req.body.language })
-  return res.status(200).json({ message: 'Done' })
+  if (req.file == undefined)
+    try {
+      await Register.updateOne({ _id: userId }, { fname: req.body.fname, lname: req.body.lname, phone: req.body.phone, language: req.body.language })
+      return res.status(200).json({ message: 'Done' })
+    } catch (error) {
+      return res.status(401).json({ message: error })
+    } else {
+
+    const url = req.protocol + '://' + req.get('host')
+    console.log(url)
+    Register.findOneAndUpdate({ _id: userId }, {
+      fname: req.body.fname, lname: req.body.lname, phone: req.body.phone, language: req.body.language,
+      imagePath: url + '/image/' + req.file.filename
+    }).then(ele => {
+      return res.status(200).json({ message: ele })
+    }).catch(error => {
+      return res.status(401).json({ message: error })
+    })
+  }
+
 });
 router.get('/dashboard', checkauth, (req, res) => {
   res.status(200).json({ message: 'yeah' });
@@ -61,22 +84,37 @@ router.get('/dashboard', checkauth, (req, res) => {
 router.get('/profile', checkauth, async (req, res) => {
   var userId = headers(req, res);
   let user = await Register.findOne({ _id: userId });
-  // let count = await ProblemModel.find({ owner: userId }).count()
-  // delete user['password']
-  // user.myquestion = count;
-  // console.log(user)
+  delete user['password'];
+  console.log(user)
   res.status(200).json(user)
 });
 router.get('/solution', checkauth, async (req, res) => {
   var userId = headers(req, res);
+  console.log(userId)
   var solution = await SolutionModel.find({ owner: userId });
-  var final = []
-  solution.forEach(async ele => {
-    var problem = await ProblemModel.findOne({ _id: ele['Qid'] })
-    final.push({ problem: problem, solution: ele })
-  })
+  const final = []
+  try {
+    for (let i of solution) {
+      var problem = await ProblemModel.findOne({ _id: i['Qid'] })
+      final.push({ problem: problem, solution: i })
+    }
+  } catch (error) {
+    console.log(final)
+    return res.status(401).json({ message: error })
+  }
   return res.status(200).json({ message: final })
-
+})
+router.put('/solution', checkauth, async (req, res) => {
+  // console.log(req.body)
+  try {
+    var edit = await SolutionModel.findOneAndUpdate({ _id: req.body.update }, {
+      solapp: req.body.solapp,
+      sol: req.body.sol
+    })
+    return res.status(200).json({ message: edit })
+  } catch (error) {
+    return res.status(401), json({ message: error })
+  }
 })
 router.post('/techsupport', checkauth, (req, res) => {
   const NewTechSupport = new TechSupportModel({
@@ -141,9 +179,15 @@ router.get('/allproblem', checkauth, async (req, res) => {
 })
 router.post('/solution', checkauth, async (req, res) => {
   var userId = headers(req, res);
+  var solexist = await SolutionModel.findOne({ owner: userId, Qid: req.body.QId });
+  if (solexist != null) {
+    return res.status(401).json({ message: 'Your Solution Already Exist Please Edit it' })
+  }
+  console.log(solexist, "yes solo exist")
   var t = await Register.findOne({ _id: userId })
   var score = t['rating'];
-  var d = await ProblemModel.findOne({ _id: req.body.Qid })
+  var mysol = t['mysolution']
+  var d = await ProblemModel.findOne({ _id: req.body.QId })
   var date = d['date']
   const NewSolution = new SolutionModel({
     solapp: req.body.solapp,
@@ -151,24 +195,32 @@ router.post('/solution', checkauth, async (req, res) => {
     Qid: req.body.QId,
     owner: userId
   })
+  console.log(NewSolution)
   NewSolution.save().then(async ele => {
     var finalScore = Score(date, score)
-    await Register.updateOne({ _id: userId }, { mysolution: t, rating: finalScore })
-    return res.status(200).json({ 'message': 'Done' })
+    try {
+      await Register.updateOne({ _id: userId }, { mysolution: ++mysol, rating: finalScore })
+      res.status(200).json({ message: "Done" })
+    } catch (error) {
+      console.log(error)
+      res.status(400).json({ message: error })
+    }
   })
 
 })
 router.get('/work', checkauth, async (req, res) => {
-  var userId = headers(req, res);
-  var user = await Register.findOne({ _id: userId });
-  if (user['language'] == '') {
-    return res.status(401).json({ message: 'Please set Your Tech' })
+  try {
+    var userId = headers(req, res);
+    var user = await Register.findOne({ _id: userId });
+    if (user['language'] == '') {
+      return res.status(401).json({ message: 'Please set Your Tech' })
+    }
+    var exp = new RegExp(user['language'], 'ig');
+    var problem = await ProblemModel.find({ tech: exp, owner: { $nin: [userId] } });
+    return res.status(200).json({ message: problem })
+  } catch (error) {
+    return res.status(401).json({ message: error })
   }
-  var exp = new RegExp(user['language'], 'ig');
-  console.log(exp)
-  var problem = await ProblemModel.find({ tech: exp });
-  console.log(problem)
-  return res.status(200).json({ message: problem })
 })
 router.get('/leaderboard', checkauth, async (req, res) => {
   var star = await Register.find().sort({ rating: -1 }).limit(5)
@@ -177,22 +229,35 @@ router.get('/leaderboard', checkauth, async (req, res) => {
 router.delete('/problem', async (req, res) => {
 
   const body = req.headers.body;
-  await ProblemModel.deleteOne({ _id: body }).then(ele => {
-    return res.status(200).json({ message: 'Deleted' })
-  }).catch(error => {
-    return res.status(401).json({ message: error })
-  })
+  const profile = body.split(' ')[0];
+  const bodydata = body.split(' ')[1];
+  try {
+    if (profile == 'Problem') {
+      await ProblemModel.deleteOne({ _id: bodydata })
+      return res.status(200).json({ message: 'Problem Deleted' })
+    } else if (profile == 'Solution') {
+      await SolutionModel.deleteOne({ _id: bodydata })
+      return res.status(200).json({ message: 'Solution Deleted' })
+    }
+  } catch (error) {
+    return res.status(400).json({ message: error })
+  }
+  // await ProblemModel.deleteOne({ _id: body }).then(ele => {
+  //   return res.status(200).json({ message: 'Deleted' })
+  // }).catch(error => {
+  //   return res.status(401).json({ message: error })
+  // })
 
 })
 router.put('/problem', async (req, res) => {
   console.log(req.body)
-  ProblemModel.updateOne({ _id: req.body.update }, {
+  ProblemModel.findOneAndUpdate({ _id: req.body.update }, {
     tech: req.body.tech,
     title: req.body.title,
     explain: req.body.explain,
     code: req.body.code
   }).then(ele => {
-    return res.status(200).json({ message: 'Success' })
+    return res.status(200).json({ message: ele })
   }).catch(error => {
     return res.status(400).json({ message: error })
   })

@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ServiceComp } from '../shared/service.service';
 import { Router } from '@angular/router'
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { ConfirmationComponent } from '../confirmation/confirmation.component'
+import { AddsolutionComponent } from '../addsolution/addsolution.component';
 
 
 @Component({
@@ -10,12 +13,26 @@ import { Router } from '@angular/router'
 })
 export class SolutionComponent implements OnInit {
 
-  constructor(private res: ServiceComp, private router: Router) { }
+  constructor(private res: ServiceComp, private router: Router, private dialog: MatDialog) { }
 
   QA;
   spinner: boolean = false
-  error:String=''
+  error: String = '';
+  onConfirmation(_id) {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.data = { id: _id, Profile: 'Solution' };
+    dialogConfig.width = '60%';
+    dialogConfig.height = 'auto'
+    this.dialog.open(ConfirmationComponent, dialogConfig)
+  }
 
+  editsolution(data) {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.data = { update: data };
+    dialogConfig.width = '70%';
+    dialogConfig.height = 'auto'
+    this.dialog.open(AddsolutionComponent, dialogConfig)
+  }
   ngOnInit(): void {
     if (!this.res.isloggedin()) {
       this.router.navigate([''])
@@ -24,11 +41,12 @@ export class SolutionComponent implements OnInit {
     this.res.fetchSolution().subscribe(element => {
       this.spinner = false
       this.QA = element['message'];
-      if(this.QA.length==0){
-        this.error='No Problem solved by Your Side'
+      if (this.QA.length == 0) {
+        this.error = 'No Problem solved by Your Side'
       }
     }, error => {
       this.router.navigate([''])
+      this.res.openSnackBar('Error', error['error']['message'])
     })
   }
 }

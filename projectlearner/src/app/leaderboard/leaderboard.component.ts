@@ -27,6 +27,7 @@ export class LeaderboardComponent implements OnInit {
       this.leaders = ele['message'];
     },error=>{
       this.router.navigate([''])
+      this.res.openSnackBar('Error',error['error']['message'])
     })
   }
 }

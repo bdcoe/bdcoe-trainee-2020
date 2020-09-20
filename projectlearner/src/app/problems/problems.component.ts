@@ -19,7 +19,7 @@ export class ProblemsComponent implements OnInit {
   spinner:boolean= false
   onConfirmation(_id) {
     const dialogConfig = new MatDialogConfig();
-    dialogConfig.data = _id;
+    dialogConfig.data = {id:_id,Profile:'Problem'};
     dialogConfig.width = '60%';
     dialogConfig.height = 'auto'
     this.dialog.open(ConfirmationComponent, dialogConfig)
@@ -46,6 +46,7 @@ export class ProblemsComponent implements OnInit {
       }
     },error=>{
       this.router.navigate([''])
+      this.res.openSnackBar('Error',error['error']['message'])
     })
   }
 

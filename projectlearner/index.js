@@ -6,9 +6,11 @@ const routerComp = require('./backend/app');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cron = require('node-cron');
+const path = require('path')
 const Register = require('./backend/models/register');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use('/image',express.static(path.join('backend/image')))
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", '*');
   res.setHeader('Access-Control-Allow-Headers',

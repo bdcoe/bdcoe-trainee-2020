@@ -9,14 +9,16 @@ import { ServiceComp } from '../shared/service.service';
 })
 export class ConfirmationComponent implements OnInit {
   ID;
+  req;
   delete(){
-    this.res.ondeleteProblem(this.ID).subscribe(()=>{
+    this.res.ondeleteProblem(this.ID,this.req).subscribe(()=>{
       console.log('deleted')
     })
   }
   constructor(
     @Inject(MAT_DIALOG_DATA) data,private res:ServiceComp) {  
-    this.ID = data
+    this.ID = data['id'];
+    this.req= data['Profile']
   }
 
   ngOnInit(): void {

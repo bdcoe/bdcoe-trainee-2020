@@ -40,6 +40,11 @@ const registerSchema = mongoose.Schema({
     type: String,
     required: false,
     default: ''
+  },
+  imagePath:{
+    type:String,
+    required:false,
+    default:''
   }
 });
 var Register = mongoose.model("register", registerSchema);
