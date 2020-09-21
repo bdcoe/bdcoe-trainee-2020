@@ -14,6 +14,6 @@ export class TechSuppModel {
     private subject:string,
     private content:string
   ){}
-
 }
+
 

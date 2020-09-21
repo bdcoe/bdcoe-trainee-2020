@@ -25,10 +25,12 @@ export class ProfileComponent implements OnInit {
     Config.height = 'auto'
     var close =this.dialog.open(ProfileEditDialogComponent, Config)
     close.afterClosed().subscribe(ele=>{
-      console.log(ele)
-      this.router.routeReuseStrategy.shouldReuseRoute = function () {
-        return false;
-      };
+      this.fname = ele['fname'];
+      this.lname = ele['lname'];
+      this.phone = ele['phone'];
+      this.language = ele['language'];
+      if(ele['imagePath']!=null)
+      this.img = ele['imagePath']
     })
   }
   constructor(private res: ServiceComp, private router: Router, private dialog: MatDialog) {

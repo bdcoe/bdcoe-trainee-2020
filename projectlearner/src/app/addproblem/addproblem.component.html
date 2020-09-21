@@ -23,5 +23,5 @@
         <textarea matInput placeholder="Code" name='code' #code='ngModel' ngModel></textarea>
     </mat-form-field>
     <br>
-    <button mat-raised-button mat-dialog-close type="submit" color='primary'>Submit Problem</button>
+    <button mat-raised-button [mat-dialog-close]='addProblem.value' type="submit" color='primary'>Submit Problem</button>
 </form>

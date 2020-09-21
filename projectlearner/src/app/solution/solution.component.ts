@@ -23,7 +23,12 @@ export class SolutionComponent implements OnInit {
     dialogConfig.data = { id: _id, Profile: 'Solution' };
     dialogConfig.width = '60%';
     dialogConfig.height = 'auto'
-    this.dialog.open(ConfirmationComponent, dialogConfig)
+     const deletedialog=this.dialog.open(ConfirmationComponent, dialogConfig)
+     deletedialog.afterClosed().subscribe(ele=>{
+       this.res.fetchSolution().subscribe(element=>{
+         this.QA= element['message']
+       })
+     })
   }
 
   editsolution(data) {
@@ -31,7 +36,12 @@ export class SolutionComponent implements OnInit {
     dialogConfig.data = { update: data };
     dialogConfig.width = '70%';
     dialogConfig.height = 'auto'
-    this.dialog.open(AddsolutionComponent, dialogConfig)
+     const editsol=this.dialog.open(AddsolutionComponent, dialogConfig)
+     editsol.afterClosed().subscribe(ele=>{ 
+       this.res.fetchSolution().subscribe(element=>{
+         this.QA = element['message']
+       })
+     })
   }
   ngOnInit(): void {
     if (!this.res.isloggedin()) {

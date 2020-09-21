@@ -17,7 +17,8 @@ export class ProfileEditDialogComponent implements OnInit {
   image
   imagePreview
 
-  constructor(private res: ServiceComp,public dialogRef: MatDialogRef<ProfileEditDialogComponent>) {
+  constructor(private res: ServiceComp,
+    public dialogRef: MatDialogRef<ProfileEditDialogComponent>) {
 
   }
   editForm() {
@@ -57,10 +58,6 @@ export class ProfileEditDialogComponent implements OnInit {
         'fname': data['fname'], 'lname': data['lname'], 'phone': data['phone'],
         'language': data['language'],'image':null
       })
-      // this.fname = data['fname'];
-      // this.lname = data['lname'];
-      // this.phone = data['phone'];
-      // this.language = data['language'];
     })
   }
 

@@ -1,16 +1,16 @@
-<form novalidate #solution='ngForm' (submit)='onaddSol(solution)'> 
+
+<form novalidate #solution='ngForm' (submit)='onaddSol(solution)'>
     <mat-form-field>
-    <textarea placeholder="Solution Approach" rows="10" name="solapp" matInput #solapp='ngModel' ngModel>
+        <textarea placeholder="Solution Approach" rows="10" name="solapp" matInput #solapp='ngModel' ngModel>
     </textarea>
-</mat-form-field>
-<br>
-<mat-form-field>
-    <textarea placeholder="Code or Solution If Available" name='sol' #sol='ngModel' ngModel
-    rows="10" matInput>
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+        <textarea placeholder="Code or Solution If Available" name='sol' #sol='ngModel' ngModel rows="10" matInput>
     </textarea>
-</mat-form-field>
-<br>
-<button mat-raised-button mat-dialog-close type="submit">
-    Submit Solution
-</button>
+    </mat-form-field>
+    <br>
+    <button mat-raised-button [mat-dialog-close]='solution.value' type="submit">
+        Submit Solution
+    </button>
 </form>

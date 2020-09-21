@@ -14,12 +14,10 @@ export class AddsolutionComponent implements OnInit {
 
   constructor(
     @Inject(MAT_DIALOG_DATA) data,private res:ServiceComp) {
-      console.log(data)
     this.update = data['update']
     this.ID = data['post']
   }
   onaddSol(post:NgForm){
-    console.log(this.ID)
     if(this.ID!=undefined&&this.ID!=null&&this.ID!=''){
     post.value.QId=this.ID
     console.log(post.value)
