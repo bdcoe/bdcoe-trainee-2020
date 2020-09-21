@@ -1,0 +1,3 @@
+completed my project.
+Project name-Face recognition attendence system
+In my program i have implemented some concepts of machine learning
