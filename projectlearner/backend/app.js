@@ -9,6 +9,7 @@ const Register = require('./models/register');
 const { headers, Score, checkauth } = require('./functions/func');
 const multer = require('multer');
 const { json } = require('body-parser');
+const { register } = require('ts-node');
 const MIME_TYPE_MAP = {
   'image/png': 'png',
   'image/jpeg': 'jpg',
@@ -76,10 +77,25 @@ router.put('/register', checkauth, upload.single('image'), async (req, res, next
       return res.status(401).json({ message: error })
     })
   }
-
 });
-router.get('/dashboard', checkauth, (req, res) => {
-  res.status(200).json({ message: 'yeah' });
+router.get('/dashboard', checkauth, async (req, res) => {
+  try {
+    var userId = headers(req, res);
+    var dash = [], problem;
+    var f = await Register.findOne({ _id: userId });
+    if (f['language'] != '') {
+      problem = await ProblemModel.count({ tech: f['language'], owner: { $nin: [userId] } });
+    }
+    dash.push({
+      skills: f['language'], imagePath: f['imagePath'],
+      rating: f['rating'], mywork: problem
+    })
+    res.status(200).json({ message: dash });
+
+  } catch (error) {
+    return res.status(401).json({ message: error })
+  }
+
 });
 router.get('/profile', checkauth, async (req, res) => {
   var userId = headers(req, res);
@@ -96,7 +112,10 @@ router.get('/solution', checkauth, async (req, res) => {
   try {
     for (let i of solution) {
       var problem = await ProblemModel.findOne({ _id: i['Qid'] })
-      final.push({ problem: problem, solution: i })
+      console.log(problem)
+      if (problem != null) {
+        final.push({ problem: problem, solution: i })
+      }
     }
   } catch (error) {
     console.log(final)
@@ -174,7 +193,10 @@ router.get('/problem', checkauth, async (req, res) => {
   return res.status(200).json({ problems: problems })
 });
 router.get('/allproblem', checkauth, async (req, res) => {
-  var problems = await ProblemModel.find()
+  var problems = await ProblemModel.find();
+  for (let problem of problems) {
+    console.log(problem)
+  }
   return res.json({ 'message': problems })
 })
 router.post('/solution', checkauth, async (req, res) => {
@@ -195,8 +217,9 @@ router.post('/solution', checkauth, async (req, res) => {
     Qid: req.body.QId,
     owner: userId
   })
-  console.log(NewSolution)
   NewSolution.save().then(async ele => {
+    var t = await ProblemModel.update({ _id: req.body.QId }, { $push: { solution: ele['_id'] } })
+    console.log(t)
     var finalScore = Score(date, score)
     try {
       await Register.updateOne({ _id: userId }, { mysolution: ++mysol, rating: finalScore })
@@ -213,7 +236,7 @@ router.get('/work', checkauth, async (req, res) => {
     var userId = headers(req, res);
     var user = await Register.findOne({ _id: userId });
     if (user['language'] == '') {
-      return res.status(401).json({ message: 'Please set Your Tech' })
+      return res.status(201).json({ message: 'Please set Your Tech', bool: true })
     }
     var exp = new RegExp(user['language'], 'ig');
     var problem = await ProblemModel.find({ tech: exp, owner: { $nin: [userId] } });
@@ -223,31 +246,29 @@ router.get('/work', checkauth, async (req, res) => {
   }
 })
 router.get('/leaderboard', checkauth, async (req, res) => {
-  var star = await Register.find().sort({ rating: -1 }).limit(5)
+  var star = await Register.find().sort({ rating: -1 }).limit(3)
   return res.status(200).json({ 'message': star })
 })
 router.delete('/problem', async (req, res) => {
-
+  var userId = headers(req, res)
   const body = req.headers.body;
   const profile = body.split(' ')[0];
   const bodydata = body.split(' ')[1];
   try {
     if (profile == 'Problem') {
-      await ProblemModel.deleteOne({ _id: bodydata })
+      var t = await ProblemModel.deleteOne({ _id: bodydata })
       return res.status(200).json({ message: 'Problem Deleted' })
     } else if (profile == 'Solution') {
-      await SolutionModel.deleteOne({ _id: bodydata })
+      var t = await SolutionModel.findOneAndDelete({ _id: bodydata });
+      if (t != null) {
+        await Register.updateOne({ _id: userId }, { $inc: { rating: -110 } })
+        await ProblemModel.updateOne({ _id: t['Qid'] }, { $pull: { solution: bodydata } })
+      }
       return res.status(200).json({ message: 'Solution Deleted' })
     }
   } catch (error) {
     return res.status(400).json({ message: error })
   }
-  // await ProblemModel.deleteOne({ _id: body }).then(ele => {
-  //   return res.status(200).json({ message: 'Deleted' })
-  // }).catch(error => {
-  //   return res.status(401).json({ message: error })
-  // })
-
 })
 router.put('/problem', async (req, res) => {
   console.log(req.body)

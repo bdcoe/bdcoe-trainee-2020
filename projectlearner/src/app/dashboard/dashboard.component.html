@@ -1,3 +1,13 @@
 <app-toolbar>
-
 </app-toolbar>
+<div>
+  <div class="alert" *ngIf="skills==''">
+    No Skills Entered Please Enter some to know Your about Yout Work
+  </div>
+  <div class="alert" *ngIf="image==''">
+    You haven't Uploaded yout Profile Picture Yet!!!!
+  </div>
+  <div>
+    Your Rating:{{rating}}
+  </div>
+</div>

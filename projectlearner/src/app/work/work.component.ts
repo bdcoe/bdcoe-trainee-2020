@@ -29,6 +29,9 @@ export class WorkComponent implements OnInit {
     this.spinner = true;
     this.res.fetchwork().subscribe(ele => {
       this.spinner = false
+      if(ele['bool']==true){
+        return this.res.openSnackBar('Warning',ele['message'])
+      }
       this.work = ele['message']
     }, error => {
       console.log(error)

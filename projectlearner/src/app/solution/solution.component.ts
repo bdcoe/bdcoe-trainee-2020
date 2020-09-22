@@ -27,6 +27,11 @@ export class SolutionComponent implements OnInit {
      deletedialog.afterClosed().subscribe(ele=>{
        this.res.fetchSolution().subscribe(element=>{
          this.QA= element['message']
+         if (this.QA.length == 0) {
+          this.error = 'No Problem solved by Your Side'
+        }else{
+          this.error=''
+        }
        })
      })
   }

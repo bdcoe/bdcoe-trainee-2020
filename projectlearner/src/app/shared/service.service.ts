@@ -149,6 +149,13 @@ export class ServiceComp implements OnInit {
       console.log('edited')
     })
   }
+  ondashboard() {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'authorization': `Bearer ${localStorage.getItem('token')}`
+    })
+    return this.http.get(this.URL + 'dashboard', { headers: headers })
+  }
 
   isloggedin() {
     return !!localStorage.getItem('token')

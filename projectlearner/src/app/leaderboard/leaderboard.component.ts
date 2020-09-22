@@ -24,6 +24,7 @@ export class LeaderboardComponent implements OnInit {
     this.spinner=true
     this.res.fetchleaderboard().subscribe(ele => {
       this.spinner=false
+      console.log(ele['message']);
       this.leaders = ele['message'];
     },error=>{
       this.router.navigate([''])

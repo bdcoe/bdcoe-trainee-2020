@@ -1,11 +1,6 @@
 mat-card{
     width: 80%;
-    left: 10%;
-    top: 15%;
-}
-.btn{
-    position: relative;
-    left:80%;
+    margin: 1rem auto;
 }
 mat-spinner{
     margin: 20% auto;

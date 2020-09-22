@@ -47,6 +47,11 @@ export class ProblemsComponent implements OnInit {
     adddialog.afterClosed().subscribe(ele => {
       this.res.fetchmyproblem().subscribe(element => {
         this.problems = element['problems']
+        if (this.problems.length == 0) {
+          this.error = 'No problems Posted Yet'
+        }else{
+          this.error='';
+        }
       }, error => {
         this.res.openSnackBar('Error', error)
       })
