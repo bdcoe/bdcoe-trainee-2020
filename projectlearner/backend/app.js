@@ -8,8 +8,6 @@ const SolutionModel = require('./models/solution');
 const Register = require('./models/register');
 const { headers, Score, checkauth } = require('./functions/func');
 const multer = require('multer');
-const { json } = require('body-parser');
-const { register } = require('ts-node');
 const MIME_TYPE_MAP = {
   'image/png': 'png',
   'image/jpeg': 'jpg',
@@ -194,10 +192,17 @@ router.get('/problem', checkauth, async (req, res) => {
 });
 router.get('/allproblem', checkauth, async (req, res) => {
   var problems = await ProblemModel.find();
+  AllProbSol = [], solu = []
   for (let problem of problems) {
-    console.log(problem)
+    solu = []
+    for (let sol of problem['solution']) {
+      var y = await SolutionModel.findOne({ _id: sol })
+      if (y != null)
+        solu.push(y)
+    }
+    AllProbSol.push({ problem: problem, solution: solu })
   }
-  return res.json({ 'message': problems })
+  return res.json({ 'message': AllProbSol })
 })
 router.post('/solution', checkauth, async (req, res) => {
   var userId = headers(req, res);
@@ -262,7 +267,12 @@ router.delete('/problem', async (req, res) => {
       var t = await SolutionModel.findOneAndDelete({ _id: bodydata });
       if (t != null) {
         await Register.updateOne({ _id: userId }, { $inc: { rating: -110 } })
-        await ProblemModel.updateOne({ _id: t['Qid'] }, { $pull: { solution: bodydata } })
+        var x = await ProblemModel.findOne({ _id: t['Qid'] })
+        x = x['solution']
+        x = x.filter(ele => {
+          return ele != bodydata;
+        })
+        await ProblemModel.findOne({ _id: t['Qid'] }, { solution: x })
       }
       return res.status(200).json({ message: 'Solution Deleted' })
     }

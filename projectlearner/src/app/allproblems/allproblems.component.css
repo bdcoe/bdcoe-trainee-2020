@@ -5,3 +5,6 @@ mat-card{
 mat-spinner{
     margin: 20% auto;
 }
+.solution{
+    background-color: rgb(238, 234, 234);
+}

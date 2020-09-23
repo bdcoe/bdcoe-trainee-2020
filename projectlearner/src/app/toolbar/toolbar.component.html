@@ -1,4 +1,7 @@
 <mat-toolbar color='primary'>
+    <button mat-icon-button type='button' class='icon' [routerLink]="['/dashboard']" routerLinkActive="router-link-active">
+        <mat-icon aria-hidden="false" aria-label="Example home icon">home</mat-icon>
+    </button>
     <div class='btn' >
     <button type="button" class='btn' mat-button [routerLink]="['/profile']" routerLinkActive="router-link-active">
         My Profile
@@ -6,7 +9,7 @@
     <button type="button" mat-button [routerLink]="['/solution']" routerLinkActive="router-link-active">
         My Solution
     </button>
-    <button type="button" mat-button [routerLink]="['/work']" routerLinkActive="router-link-active">
+    <button type="button" mat-raised-button   matBadge={{work}} matBadgePosition="after" matBadgeColor="warn" [routerLink]="['/work']" routerLinkActive="router-link-active">
         My Work
     </button>
     <button type="button" mat-button [routerLink]="['/leaderboard']" routerLinkActive="router-link-active">

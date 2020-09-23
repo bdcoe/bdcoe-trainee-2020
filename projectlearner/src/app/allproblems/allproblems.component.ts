@@ -16,10 +16,16 @@ export class AllproblemsComponent implements OnInit {
   }
   addsolution(post) {
     const dialogConfig = new MatDialogConfig();
+    console.log(post)
     dialogConfig.data = { post: post };
     dialogConfig.width = '700px';
     dialogConfig.height = '550px'
     this.dialog.open(AddsolutionComponent, dialogConfig)
+    // addsol.afterClosed().subscribe(elem=>{
+    //   this.res.fetchallProblem().subscribe(ele=>{
+    //     this.AllProblems=ele['message']
+    //   })
+    // })
   }
   AllProblems: []
   spinner: boolean = false;

@@ -1,6 +1,13 @@
 .btn{
     color: aliceblue;
 }
+.btn:hover{
+    color: aliceblue;
+}
 mat-toolbar{
     width: auto;
+}
+
+.icon:hover{
+color: pink;
 }

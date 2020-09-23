@@ -31,7 +31,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSnackBarModule} from '@angular/material/snack-bar';
-import { ToolbarComponent } from './toolbar/toolbar.component'
+import { ToolbarComponent } from './toolbar/toolbar.component';
+import { MatBadgeModule} from '@angular/material/badge'
 @NgModule({
   declarations: [
     AppComponent,
@@ -69,7 +70,8 @@ import { ToolbarComponent } from './toolbar/toolbar.component'
     MatToolbarModule,
     MatIconModule,
     MatSnackBarModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatBadgeModule
   ], entryComponents: [ProfileEditDialogComponent, AddproblemComponent, AddsolutionComponent, ConfirmationComponent],
   providers: [],
   bootstrap: [AppComponent]

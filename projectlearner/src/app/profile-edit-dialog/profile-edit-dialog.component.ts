@@ -27,7 +27,7 @@ export class ProfileEditDialogComponent implements OnInit {
     }else{
       console.log(this.form.value)
       return this.res.oneditprofile(this.form.value).subscribe((ele)=>{
-        this.fname=ele['fname']
+        console.log(ele,'adaskbdakjsb')
       },error=>{
         console.log(error)
       })

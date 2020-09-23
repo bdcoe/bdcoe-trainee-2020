@@ -17,7 +17,8 @@ export class ToolbarComponent implements OnInit {
       this.error='Invalid'
     }
   }
-  error:String=''
+  error:String='';
+  work;
   techSup(){
     var dialogConfig=new MatDialogConfig();
     dialogConfig.width='60%';
@@ -31,9 +32,17 @@ export class ToolbarComponent implements OnInit {
   logout(){
     localStorage.removeItem('token');
     this.router.navigate([''])
-
   }
   ngOnInit(): void {
+    this.res.ondashboard().subscribe(ele=>{
+      console.log(ele['message'][0]['mywork']);
+      this.work = ele['message'][0]['mywork']
+      
+    },error=>{
+      this.router.navigate([''])
+      console.log(error['error']['message'])
+      this.res.openSnackBar('Error',error)
+    })
   }
 
 }

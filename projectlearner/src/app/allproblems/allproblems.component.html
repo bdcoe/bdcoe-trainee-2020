@@ -2,12 +2,24 @@
 
 </app-toolbar>
 <mat-spinner *ngIf='spinner'></mat-spinner>
-<div *ngFor="let problem of AllProblems">
-    <mat-card>
-        <h3>{{problem['title']}}</h3>
-        <h4>{{problem['tech']}}</h4>
-        <h4>{{problem['explain']}}</h4>
-        <h4>{{problem['code']}}</h4>
-        <button mat-stroked-button type="button" (click)='addsolution(problem["_id"])'>Submit Solution</button>
-    </mat-card>
+<div *ngIf="!spinner">
+    <div *ngFor="let problem of AllProblems">
+        <mat-card>
+            <h3>{{problem['problem']['title']}}</h3>
+            <h4>{{problem['problem']['tech']}}</h4>
+            <h4>{{problem['problem']['explain']}}</h4>
+            <h4>{{problem['problem']['code']}}</h4>
+            <div class='solution' *ngIf="problem['solution'].length==0">
+                No Solution Posted yet
+            </div>
+            <div class='solution' *ngFor="let sol of problem['solution']">
+                <div>
+                    <h5>{{sol['sol']}}</h5>
+                    <h5>{{sol['solapp']}}</h5>
+                </div>
+            </div>
+            <button mat-stroked-button type="button" (click)='addsolution(problem["problem"]["_id"])'>Submit
+                Solution</button>
+        </mat-card>
+    </div>
 </div>

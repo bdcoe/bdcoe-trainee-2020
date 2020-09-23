@@ -1,7 +1,7 @@
 <form novalidate #addProblem='ngForm' (submit)='addproblem(addProblem)'>
     <mat-form-field>
         <input type='text' matInput list="apps" name=tech
-         placeholder="Tech" id='tech' #name='ngModel' ngModel>
+         placeholder="Tech" id='tech' #name='ngModel' ngModel required>
         <datalist id='apps' *ngIf='tech'>
             <option *ngFor="let t of tech">
                 {{t}}
@@ -11,17 +11,17 @@
     <br>
     <mat-form-field>
         <input type="text" matInput placeholder='Title' name='title' #title='ngModel'
-         id="title" ngModel>
+         id="title" ngModel required>
     </mat-form-field>
     <br>
     <mat-form-field>
         <input type="text" matInput placeholder="Explain Your Problem"
-        #explain='ngModel' name='explain' ngModel>
+        #explain='ngModel' name='explain' ngModel required>
     </mat-form-field>
     <br>
     <mat-form-field>
         <textarea matInput placeholder="Code" name='code' #code='ngModel' ngModel></textarea>
     </mat-form-field>
     <br>
-    <button mat-raised-button [mat-dialog-close]='addProblem.value' type="submit" color='primary'>Submit Problem</button>
+    <button mat-raised-button [mat-dialog-close]='addProblem.value' [disabled]='addProblem.invalid' type="submit" color='primary'>Submit Problem</button>
 </form>

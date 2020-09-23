@@ -16,6 +16,7 @@ export class DashboardComponent implements OnInit {
   skills:String;
   image:String;
   rating:Number;
+  work:Number;
   ngOnInit() {
     if (!this.res.isloggedin()) {
       this.router.navigate([''])
