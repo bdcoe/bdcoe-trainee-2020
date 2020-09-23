@@ -1,9 +1,31 @@
 {% extends 'main/base.html' %}
 
 {% block content %}
-    
-        <div class="container">
-            <h1>mail sent successfully</h1>
-            <h3><a href="{% url 'index' %}">go to main</a></h3>           
+    <div class="bg" style="filter: blur(4px);
+    -webkit-filter: blur(4px);">
+        
+                    
+    </div>
+    <div class="row" style="background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0, 0.4); /* Black w/opacity/see-through */
+    color: white;
+    font-weight: bold;
+    border: 3px solid #f1f1f1;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    width: 40%;
+    padding: 0px;
+    text-align: center;">
+        <div class="col s12 m12" style="padding: 20%;">
+          <div class="card blue" >
+            <div class="card-content white-text">
+              <span class="card-title">Thanks for using my Blog Application !!,do check your email for verification.</span>
+              <a class="waves-effect waves-light btn" href="{% url 'index' %}">go to main</a>  
+            </div>
+          </div>
         </div>
+      </div>
 {% endblock %}
