@@ -57,7 +57,10 @@ class _ChatScreenState extends State<ChatScreen> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
             StreamBuilder<QuerySnapshot>(
-              stream: _firestore.collection('messages').snapshots(),
+              stream: _firestore
+                  .collection('messages')
+                  .orderBy('createdAt', descending: true)
+                  .snapshots(),
               builder: (context, snapshot) {
                 if (!snapshot.hasData) {
                   return Center(
@@ -66,7 +69,7 @@ class _ChatScreenState extends State<ChatScreen> {
                     ),
                   );
                 }
-                final messages = snapshot.data.documents.reversed;
+                final messages = snapshot.data.documents;
                 List<messageBubble> messageBubbles = [];
                 for (var message in messages) {
                   final messageText = message.data()['text'];
@@ -107,8 +110,11 @@ class _ChatScreenState extends State<ChatScreen> {
                     onPressed: () {
                       //Implement send functionality.
                       textfieldclear.clear();
-                      _firestore.collection('messages').add(
-                          {'sender': loggedInUser.email, 'text': messageText});
+                      _firestore.collection('messages').add({
+                        'sender': loggedInUser.email,
+                        'text': messageText,
+                        'createdAt': Timestamp.now()
+                      });
                     },
                     child: Text(
                       'Send',
