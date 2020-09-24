@@ -1,3 +1,32 @@
 mat-spinner{
     margin: 20% auto;
 }
+body{
+    font-family: garamond;
+}
+.alert{
+    width: 80%;
+    height: auto;
+
+    border-radius: 0.5rem;
+}
+.warning{
+    margin: 1rem auto;
+    padding: 0.5rem;
+    background: rgba(202, 24, 24,0.5);
+}
+.warn{
+    margin: 1rem auto;
+    padding: 0.5rem;
+    background: rgba(251, 255, 0,0.5);
+}
+.success{
+    margin: 1rem auto;
+    padding: 0.5rem;
+    background: rgba(0, 255,0, 0.6);
+}
+.doubt{
+    margin: 1rem auto;
+    padding: 0.5rem;
+    background: rgba(0,0, 254, 0.3);
+}

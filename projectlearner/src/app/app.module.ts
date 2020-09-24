@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule,ReactiveFormsModule } from '@angular/forms'
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -30,9 +30,10 @@ import { ConfirmationComponent } from './confirmation/confirmation.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
-import { MatSnackBarModule} from '@angular/material/snack-bar';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { ToolbarComponent } from './toolbar/toolbar.component';
-import { MatBadgeModule} from '@angular/material/badge'
+import { MatBadgeModule } from '@angular/material/badge';
+import { MatDividerModule } from '@angular/material/divider'
 @NgModule({
   declarations: [
     AppComponent,
@@ -71,7 +72,8 @@ import { MatBadgeModule} from '@angular/material/badge'
     MatIconModule,
     MatSnackBarModule,
     ReactiveFormsModule,
-    MatBadgeModule
+    MatBadgeModule,
+    MatDividerModule
   ], entryComponents: [ProfileEditDialogComponent, AddproblemComponent, AddsolutionComponent, ConfirmationComponent],
   providers: [],
   bootstrap: [AppComponent]

@@ -11,3 +11,6 @@ mat-spinner{
     margin: 1rem;
     padding:0.5rem 1rem;
 }
+mat-divider{
+    color: black;
+}

@@ -9,7 +9,6 @@ import { LeaderboardComponent } from './leaderboard/leaderboard.component';
 import { ProblemsComponent } from './problems/problems.component';
 import { ProfileComponent } from './profile/profile.component';
 import { SolutionComponent } from './solution/solution.component';
-import { TechsupportComponent } from './techsupport/techsupport.component';
 import { WorkComponent } from './work/work.component';
 const routes: Routes = [
   { path: '', component: loginComponent },
@@ -21,7 +20,8 @@ const routes: Routes = [
   { path: 'profile', component: ProfileComponent },
   { path: 'solution', component: SolutionComponent },
   // { path: 'techsupport', component: TechsupportComponent },
-  { path: 'work', component: WorkComponent }
+  { path: 'work', component: WorkComponent },
+  { path: '**', redirectTo: '' }
 ];
 
 @NgModule({

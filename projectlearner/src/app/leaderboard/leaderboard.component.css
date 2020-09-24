@@ -8,9 +8,13 @@ mat-panel-title{
     font-size: 21px;
 }
 mat-grid-tile {
-    background: lightblue;
+    background:rgba(255, 0, 0, 0.8);
     font-size: 18px;
     font-weight: 400;
+    border-radius: 0.4rem;
+    color: white;
+    font-size: 21px;
+    font-weight: 500;
   }
 .leaderboard{
     position: relative;
