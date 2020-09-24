@@ -93,6 +93,4 @@ if __name__ == '__main__':
     twitter_client = TwitterClient('___darkseid___')
     print(twitter_client.get_user_timeline_tweets(1))
 
-#    twitter_streamer = TwitterStreamer()
-#    twitter_streamer.stream_tweets(fetched_tweets_filename, hash_tag_list)
 
