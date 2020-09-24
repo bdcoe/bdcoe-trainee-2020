@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>My first site in flask</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<link rel="apple-touch-icon" href="/docs/4.4/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
+	<link href="https://fonts.googleapis.com/css2?family=Ranchers&display=swap" rel="stylesheet">
+
+	<style type="text/css">
+
+		.top-content{
+			
+			background-color:#ffd5cd;
+			background-repeat:no-repeat;
+			background-position:center;
+			background-size: cover;
+		}
+		.av{
+			 vertical-align: middle;
+  			width: 150px;
+  			height: 150px;
+  			border-radius: 50%;
+  			margin-left:250px;
+  			margin-top:10px;
+  			float:left;
+		}
+		.avs{
+			vertical-align:middle;
+			width:400px;
+			height:400px;
+			margin-top:200px;
+		}
+		.rel{
+			width:250px;
+			height:250px;
+			border-radius:50%;
+			margin:10px;
+		}
+		.btn:hover{
+			background-color:darkgreen;
+		}
+		.des:hover{
+			color:#333;
+		}
+		.foot-content{
+			background-color:#ececeb;
+			
+		}
+			a{
+    text-decoration: none;
+    color: #3c2c3e;
+    font-weight: 900;
+}
+a:hover{
+    color: #d54062;
+    text-shadow: 0 2px;
+}
+footer{
+	height:100px;
+	background-color:#393b44;
+}
+</style>
+</head>
+<body>
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="height:80px">
+  <a class="navbar-brand" href="/login">Start Tracking</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="/home">Home </span></a>
+      </li>
+      <li class="nav-item">
+      	<a class="nav-link" href="/about">About</a>
+      </li>
+
+     <li class="nav-item">
+        <a class="nav-link" href="/register">Register</a>
+    </li>
+    <li class="nav-item">
+    	<a class="nav-link" href="/login">Login</a>
+    </li> 	
+     
+      <li class="nav-item">
+        <a class="nav-link" href="/logout" style="position:right">Logout</a>
+     </li>
+
+    </ul>
+  </div>
+</nav>
+<div class="top-content"  style="width:100%;height:750px">
+
+<div class="container">
+	<img src="http://blog.firstadviser.in/wp-content/uploads/2019/06/Commodity-Tips-1.jpg" class="avs" style="float:right;border-radius:50%;">
+	<h1 class="display-1" style="color:rgb(150,150,150);padding-top:100px;font-family: 'Ranchers', cursive;font-size:10vw">Stock Price Thunder !</h1><br>
+	<h3 class="display-1=3" style="font-family: 'Ranchers', cursive;">Here, you all are welcome to track your stocks and be an awesome investor</h3>
+	<button class="btn btn-success btn-lg" style="margin:30px 200px"><a href="/tracker" class="des" style="color:darkgreen">Track Again</a></button>
+</div>
+</div>
+<div class="middle-content" style="height:700px;background-color:grey;">
+	<!--<center><h1 class="display-1" style="font-family: 'Ranchers', cursive;">About Me</h1>
+	<h4>
+		Hi, I am <span>Arpan Malik</span>. I develop this project during probation as a <span>bdcoe-trainee-2020</span>.
+		My aim for this is to simply provide a platform where people can easily track their stock prices and after considering 
+		every aspect of stock market so that they can get their best from stock market.
+	</h4>background-color:grey;
+	</center>-->
+	<section id="quote">
+		<img src="https://tse4.mm.bing.net/th?id=OIP.Mr6jZF5fbcg5CFvSSibxvAHaFB&pid=Api&P=0&w=231&h=158" class="av" style="border-radius:50%;">
+		<p style="font-size:2vw"> “It’s far better to buy a wonderful company at a fair price, than a fair company at a wonderful price.”</p>
+		<p style="font-size:2vw">  ......."Warren Buffet"</p>
+	</section>
+	<div class="cont">
+		<center><h1 class="display-1" style="color:rgb(150,150,150);padding-top:100px;font-family: 'Ranchers', cursive;"> Why this ?</h1>
+			<h3> As here you can easily track the prices of uncertain stocks </h3><h3>,so it will help you to keep eye on your target stock</h3><h3> so that you can buy or sell stocks to get maximum profit.</h3>
+		</center>
+	</div>
+
+</div>
+<div class="foot-content" >
+	<div class="container">
+		<center><h1 class="display-1" style="font-family:'Ranchers',cursive;margin:50px;">Big Players</h1></center>
+		<div class="row">
+			<div class="col">
+				<img src="https://www.thehindu.com/business/4uhjnf/article23702138.ece/ALTERNATES/LANDSCAPE_615/28THBURIL" class="rel">
+			</div>
+			<div class="col">
+				<img src="http://2.bp.blogspot.com/-sv58BBw0yLg/UB9eu_qwQuI/AAAAAAAAARA/3vsUQVZsHFE/s1600/tcs.jpg" class="rel">
+			</div>
+			<div class="col">
+				<img src="https://tse2.mm.bing.net/th?id=OIP.7sRm7L8MRk1aTLoFjlc1qgHaHa&pid=Api&P=0&w=300&h=300" class="rel">
+			</div>
+		</div>
+		<div class="row">
+			<div class="col">
+				<img src="https://tse1.mm.bing.net/th?id=OIP.---kEfe7Wq7hUosA91t7_wHaCy&pid=Api&P=0&w=420&h=159" class="rel">
+			</div>
+			<div class="col">
+				<img src="http://s3.india.com/wp-content/uploads/2017/03/HDFC-Bank.jpg" class="rel">
+			</div>
+			<div class="col">
+				<img src="http://4.bp.blogspot.com/-3ls5xhY0SI0/Vc3wF8XdFZI/AAAAAAAAEuU/rIMo-hRS0Uw/s1600/infosys.jpg" class="rel">
+			</div>
+	</div>
+</div>
+</div>
+<footer>
+	<div class="container">
+		<center><button class="btn btn-lg" style="margin-top:20px"><a href="/" style="margin:40px">Go to Top</a></button></center>
+	</div>
+</footer>
+</body>
+</html>
