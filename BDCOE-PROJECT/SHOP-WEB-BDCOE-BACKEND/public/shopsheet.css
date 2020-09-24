@@ -1,0 +1,223 @@
+/* navbar */
+.navbar{
+    padding-bottom:1.5rem;
+}
+.navbar-brand{
+    font-family:"Ubuntu";
+    font-size: 3rem;
+    font-weight: bold;
+}
+.signup{
+    margin-top:20px;
+}
+.or{
+    margin-top:20px;
+}
+.nav-item{
+    padding: 0 18px;
+}
+.nav-link{
+    font-size: 1rem;
+}
+.nav-item2{
+    float:left;
+    list-style-type: none;
+    margin: 1%;
+    
+}
+.form-inline {
+    margin-top: 60px;
+}
+
+.nav-item dropdown  {
+margin-left: 50px;
+margin-top:40px;
+
+}
+.container-fluid{
+    background-color:white;
+    text-align:center;
+}
+.navbar main{
+    text-align:center;
+}
+
+.navbar-brand{
+    margin-left:80px;
+}
+#title{
+    background-color:lightgrey;
+    border-top:40px solid black;
+    
+
+}
+.form-control{
+    margin-top: 5px;
+}
+
+/*position bar */
+.position-bar{
+    background-color:white;
+    text-align:left;
+    margin-top:70px;
+    padding-top:0.5%;
+    border-top: 20px solid lightgrey;
+    border-bottom: 20px solid lightgrey; 
+    padding-bottom:0.5%; 
+
+    
+}
+.position-text{
+margin-left:120px;
+}
+.nav-list{
+    margin-left:80px;
+
+}
+
+/*lesson wrapper left*/
+.categories{
+    padding:5px 5px;
+    border:10px solid lightgrey;
+    margin: 5px 5px;
+}
+.price{
+
+ padding:5px 5px;
+ margin-left:190px;
+ 
+ 
+}
+
+
+
+
+
+
+    }
+.rating{
+    margin-left:190px; 
+
+
+}
+.discount{
+ margin-left:190px;   
+ padding:5px 5px;
+ border:10px solid lightgrey;
+ margin: 5px 5px;
+
+
+}
+.Brands{
+    border:10px solid lightgrey;
+    margin: 5px 5px;   
+}
+.card-body{
+    text-align:center;
+}
+#cta{
+    text-align:center;
+}
+.side-card-header{
+    text-align:center;
+    border-top:4.5px solid red;
+}
+.cat{
+    text-align:center;
+    border-bottom:2px solid black;
+}
+.cat1{
+    border-bottom:1px solid black;   
+}
+.brand1{
+    border-bottom:1px solid black;  
+}
+
+/* footer */
+#footer{
+    background-color:black;
+    text-align:center;
+    margin-left:190px;   
+    padding:5px 5px;
+    border-top:10px solid lightgrey;
+    border-bottom:1px solid white;
+
+    margin: 5px 5px;
+}
+ .p{
+background-color:white;
+
+}
+/* whole */
+.all-body{
+    border-left:80px solid black;
+    border-right:80px solid black;
+    background-color:lightgrey;
+}
+
+
+
+/* home html page */
+
+#home-caraousel{
+    margin-bottom:20px;
+border-bottom:50px solid grey;
+}
+.feature-text{
+    border-left:80px solid black;
+    border-right:80px solid black;
+    background-color:lightgrey;
+    font-weight:bold;
+    border-bottom:5px solid lightgrey;
+
+
+}
+
+
+
+/*  address page css */
+.address{
+    border-right: 2px solid grey;
+}
+
+
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  }
+  
+  /* Modal Content */
+  .modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+  }
+  
+  /* The Close Button */
+  .close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+  }
+

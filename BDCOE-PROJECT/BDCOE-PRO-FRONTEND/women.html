@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>SHOP</title>
+
+ <!--MY GOOGLE FONT-->
+
+ <link href="https://fonts.googleapis.com/css2?family=Monoton&display=swap" rel="stylesheet">
+ <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital@1&display=swap" rel="stylesheet">
+
+<!--css stylesheet-->
+ <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+ <link rel="stylesheet" href="shopsheet.css">
+
+ <!--script link-->
+ <script  src="script.js" charset="utf-8"></script>
+
+ <!--MY from font awesome-->
+ 
+ <script src="https://kit.fontawesome.com/7f3141bbc4.js" crossorigin="anonymous"></script>
+
+
+ <!--bootstrap scripts -->
+
+ <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+</head>
+<body>
+  
+  <!--navbar list 1-->
+  <div class="all-body">
+    <section id="title">
+      
+        <div class="container-fluid">
+            <nav class="navbar main navbar-expand-lg navbar-light bg-light">
+                <a class="navbar-brand" href="#"><img src="images/img5.png"></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+                <li class="nav-item dropdown">
+                    <a class="nav-link all dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      ALL
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                      <a class="dropdown-item" href="#">ALL CATEGORIES</a>
+                      <a class="dropdown-item" href="#">ELECTRONICS</a>
+                      <a class="dropdown-item" href="#">Mobiles</a>
+                      <a class="dropdown-item" href="#">Tablets</a>
+                      <a class="dropdown-item" href="#">Laptops</a>
+                      <a class="dropdown-item" href="#">Televisions</a>
+                      <a class="dropdown-item" href="#">Camera</a>
+                      <a class="dropdown-item" href="#">Appliances</a>
+                      <a class="dropdown-item" href="#">MEN'S FASHION</a>
+                      <a class="dropdown-item" href="#">All Clothing</a>
+                      <a class="dropdown-item" href="#">All Footwears</a>
+                      <a class="dropdown-item" href="#">All Watches</a>
+                      <a class="dropdown-item" href="#">All Men's Accessories</a>
+                      <a class="dropdown-item" href="#">All Sunglasses</a>
+                      <a class="dropdown-item" href="#">Women's Fashion</a>
+                      <a class="dropdown-item" href="#">All Clothing</a>
+                      <a class="dropdown-item" href="#">All Footwears</a>
+                    </div>
+                  </li>
+                  
+                <!--seatrch bar-->
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
+                
+                
+                  
+
+                <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                  <ul class="navbar-nav">  
+                    <li class="nav-item active"> 
+                      <!DOCTYPE html>
+                      <html>
+                      <head>
+                      <meta name="viewport" content="width=device-width, initial-scale=1">
+                      <style>
+                      body {font-family: Arial, Helvetica, sans-serif;}
+                      
+                      /* The Modal (background) */
+                      .modal {
+                        display: none; /* Hidden by default */
+                        position: fixed; /* Stay in place */
+                        z-index: 1; /* Sit on top */
+                        padding-top: 100px; /* Location of the box */
+                        left: 0;
+                        top: 0;
+                        width: 100%; /* Full width */
+                        height: 100%; /* Full height */
+                        overflow: auto; /* Enable scroll if needed */
+                        background-color: rgb(0,0,0); /* Fallback color */
+                        background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+                      }
+                      
+                      /* Modal Content */
+                      .modal-content {
+                        background-color: #fefefe;
+                        margin: auto;
+                        padding: 20px;
+                        border: 1px solid #888;
+                        width: 80%;
+                      }
+                      
+                      /* The Close Button */
+                      .close {
+                        color: #aaaaaa;
+                        float: right;
+                        font-size: 28px;
+                        font-weight: bold;
+                      }
+                      
+                      .close:hover,
+                      .close:focus {
+                        color: #000;
+                        text-decoration: none;
+                        cursor: pointer;
+                      }
+                      </style>
+                      </head>
+                      <body>
+                      
+                      
+                      <!-- Trigger/Open The Modal -->
+                      <button id="myBtn">Log In</button>
+                      
+                      <!-- The Modal -->
+                      <div id="myModal" class="modal">
+                      
+                        <!-- Modal content -->
+                        <div class="modal-content">
+                          <span class="close">&times;</span>
+                          
+                          <div class="pricing-column   col-lg-12 col-md-4">
+
+                            <div class="card">
+                              <div class="card-header">
+                                <p>EMAIL ID <input class="form-control " type="EMAIL TYPE" placeholder="HERE" aria-label="Search"></p>
+                                <p>PASSWORD <input class="form-control " type="EMAIL TYPE" placeholder="HERE" aria-label="Search"></p>
+
+                                <h5><span style="color:red">FORGOT PASSWORD </span></h5>
+                              </div>
+
+                            <div class="card-body">
+                            
+                          <button class="btn btn-outline-dark" type="button">LOG IN</button>
+                            
+                        
+                            </div>
+                            </div>
+                          </div>
+
+                        </div>
+                      
+                      </div>
+                      
+                      <script>
+                      // Get the modal
+                      var modal = document.getElementById("myModal");
+                      
+                      // Get the button that opens the modal
+                      var btn = document.getElementById("myBtn");
+                      
+                      // Get the <span> element that closes the modal
+                      var span = document.getElementsByClassName("close")[0];
+                      
+                      // When the user clicks the button, open the modal 
+                      btn.onclick = function() {
+                        modal.style.display = "block";
+                      }
+                      
+                      // When the user clicks on <span> (x), close the modal
+                      span.onclick = function() {
+                        modal.style.display = "none";
+                      }
+                      
+                      // When the user clicks anywhere outside of the modal, close it
+                      window.onclick = function(event) {
+                        if (event.target == modal) {
+                          modal.style.display = "none";
+                        }
+                      }
+                      </script>
+                      
+                      </body>
+                      </html> 
+                      
+
+                                 
+                    </li>
+                    <li>
+                    <div class ="or">
+                    <p><h6>OR</h6></p>
+                    </div>
+                  </li>
+                    <li class="nav-item">
+                      <span class="signup btn btn-success">SIGN UP<svg width="4.7" height="8" viewBox="0 0 16 27" xmlns="http://www.w3.org/2000/svg" class="_3ynUUz"></svg></span>
+                    </li>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#"><i class="fas fa-shopping-cart fa-2x"></i>CART</a>
+                    </li>
+                    
+                  </ul>
+                </div>
+              </nav>
+    
+  
+    <!--navbar list 2-->
+      <ul class="nav-list ">
+          <li class="nav-item2">
+            <span class="_1QZ6fC _3Lgyp8 btn btn-outline-primary"><a href="http://127.0.0.1:5500/home.html">HOME</a><svg width="4.7" height="8" viewBox="0 0 16 27" xmlns="https://knitin2604.github.io/FFv-setup.github.io/" class="_3ynUUz"></svg></span>
+            </li>
+        
+            <li class="nav-item2">
+        
+          
+           <span class="_1QZ6fC _3Lgyp8 btn btn-outline-success"><a href="http://127.0.0.1:5500/shop.html">Electronics</a><svg width="4.7" height="8" viewBox="0 0 16 27" xmlns="http://www.w3.org/2000/svg" class="_3ynUUz"><path d="M16 23.207L6.11 13.161 16 3.093 12.955 0 0 13.161l12.955 13.161z" fill="#fff" class="_3Der3h"></path></svg></span>
+            </li>
+            
+                <li class="nav-item2">
+                    <span class="_1QZ6fC _3Lgyp8 btn btn-outline-warning"><a href="http://127.0.0.1:5500/men.html">MEN</a><svg width="4.7" height="8" viewBox="0 0 16 27" class="_3ynUUz"></svg></span>
+                    </li>
+                    <li class="nav-item2">
+                      <span class="_1QZ6fC _3Lgyp8 btn btn-outline-info"><a href="http://127.0.0.1:5500/women.html">Women</a><svg width="4.7" height="8" viewBox="0 0 16 27"  class="_3ynUUz"></svg></span>
+                        </li>
+                        <li class="nav-item2">
+                          <span class="_1QZ6fC _3Lgyp8 btn btn-outline-secondary"><a href="http://127.0.0.1:5500/baby.html">BABY & KIDS</a><svg width="4.7" height="8" viewBox="0 0 16 27"  class="_3ynUUz"></svg></span>
+                            </li>
+                            <li class="nav-item2">
+                              <span class="_1QZ6fC _3Lgyp8 btn btn-outline-primary"><a href="http://127.0.0.1:5500/books.html">BOOKS & MEDIA</a><svg width="4.7" height="8" viewBox="0 0 16 27" class="_3ynUUz"></svg></span>
+                                </li>
+                                <li class="nav-item2">
+                                  <span class="_1QZ6fC _3Lgyp8 btn btn-outline-secondary"><a href="http://127.0.0.1:5500/living.html">HOME & LIVING</a><svg width="4.7" height="8" viewBox="0 0 16 27" xmlns="http://www.w3.org/2000/svg" class="_3ynUUz"></svg></span>
+                                    </li>
+                                    <li class="nav-item2">
+                                      <span class="_1QZ6fC _3Lgyp8 btn btn-outline-warning">OFFER ZONE<svg width="4.7" height="8" viewBox="0 0 16 27" xmlns="http://www.w3.org/2000/svg" class="_3ynUUz"></svg></span>
+                                        </li>
+
+
+      </ul>
+    
+      </div>
+      
+    
+         </section>
+
+         <!--current position bar-->
+         <section id="position">
+          <div class="position-bar">
+            <div class="position-text">
+           <p><h6>HOME/Women Accessories </h6></p>
+           </div>
+           </div>
+            </section>
+
+     <!--lesson- wrapper-->
+     
+    <div class="row">
+      <div class="pricing-column  col-lg-3 col-md-6">
+        <div class="card">
+          <div class="side-card-header">
+            <h4>Categories</h4>
+          </div>
+             <div class="card-body">
+
+              <a class="cat" title="Computers" href="/computers/pr?sid=6bo&amp;otracker=categorytree"><h5>SAREE</h5></a></div></div><div><div class="cat1"><span><svg width="10" height="8" viewBox="0 0 16 27" xmlns="http://www.w3.org/2000/svg" class="_3OIXYL _3J6OLT"><path d="M16 23.207L6.11 13.161 16 3.093 12.955 0 0 13.161l12.955 13.161z" fill="#fff" class="_2z277k"></path></svg></span>  
+            
+              <a class="cat" title="Computers" href="/computers/pr?sid=6bo&amp;otracker=categorytree"><h5>JEANS</h5></a></div></div><div><div class="cat1"><span><svg width="10" height="8" viewBox="0 0 16 27" xmlns="http://www.w3.org/2000/svg" class="_3OIXYL _3J6OLT"><path d="M16 23.207L6.11 13.161 16 3.093 12.955 0 0 13.161l12.955 13.161z" fill="#fff" class="_2z277k"></path></svg></span>  
+              
+                <a class="cat" title="Computers" href="/computers/pr?sid=6bo&amp;otracker=categorytree"><h5>SHORTS</h5></a></div></div><div><div class="cat1"><span><svg width="10" height="8" viewBox="0 0 16 27" xmlns="http://www.w3.org/2000/svg" class="_3OIXYL _3J6OLT"><path d="M16 23.207L6.11 13.161 16 3.093 12.955 0 0 13.161l12.955 13.161z" fill="#fff" class="_2z277k"></path></svg></span>  
+
+
+                  <a class="cat" title="Computers" href="/computers/pr?sid=6bo&amp;otracker=categorytree"><h5>SKIRTS</h5></a></div></div><div><div class="cat1"><span><svg width="10" height="8" viewBox="0 0 16 27" xmlns="http://www.w3.org/2000/svg" class="_3OIXYL _3J6OLT"><path d="M16 23.207L6.11 13.161 16 3.093 12.955 0 0 13.161l12.955 13.161z" fill="#fff" class="_2z277k"></path></svg></span>
+
+                    <a class="cat" title="Computers" href="/computers/pr?sid=6bo&amp;otracker=categorytree"><h5>JEGGINGS & TIGHTS</h5></a></div></div><div><div class="cat1"><span><svg width="10" height="8" viewBox="0 0 16 27" xmlns="http://www.w3.org/2000/svg" class="_3OIXYL _3J6OLT"><path d="M16 23.207L6.11 13.161 16 3.093 12.955 0 0 13.161l12.955 13.161z" fill="#fff" class="_2z277k"></path></svg></span> 
+
+                      <a class="cat" title="Computers" href="/computers/pr?sid=6bo&amp;otracker=categorytree"><h5>KURTAS</h5></a></div></div><div><div class="cat1"><span><svg width="10" height="8" viewBox="0 0 16 27" xmlns="http://www.w3.org/2000/svg" class="_3OIXYL _3J6OLT"><path d="M16 23.207L6.11 13.161 16 3.093 12.955 0 0 13.161l12.955 13.161z" fill="#fff" class="_2z277k"></path></svg></span> 
+                        
+                        <a class="cat" title="Computers" href="/computers/pr?sid=6bo&amp;otracker=categorytree"><h5>TOP</h5></a></div></div><div><div class="cat1"><span><svg width="10" height="8" viewBox="0 0 16 27" xmlns="http://www.w3.org/2000/svg" class="_3OIXYL _3J6OLT"><path d="M16 23.207L6.11 13.161 16 3.093 12.955 0 0 13.161l12.955 13.161z" fill="#fff" class="_2z277k"></path></svg></span>
+                          
+                          <a class="cat" title="Computers" href="/computers/pr?sid=6bo&amp;otracker=categorytree"><h5>LEHNGAS</h5></a></div></div><div><div class="cat1"><span><svg width="10" height="8" viewBox="0 0 16 27" xmlns="http://www.w3.org/2000/svg" class="_3OIXYL _3J6OLT"><path d="M16 23.207L6.11 13.161 16 3.093 12.955 0 0 13.161l12.955 13.161z" fill="#fff" class="_2z277k"></path></svg></span>  
+
+                            <a class="cat" title="Computers" href="/computers/pr?sid=6bo&amp;otracker=categorytree"><h5>+5 MORE</h5></a></div></div><div><div class="cat1"><span><svg width="10" height="8" viewBox="0 0 16 27" xmlns="http://www.w3.org/2000/svg" class="_3OIXYL _3J6OLT"><path d="M16 23.207L6.11 13.161 16 3.093 12.955 0 0 13.161l12.955 13.161z" fill="#fff" class="_2z277k"></path></svg></span>  
+            </div>
+        </div>
+      </div>
+
+
+      <div class="card btn btn-outline-info" style="width: 18rem;">
+        <img src="images/women1.png" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">EMBROIDERED SAREE</h5>
+          <p class="card-text">RS. 849</p>
+          <section id="cta">
+
+            <button class="btn btn-outline-secondary " type="button">+Wishlist</button>
+            <button class="btn btn-outline-dark" type="button">+Compare</button>
+        
+          </section>
+        </div>
+      </div>
+
+      
+      <div class="card btn btn-outline-info" style="width: 18rem;">
+        <img src="images/women1.png" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">EMBROIDERED SAREE</h5>
+          <p class="card-text">RS. 849</p>
+          <section id="cta">
+
+        
+            <button class="btn btn-outline-secondary " type="button">+Wishlist</button>
+            <button class="btn btn-outline-dark" type="button">+Compare</button>
+        
+          </section>
+        </div>
+      </div>
+
+
+      
+      <div class="card btn btn-outline-info" style="width: 18rem;">
+        <img src="images/women1.png" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">EMBROIDERED SAREE</h5>
+          <p class="card-text">RS. 849</p>
+          <section id="cta">
+
+            <button class="btn btn-outline-secondary " type="button">+Wishlist</button>
+            <button class="btn btn-outline-dark" type="button">+Compare</button>
+        
+          </section>
+        </div>
+      </div>
+
+
+    <div class="pricing-column col-lg-3 col-md-6">
+      <div class="card">
+        <div class="side-card-header">
+          <h4>BRANDS</h4>
+        </div>
+      <div class="card-body">
+      <div class="brand1"><h5><input type="checkbox" readonly="" value="on"> BIBA</h5></div>
+      <div class="brand1"><h5><input type="checkbox" readonly="" value="on"> FABINDIA</h5></div>
+      <div class="brand1"><h5><input type="checkbox" readonly="" value="on"> LEVI'S</h5></div>
+      <div class="brand1"><h5><input type="checkbox" readonly="" value="on"> WESTSIDE</h5></div>
+        
+      <div class="brand1"><h5><input type="checkbox" readonly="" value="on"> W FOR WOMEN</h5></div>
+      <div class="brand1"><h5><input type="checkbox" readonly="" value="on"> ZARA</h5></div>
+       
+      <div class="brand1"><h5><input type="checkbox" readonly="" value="on"> H & M</h5></div>
+      <div class="brand1"><h5><input type="checkbox" readonly="" value="on"> AURELIA</h5></div>
+      <div class="brand1"><h5><input type="checkbox" readonly="" value="on"> AND</h5></div>
+      <div class="brand1"><h5><input type="checkbox" readonly="" value="on"> ALLEN SOLLY</h5></div>
+      <div class="brand1"><h5><input type="checkbox" readonly="" value="on"> WEEKDAY</h5></div>
+      <div class="brand1"><h5><input type="checkbox" readonly="" value="on"> GAP</h5></div>
+       
+
+       
+
+       
+      </div>
+      </div>
+    </div>
+
+
+    
+    <div class="card btn btn-outline-secondary" style="width: 18rem;">
+      <img src="images/women1.png" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">EMBROIDERED SAREE</h5>
+        <p class="card-text">RS. 849</p>
+        <section id="cta">
+
+          <button class="btn btn-outline-secondary " type="button">+Wishlist</button>
+          <button class="btn btn-outline-dark" type="button">+Compare</button>
+      
+        </section>
+      </div>
+    </div>
+
+
+    
+    <div class="card btn btn-outline-secondary" style="width: 18rem;">
+      <img src="images/women1.png" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">EMBROIDERED SAREE</h5>
+        <p class="card-text">RS. 849</p>
+        <section id="cta">
+
+          <button class="btn btn-outline-secondary " type="button">+Wishlist</button>
+          <button class="btn btn-outline-dark" type="button">+Compare</button>
+      
+        </section>
+      </div>
+    </div>
+
+
+
+    
+    <div class="card btn btn-outline-secondary" style="width: 18rem;">
+      <img src="images/women1.png" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">EMBROIDERED SAREE</h5>
+        <p class="card-text">RS. 849</p>
+        <section id="cta">
+
+          <button class="btn btn-outline-secondary " type="button">+Wishlist</button>
+          <button class="btn btn-outline-dark" type="button">+Compare</button>
+      
+        </section>
+      </div>
+    </div>
+
+
+    <div class="pricing-column col-lg-3 col-md-6">
+      <div class="card">
+        <div class="side-card-header">
+          <h4>Price</h4>
+        </div>
+      <div class="card-body">
+        <div class="_1zXsFA"><div class="_23Eu_p"><div class="HKK57-" style="height: 17.8571px; width: 29.6013px;"></div><select class="fPjUPw"><option value="Min" class="OMc8Rd">Min</option><option value="2000" class="OMc8Rd">₹2000</option><option value="4000" class="OMc8Rd">₹4000</option><option value="7000" class="OMc8Rd">₹7000</option><option value="10000" class="OMc8Rd">₹10000</option><option value="13000" class="OMc8Rd">₹13000</option><option value="16000" class="OMc8Rd">₹16000</option><option value="20000" class="OMc8Rd">₹20000</option><option value="25000" class="OMc8Rd">₹25000</option><option value="30000" class="OMc8Rd">₹30000</option><option value="50000" class="OMc8Rd">₹50000</option></select></div><div class="_2LchWD">to</div><div class="_1YoBfV"><select class="fPjUPw"><option value="2000" class="OMc8Rd">₹2000</option><option value="4000" class="OMc8Rd">₹4000</option><option value="7000" class="OMc8Rd">₹7000</option><option value="10000" class="OMc8Rd">₹10000</option><option value="13000" class="OMc8Rd">₹13000</option><option value="16000" class="OMc8Rd">₹16000</option><option value="20000" class="OMc8Rd">₹20000</option><option value="25000" class="OMc8Rd">₹25000</option><option value="30000" class="OMc8Rd">₹30000</option><option value="50000" class="OMc8Rd">₹50000</option><option value="Max" class="OMc8Rd">₹50000+</option></select></div></div>
+      </div>
+      </div>
+    </div>
+
+
+    
+    <div class="card btn btn-outline-dark" style="width: 18rem;">
+      <img src="images/women1.png" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">EMBROIDERED SAREE</h5>
+        <p class="card-text">RS. 849</p>
+        <section id="cta">
+
+          <button class="btn btn-outline-secondary " type="button">+Wishlist</button>
+          <button class="btn btn-outline-dark" type="button">+Compare</button>
+      
+        </section>
+      </div>
+    </div>
+
+    
+    <div class="card btn btn-outline-dark" style="width: 18rem;">
+      <img src="images/women1.png" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">EMBROIDERED SAREE</h5>
+        <p class="card-text">RS. 849</p>
+        <section id="cta">
+
+          <button class="btn btn-outline-secondary " type="button">+Wishlist</button>
+          <button class="btn btn-outline-dark" type="button">+Compare</button>
+      
+        </section>
+      </div>
+    </div>
+
+    
+    <div class="card btn btn-outline-dark" style="width: 18rem;">
+      <img src="images/women1.png" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">EMBROIDERED SAREE</h5>
+        <p class="card-text">RS. 849</p>
+        <section id="cta">
+
+          <button class="btn btn-outline-secondary " type="button">+Wishlist</button>
+          <button class="btn btn-outline-dark" type="button">+Compare</button>
+      
+        </section>
+      </div>
+    </div>
+
+    <div class="pricing-column  col-lg-3 col-md-6">
+      <div class="card">
+        <div class="side-card-header">
+          <h4>Discount</h4>
+        </div>
+      <div class="card-body">
+        <div class="_1GEhLw"><h5><input type="checkbox" readonly="" value="on">5% or More</h5></div>
+        <div class="_1GEhLw"><h5><input type="checkbox" readonly="" value="on"> 10% or More</h5></div>
+        <div class="_1GEhLw"><h5><input type="checkbox" readonly="" value="on"> 15% or More</h5></div>
+        <div class="_1GEhLw"><h5><input type="checkbox" readonly="" value="on"> 20% or More</h5></div>
+        <div class="_1GEhLw"><h5><input type="checkbox" readonly="" value="on"> 25% or More</h5></div>
+        <div class="_1GEhLw"><h5><input type="checkbox" readonly="" value="on"> 30% or More</h5></div>
+        <div class="_1GEhLw"><h5><input type="checkbox" readonly="" value="on"> 35% or More</h5></div>
+        <div class="_1GEhLw"><h5><input type="checkbox" readonly="" value="on"> 40% or More</h5></div>
+        <div class="_1GEhLw"><h5><input type="checkbox" readonly="" value="on"> 45% or More</h5></div>
+        <div class="_1GEhLw"><h5><input type="checkbox" readonly="" value="on"> 50% or More</h5></div>
+        <div class="_1GEhLw"><h5><input type="checkbox" readonly="" value="on"> 55% or More</h5></div>
+      </div>
+      </div>
+    </div>
+
+    
+
+    <div class="card btn btn-primary" style="width: 18rem;">
+      <img src="images/women1.png" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">EMBROIDERED SAREE</h5>
+        <p class="card-text">RS. 849</p>
+        <section id="cta">
+
+          <button class="btn btn-outline-secondary " type="button">+Wishlist</button>
+          <button class="btn btn-outline-dark" type="button">+Compare</button>
+      
+        </section>
+      </div>
+    </div>
+
+    
+    <div class="card btn btn-primary" style="width: 18rem;">
+      <img src="images/women1.png" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">EMBROIDERED SAREE</h5>
+        <p class="card-text">RS. 849</p>
+        <section id="cta">
+
+          <button class="btn btn-outline-secondary " type="button">+Wishlist</button>
+          <button class="btn btn-outline-dark" type="button">+Compare</button>
+      
+        </section>
+      </div>
+    </div>
+
+
+    
+    <div class="card btn btn-primary" style="width: 18rem;">
+      <img src="images/women1.png" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">EMBROIDERED SAREE</h5>
+        <p class="card-text">RS. 849</p>
+        <section id="cta">
+
+          <button class="btn btn-outline-secondary " type="button">+Wishlist</button>
+          <button class="btn btn-outline-dark" type="button">+Compare</button>
+      
+        </section>
+      </div>
+    </div>
+      
+     
+    <div class="pricing-column  col-lg-3 col-md-6">
+      <div class="card">
+        <div class=" side-card-header">
+          <h4>Rating</h4>
+        </div>
+      <div class="card-body">
+        <div class="card-body">
+          <div class="_1GEhLw"><h5><input type="checkbox" readonly="" value="on"> 4<i class="fas fa-star"></i> & ABOVE</h5></div>
+          <div class="_1GEhLw"><h5><input type="checkbox" readonly="" value="on"> 3<i class="fas fa-star"></i> & ABOVE</h5></div>
+          <div class="_1GEhLw"><h5><input type="checkbox" readonly="" value="on"> 2<i class="fas fa-star"></i> & ABOVE </h5></div>
+          <div class="_1GEhLw"><h5><input type="checkbox" readonly="" value="on"> 1<i class="fas fa-star"></i> & ABOVE</h5></div>
+       
+        </div>
+        
+      </div>
+      </div>
+    </div>
+     
+    
+    <div class="cardbtn btn-outline-info" style="width: 18rem;">
+      <img src="images/women1.png" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">EMBROIDERED SAREE</h5>
+        <p class="card-text">RS. 849</p>
+        <section id="cta">
+
+          <button class="btn btn-outline-secondary " type="button">+Wishlist</button>
+          <button class="btn btn-outline-dark" type="button">+Compare</button>
+      
+        </section>
+      </div>
+    </div>
+
+
+    
+    <div class="card btn btn-outline-info" style="width: 18rem;">
+      <img src="images/women1.png" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">EMBROIDERED SAREE</h5>
+        <p class="card-text">RS. 849</p>
+        <section id="cta">
+
+          <button class="btn btn-outline-secondary " type="button">+Wishlist</button>
+          <button class="btn btn-outline-dark" type="button">+Compare</button>
+      
+        </section>
+      </div>
+    </div>
+   
+    
+    <div class="card btn btn-outline-info" style="width: 18rem;">
+      <img src="images/women1.png" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">EMBROIDERED SAREE</h5>
+        <p class="card-text">RS. 849</p>
+        <section id="cta">
+
+          <button class="btn btn-outline-secondary " type="button">+Wishlist</button>
+          <button class="btn btn-outline-dark" type="button">+Compare</button>
+      
+        </section>
+      </div>
+    </div>
+
+
+    
+    <div class="card pricing-column btn-outline-dark col-lg-3 col-md-6" style="width: 18rem;">
+      <img src="images/img2.png" class="card-img-top">
+      <div class="card-body">
+        <p>New Arrivals</p>
+        <h5 class="card-title">CASUAL SHIRTS</h5>
+        <p class="card-text">RS. 32,999</p>
+        <section id="cta">
+
+          <button class="btn btn-outline-secondary " type="button">+Wishlist</button>
+          <button class="btn btn-outline-dark" type="button">+Compare</button>
+      
+        </section>
+      </div>
+    </div>
+
+
+  </div>
+
+
+
+          
+          <div class="right-lessons">
+           
+              
+           
+            
+              
+
+          </div>
+
+        </div>
+      </section>
+
+      <!--footer-->
+     <section id="footer">
+      <div class="row">
+        <div class="feature-box col-lg-2">
+          <i class="fa-4x"></i>
+          
+         <h5 style="color:white">CONTACT INFO</h5>
+         <p style="color:white">12/24,Aricant E-Park,
+         Adayar,Chennai,India</p>
+         <p style="color:white">+919091611651</p>
+         <p style="color:white">044-6516564</p>
+         <p style="color:white">info@shop.com</p>
+
+        </div>
+         
+        <div class="feature-box col-lg-2">
+          <i class=" fa-4x"></i>
+         <h5 style="color:white">COMPANY</h5>
+         <p style="color:white">About Us</p>
+         <p style="color:white">Careers</p>
+         <p style="color:white">Press</p>
+         <p style="color:white">Core Values</p>
+         <p style="color:white">Blog</p>
+         <p style="color:white">Site Map</p>
+        </div>
+
+        <div class="feature-box col-lg-2">
+          <i class="fa-4x"></i>
+         <h5 style="color:white">CUSTOMER SERVICES</h5>
+         <p style="color:white">FAQ</p>
+         <p style="color:white">SMS Unsubscription</p>
+         <p style="color:white">How to use Promo Code</p>
+         <p style="color:white"><a  style="color:white" href="http://127.0.0.1:5500/contact.html">Contact Us</a></p>
+        </div>
+
+        <div class="feature-box col-lg-2">
+          <i class=" fa-4x"></i>
+         <h5 style="color:white">POLICY INFO</h5>
+         <p style="color:white">       
+         <p style="color:white">Privacy Policy</p>
+         <p style="color:white">Terms of Use</p>
+         <p style="color:white">Terms of Sale</p>
+         <p style="color:white">Copyright Policy</p>
+         </p>
+        </div>
+         
+        <div class="feature-box col-lg-2">
+          <i class=" fa-4x"></i>
+          <h5 style="color:white">STAY IN TOUCH</h5>
+          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+          <p>
+          <span class="_1QZ6fC _3Lgyp8 btn btn-danger">      Subscribe     <svg width="10" height="8" viewBox="0 0 25 40" xmlns="http://www.w3.org/2000/svg" class="_3ynUUz"></svg></span>        
+           </p> 
+           <p style="color:white"><i class="fab fa-facebook fa-2x"></i> <i class="fab fa-twitter-square fa-2x"></i> <i class="fab fa-google-plus-square fa-2x"></i> <i class="fab fa-youtube fa-2x"></i></p>    
+                
+        </div>
+
+
+
+
+       
+        
+      </div>
+      </section>
+      <!--footer 2-->
+         
+      <section id="footer">
+        <div class="row">
+          <div class="feature-box col-lg-4">
+            <i class="fa-4x"></i>
+            
+           <h5 style="color:white">Copyright 2020 SHOP Inc.All rights reserved</h5>
+  
+          </div>
+
+          <div class="feature-box col-lg-4">
+            <i class="fa-4x"></i>
+            
+           <h5 style="color:white">Designed by BDCOE</h5>
+  
+          </div>
+
+          
+          <div class="feature-box col-lg-4">
+            <i class="fa-4x"></i>
+            
+           <h5 style="color:white"><i class="fab fa-cc-mastercard fa-2x"></i> <i class="fab fa-cc-discover fa-2x"></i> <i class="fab fa-cc-amex fa-2x"> </i><i class="fab fa-cc-paypal fa-2x"></i></h5>
+  
+          </div>
+          </div>
+          
+
+     
+
+
+</body>
+</html>

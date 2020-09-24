@@ -1,0 +1,6 @@
+.sorting tr:not(.home) {
+    cursor: pointer;
+}
+.ui-state-hightlight {
+    border: 1px dashed #ccc;
+}
