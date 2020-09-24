@@ -1,3 +1,23 @@
 completed my project.
 Project name-Face recognition attendence system
 In my program i have implemented some concepts of machine learning
+
+25 aug/2020=>Started a project (website for bdcoe) 
+30aug/2020=>Due to some reasons changed my project as i was attracted more towards machine learning
+after knowing by the seniors about it as in web dev I only studied html and css so I shifted to machine learning.
+Finalised my project Face recognition attendence sysrtem for BDCOE.
+1sep/2020=>Started studying about machine learning as the topic was very vast
+and i was not able to learn things in one month time span so jumped directly on my projects.
+with the help of seniors came to know about the modulesthat will be used in my project
+and started working on  them.
+Modules used
+1) Open cv->Basic module for computer vision
+2)Numpy->Used in some mathematicals operations like converted my image in array for calculation.
+3)Tkinter->For GUI
+4)OS->used this for importing some photos from directory
+5)mysql->used this for storing data
+
+Algorithm used->LBPH(Local Binary Pattern Histogram)
+
+24 sep/2020=> Uploaded my project on bdcoe2020trainees. I push my work even before on github but that was on my repository but now I have pushed all my work on bdcoe repo.
+Thank You
