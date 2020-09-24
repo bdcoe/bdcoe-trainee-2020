@@ -76,25 +76,6 @@ router.put('/register', checkauth, upload.single('image'), async (req, res, next
     })
   }
 });
-router.get('/dashboard', checkauth, async (req, res) => {
-  try {
-    var userId = headers(req, res);
-    var dash = [], problem;
-    var f = await Register.findOne({ _id: userId });
-    if (f['language'] != '') {
-      problem = await ProblemModel.count({ tech: f['language'], owner: { $nin: [userId] } });
-    }
-    dash.push({
-      skills: f['language'], imagePath: f['imagePath'],
-      rating: f['rating'], mywork: problem
-    })
-    res.status(200).json({ message: dash });
-
-  } catch (error) {
-    return res.status(401).json({ message: error })
-  }
-
-});
 router.get('/profile', checkauth, async (req, res) => {
   var userId = headers(req, res);
   let user = await Register.findOne({ _id: userId });
@@ -122,7 +103,6 @@ router.get('/solution', checkauth, async (req, res) => {
   return res.status(200).json({ message: final })
 })
 router.put('/solution', checkauth, async (req, res) => {
-  // console.log(req.body)
   try {
     var edit = await SolutionModel.findOneAndUpdate({ _id: req.body.update }, {
       solapp: req.body.solapp,
@@ -132,6 +112,37 @@ router.put('/solution', checkauth, async (req, res) => {
   } catch (error) {
     return res.status(401), json({ message: error })
   }
+})
+router.post('/solution', checkauth, async (req, res) => {
+  var userId = headers(req, res);
+  var solexist = await SolutionModel.findOne({ owner: userId, Qid: req.body.QId });
+  if (solexist != null) {
+    return res.status(401).json({ message: 'Your Solution Already Exist Please Edit it' })
+  }
+  var t = await Register.findOne({ _id: userId })
+  var score = t['rating'];
+  var mysol = t['mysolution']
+  var d = await ProblemModel.findOne({ _id: req.body.QId })
+  var date = d['date']
+  const NewSolution = new SolutionModel({
+    solapp: req.body.solapp,
+    sol: req.body.sol,
+    Qid: req.body.QId,
+    owner: userId
+  })
+  NewSolution.save().then(async ele => {
+    var t = await ProblemModel.update({ _id: req.body.QId }, { $push: { solution: ele['_id'] } })
+    console.log(t)
+    var finalScore = Score(date, score)
+    try {
+      await Register.updateOne({ _id: userId }, { mysolution: ++mysol, rating: finalScore })
+      res.status(200).json({ message: "Done" })
+    } catch (error) {
+      console.log(error)
+      res.status(400).json({ message: error })
+    }
+  })
+
 })
 router.post('/techsupport', checkauth, (req, res) => {
   const NewTechSupport = new TechSupportModel({
@@ -147,6 +158,28 @@ router.post('/techsupport', checkauth, (req, res) => {
       return res.status(404).json({ message: error });
     });
 });
+
+router.get('/dashboard', checkauth, async (req, res) => {
+  try {
+    var userId = headers(req, res);
+    var dash = [], problem;
+    var f = await Register.findOne({ _id: userId });
+    if (f['language'] != '') {
+      problem = await ProblemModel.count({ tech: f['language'], owner: { $nin: [userId] } });
+    }
+    dash.push({
+      skills: f['language'], imagePath: f['imagePath'],
+      rating: f['rating'], mywork: problem,
+      questions: f['myquestion']
+    })
+    res.status(200).json({ message: dash });
+
+  } catch (error) {
+    return res.status(401).json({ message: error })
+  }
+
+});
+
 router.post('/addproblem', checkauth, async (req, res) => {
   console.log('add problem called')
   var userId = headers(req, res);
@@ -183,13 +216,6 @@ router.get('/addproblem', checkauth, async (req, res) => {
   return res.status(200).json({ message: problems })
 
 })
-router.get('/problem', checkauth, async (req, res) => {
-
-  const token = req.headers.authorization.split(' ')[1];
-  const userId = jwt.decode(token)['userId'];
-  var problems = await ProblemModel.find({ owner: userId });
-  return res.status(200).json({ problems: problems })
-});
 router.get('/allproblem', checkauth, async (req, res) => {
   var problems = await ProblemModel.find();
   AllProbSol = [], solu = []
@@ -204,38 +230,7 @@ router.get('/allproblem', checkauth, async (req, res) => {
   }
   return res.json({ 'message': AllProbSol })
 })
-router.post('/solution', checkauth, async (req, res) => {
-  var userId = headers(req, res);
-  var solexist = await SolutionModel.findOne({ owner: userId, Qid: req.body.QId });
-  if (solexist != null) {
-    return res.status(401).json({ message: 'Your Solution Already Exist Please Edit it' })
-  }
-  console.log(solexist, "yes solo exist")
-  var t = await Register.findOne({ _id: userId })
-  var score = t['rating'];
-  var mysol = t['mysolution']
-  var d = await ProblemModel.findOne({ _id: req.body.QId })
-  var date = d['date']
-  const NewSolution = new SolutionModel({
-    solapp: req.body.solapp,
-    sol: req.body.sol,
-    Qid: req.body.QId,
-    owner: userId
-  })
-  NewSolution.save().then(async ele => {
-    var t = await ProblemModel.update({ _id: req.body.QId }, { $push: { solution: ele['_id'] } })
-    console.log(t)
-    var finalScore = Score(date, score)
-    try {
-      await Register.updateOne({ _id: userId }, { mysolution: ++mysol, rating: finalScore })
-      res.status(200).json({ message: "Done" })
-    } catch (error) {
-      console.log(error)
-      res.status(400).json({ message: error })
-    }
-  })
 
-})
 router.get('/work', checkauth, async (req, res) => {
   try {
     var userId = headers(req, res);
@@ -251,7 +246,7 @@ router.get('/work', checkauth, async (req, res) => {
   }
 })
 router.get('/leaderboard', checkauth, async (req, res) => {
-  var star = await Register.find().sort({ rating: -1 }).limit(3)
+  var star = await Register.find({ rating: { $gt: 0 } }).sort({ rating: -1 }).limit(3)
   return res.status(200).json({ 'message': star })
 })
 router.delete('/problem', async (req, res) => {
@@ -262,11 +257,12 @@ router.delete('/problem', async (req, res) => {
   try {
     if (profile == 'Problem') {
       var t = await ProblemModel.deleteOne({ _id: bodydata })
+      await Register.updateOne({ _id: userId }, { $inc: { myquestion: -1 } })
       return res.status(200).json({ message: 'Problem Deleted' })
     } else if (profile == 'Solution') {
       var t = await SolutionModel.findOneAndDelete({ _id: bodydata });
       if (t != null) {
-        await Register.updateOne({ _id: userId }, { $inc: { rating: -110 } })
+        await Register.updateOne({ _id: userId }, { $inc: { rating: -110, mysolution: -1 } })
         var x = await ProblemModel.findOne({ _id: t['Qid'] })
         x = x['solution']
         x = x.filter(ele => {
@@ -293,6 +289,13 @@ router.put('/problem', async (req, res) => {
     return res.status(400).json({ message: error })
   })
 })
+router.get('/problem', checkauth, async (req, res) => {
+  const token = req.headers.authorization.split(' ')[1];
+  const userId = jwt.decode(token)['userId'];
+  var problems = await ProblemModel.find({ owner: userId });
+  return res.status(200).json({ problems: problems })
+});
+
 router.post('/', async (req, res) => {
   const email = req.body.email;
   const password = req.body.password;

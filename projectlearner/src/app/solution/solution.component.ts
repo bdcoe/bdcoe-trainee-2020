@@ -25,7 +25,9 @@ export class SolutionComponent implements OnInit {
     dialogConfig.height = 'auto'
      const deletedialog=this.dialog.open(ConfirmationComponent, dialogConfig)
      deletedialog.afterClosed().subscribe(ele=>{
+       this.spinner=true
        this.res.fetchSolution().subscribe(element=>{
+         this.spinner=false
          this.QA= element['message']
          if (this.QA.length == 0) {
           this.error = 'No Problem solved by Your Side'
@@ -43,7 +45,9 @@ export class SolutionComponent implements OnInit {
     dialogConfig.height = 'auto'
      const editsol=this.dialog.open(AddsolutionComponent, dialogConfig)
      editsol.afterClosed().subscribe(ele=>{ 
+       this.spinner=true
        this.res.fetchSolution().subscribe(element=>{
+         this.spinner=false
          this.QA = element['message']
        })
      })

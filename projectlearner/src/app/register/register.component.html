@@ -31,7 +31,7 @@
         <input matInput type="number" placeholder="Mobile Number" name="phone" #phone="ngModel" ngModel required>
       </mat-form-field>
       <br>
-      <button mat-raised-button color="accent" type="submit">
+      <button mat-raised-button color="accent" [disabled]='registerForm.invalid' type="submit">
         Register
       </button>
       <p>

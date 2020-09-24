@@ -25,7 +25,6 @@ export class ProfileComponent implements OnInit {
     Config.height = 'auto'
     var close =this.dialog.open(ProfileEditDialogComponent, Config)
     close.afterClosed().subscribe(ele=>{
-      console.log(ele)
       this.fname = ele['fname'];
       this.lname = ele['lname'];
       this.phone = ele['phone'];

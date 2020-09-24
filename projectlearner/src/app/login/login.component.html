@@ -1,17 +1,17 @@
 <mat-card>
   <form novalidate #loginForm='ngForm' (submit)="login(loginForm)">
   <mat-form-field>
-    <input matInput placeholder="Email" name="email" #email='ngModel' ngModel>
+    <input matInput placeholder="Email" name="email" #email='ngModel' ngModel required>
   </mat-form-field>
   <br>
   <mat-form-field>
-    <input matInput [type]="hide ? 'password' : 'text'" placeholder="Password" name="password" #password='ngModel' ngModel>
+    <input matInput [type]="hide ? 'password' : 'text'" placeholder="Password" name="password" #password='ngModel' ngModel required>
     <button mat-icon-button matSuffix type='button' (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
       <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>  
     </button>
   </mat-form-field>
   <br>
-  <button mat-raised-button color="primary" type="submit">Login</button>
+  <button mat-raised-button color="primary" [disabled]='loginForm.invalid' type="submit">Login</button>
 </form>
 <p>Not Registed Yet? <span><a [routerLink]="['/register']" routerLinkActive="router-link-active">Register Yourself</a></span></p>
 </mat-card>

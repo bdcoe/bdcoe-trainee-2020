@@ -37,7 +37,9 @@ export class ProblemsComponent implements OnInit {
     dialogConfig.data = { _id: _id, array: t };
     const editDialog = this.dialog.open(AddproblemComponent, dialogConfig)
     editDialog.afterClosed().subscribe(ele => {
+      this.spinner=true
       this.res.fetchmyproblem().subscribe(element => {
+        this.spinner=false
         this.problems = element['problems']
       })
     })

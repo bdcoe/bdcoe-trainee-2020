@@ -10,13 +10,16 @@
             <h4>{{problem['problem']['explain']}}</h4>
             <h4>{{problem['problem']['code']}}</h4>
             <div class='solution' *ngIf="problem['solution'].length==0">
-                No Solution Posted yet
+                <h5>
+                    No Solution Posted yet
+                </h5>
             </div>
             <div class='solution' *ngFor="let sol of problem['solution']">
                 <div>
                     <h5>{{sol['sol']}}</h5>
                     <h5>{{sol['solapp']}}</h5>
                 </div>
+                <mat-divider [vertical]="true"></mat-divider>
             </div>
             <button mat-stroked-button type="button" (click)='addsolution(problem["problem"]["_id"])'>Submit
                 Solution</button>

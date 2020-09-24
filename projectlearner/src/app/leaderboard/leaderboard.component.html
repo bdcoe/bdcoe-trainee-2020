@@ -1,22 +1,24 @@
-<app-toolbar>
 
+
+<app-toolbar>
 </app-toolbar>
 <mat-spinner *ngIf="spinner"></mat-spinner>
-<div class='leaderboard'>
-<mat-accordion *ngFor="let leader of leaders">
-  <mat-expansion-panel (opened)="panelOpenState = true"
-                       (closed)="panelOpenState = false">
-    <mat-expansion-panel-header>
-      <mat-panel-title>
-         {{leader.fname}} {{leader.lname}}
-      </mat-panel-title>
-    </mat-expansion-panel-header>
-    <mat-grid-list cols="2" rowHeight="2:1">
-      <mat-grid-tile>Skills: {{leader.language}}</mat-grid-tile>
-      <mat-grid-tile>Email: {{leader.email}}</mat-grid-tile>
-      <mat-grid-tile>Question Raised: {{leader.myquestion}}</mat-grid-tile>
-      <mat-grid-tile>Rating: {{leader.rating}}</mat-grid-tile>
-    </mat-grid-list>
-  </mat-expansion-panel>
-</mat-accordion>
+<div *ngIf="!spinner">
+  <div class='leaderboard'>
+    <mat-accordion *ngFor="let leader of leaders">
+      <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            {{leader.fname}} {{leader.lname}}
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-grid-list cols="2" rowHeight="2:1">
+          <mat-grid-tile>Skills: {{leader.language}}</mat-grid-tile>
+          <mat-grid-tile>Email: {{leader.email}}</mat-grid-tile>
+          <mat-grid-tile>Question Raised: {{leader.myquestion}}</mat-grid-tile>
+          <mat-grid-tile>Rating: {{leader.rating}}</mat-grid-tile>
+        </mat-grid-list>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
 </div>

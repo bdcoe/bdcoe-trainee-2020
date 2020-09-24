@@ -1,13 +1,26 @@
-<app-toolbar>
-</app-toolbar>
-<div>
-  <div class="alert" *ngIf="skills==''">
-    No Skills Entered Please Enter some to know Your about Yout Work
-  </div>
-  <div class="alert" *ngIf="image==''">
-    You haven't Uploaded yout Profile Picture Yet!!!!
-  </div>
+<mat-spinner *ngIf="spinner">
+</mat-spinner>
+<div *ngIf="!spinner">
+  <app-toolbar>
+  </app-toolbar>
   <div>
-    Your Rating:{{rating}}
+    <div class="alert" *ngIf="skills==''">
+      No Skills Entered Please Enter some to know Your about Yout Work
+    </div>
+    <div class="alert" *ngIf="image==''">
+      You haven't Uploaded yout Profile Picture Yet!!!!
+    </div>
+    <div>
+      Your Rating:{{rating}}
+    </div>
+    <div>
+      <div *ngIf='questions==0'>
+        No Question Raised Yet!!!!Do it Faster
+      </div>
+      <div *ngIf='questions!=0'>
+        Question Raised by me:{{questions}}
+      </div>
+    
+    </div>
   </div>
 </div>

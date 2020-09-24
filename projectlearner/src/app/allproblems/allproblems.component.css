@@ -7,4 +7,7 @@ mat-spinner{
 }
 .solution{
     background-color: rgb(238, 234, 234);
+    border-radius: 0.2rem;
+    margin: 1rem;
+    padding:0.5rem 1rem;
 }

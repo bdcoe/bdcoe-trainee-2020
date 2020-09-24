@@ -1,13 +1,15 @@
-.btn{
+.btnr{
     color: aliceblue;
 }
-.btn:hover{
+.btnr:hover{
     color: aliceblue;
 }
 mat-toolbar{
-    width: auto;
+    width: 100%;
 }
-
 .icon:hover{
 color: pink;
 }
+/* #mywork:active,#mywork:hover{
+    color: salmon;
+} */
