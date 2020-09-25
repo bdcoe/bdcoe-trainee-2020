@@ -4,7 +4,7 @@
 Download BDCOE App apk from the given link and install.
 
 
-https://drive.google.com/file/d/1A-JZnMxmOrg4p-7Tw4wZfJHfolZcRUPT/view?usp=sharing
+https://drive.google.com/file/d/1Svg2ygCdKwe59FjjBc-ZeGlGmq7zKMY5/view?usp=sharing
 
 
 ------------------------------------------------------------------------------------
