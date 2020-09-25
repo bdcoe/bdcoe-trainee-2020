@@ -550,7 +550,7 @@ class Team extends StatelessWidget {
                   Expanded(flex: 1,
                                   child: Center(
                                     child: Text(
-                                    "Tanya Agarwal",
+                                    "Taru Agarwal",
                                     style: TextStyle(
                                       fontSize: 25.0,
                                       fontFamily: 'Raleway-LightItalic.ttf',
