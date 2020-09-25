@@ -1,0 +1,23 @@
+As told earlier I have been working on two projects for this probation period. The first one was a audio input based notes taker during live classes and studying time.
+I have built a simple gui for this project and converted it to a windows executable file. My python file was running without any issues but the executable application file is not running as expected.
+I have pushed it today and will be pushing the new executable file tomorrow.
+
+Now for the second project, I was working on handwritten text (english small and large alphabets and digits) using Tensorflow and Keras.
+Initially as I started to build it on windows, my system wasn't able to work on such large Extended MNIST dataset (Around 8.4 lacs of images) and was stalling time and again.
+So I switched to linux, and broke the dataset to work upon, but still my system wasn't able to work upon it just after a few training sets.
+So I wasn't able to finish this project. Still I will be uploading the code of this project that I have developed by tomorrow as currently I'm working on changes to first project to make an executable application out of it.
+
+I will be pushing my entire probation work by tomorrow.
+
+
+
+Update on 25th September 2020
+
+
+
+I have created the executable application of project 1 but since it was quite large ~2.88 GiB, Git wasn't allowing me to push it even after trying twice.
+So I have pushed the .py file and screenshots for it.
+For second project, I have shared the code and screenshots of the running part of code as the code itself was not supported by my system to run.
+
+
+Thankyou!
