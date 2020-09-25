@@ -1,0 +1,38 @@
+Lakshyajit Laxmikant
+lakshyajit165@gmail.com
+8249484467	
+Python, C++, JavaScript, React.js, Node.js, mongoDB, Git, Github
+
+Technex IIT-BHU
+Intern
+1 Month
+Successfully completed an internship cum training programme on the topic "Embedded Systems using Internet of Things".
+National Institute of Technology(NIT), Rourkela
+Intern
+1 Month
+Successfully completed a research internship on the topic "Performance Analysis of Routing Algorithms in Optical Networks".
+
+DevPortal
+https://lk-devportal.herokuapp.com
+A MERN stack app which allows users to create, update and delete their accounts, and also create posts and comment on them. It resembles a social network site(for developers).
+
+Home Automation using IOT(with Google Assistant)
+https://medium.com/@lakshyajit165/home-automation-with-iot-using-google-assistant-60716c255d8
+An IOT based implementation of home automation, with which we can control appliances in a home, with the help of voice commands to google assistant.
+
+College of Engineering and Technology, Bhubaneswar
+2015-2019
+Graduation
+Currently, I'm pursuing Bachelor of Technology in Computer Science and Engineering.
+
+Delhi Public School, Damanjodi
+2000-2014
+Higher Secondary
+I completed my matriculation(CBSE) securing a CGPA of 10 and my higher secondary,
+securing a percentage of 95.2
+
+English, Hindi, Odia
+Coding, Playing Keyboard
+Completed a capstone course named "Python Programming" at Coursera.
+Participated in Hacktoberfest 2018.
+Completed a course named "Algorithmic Toolbox", at Coursera.
