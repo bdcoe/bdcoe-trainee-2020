@@ -1,0 +1,14 @@
+{% extends 'auth/base.html' %}
+
+{% block content %}
+    {% csrf_token %}
+    <div class="container">
+        <h2>Sign up</h2>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Sign up</button>
+        </form>
+        <h5 style="text-align: center;"><a class="waves-effect waves-light btn" href="{% url 'login' %}">back to login</a></h5>
+    </div>
+{% endblock %}

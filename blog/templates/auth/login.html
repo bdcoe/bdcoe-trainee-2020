@@ -2,12 +2,6 @@
 
 {% block content %}
 <div class="bg"> 
-<nav>
-    <div class="nav-wrapper">
-      <a href="#" class="brand-logo right">Built by Rohit Abhishek</a>
-      <a href="#" class="brand-logo left">Blog Application</a>
-    </div>
-  </nav>
     <br><br>  
     <div class="container" style="height: 50%;width: 30%;">
         <td>
@@ -19,7 +13,7 @@
                                   {% endif %}
                           </td>
             <div class="col s12 m6" style="background-color: white;">
-                <h4 class="card-title" style="color:#ed6663;text-align: center;padding-top: 10px;"><strong><u>Login To Your Account:</u></strong></h4>
+                <h4 class="card-title" style="color:#ed6663;padding-top: 10px;padding-left: 45px;"><strong>Login:</strong></h4>
                 <div class="card-content" style="padding:0px 50px 10px 50px;width:100%">
                     <form action="" method="post">
                         {% csrf_token %}
@@ -29,6 +23,7 @@
                             </div>
                             {% endfor %}
                             <button type="submit" class="waves-effect waves-light btn">login</button>
+                            <a href="{% url 'signup' %}" class="waves-effect waves-light btn">signup</a>
                     </form>
                 </div>
           </div>

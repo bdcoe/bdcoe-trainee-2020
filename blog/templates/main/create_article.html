@@ -15,7 +15,7 @@ height: 100%;
   padding: 0px;
   margin: 0px;
 /* The image used */
-background-image: url("https://images.hdqwalls.com/wallpapers/marshmello-4k-do.jpg");
+
 
 /* Full height */
 height: 100%;
@@ -30,7 +30,7 @@ background-size: cover;
 <body>
   <div class="bg">    
     <div class="container">
-      <h1 class="center" style="color:white;background-color: #249e98;padding: 10px;display:inline-block;position: relative;top: 5%;margin: 0px 32% 0px 32%;"><u><strong>Create New Article</strong></u></h1>
+      <h1 class="center" style="color:rgb(17, 16, 16);padding: 10px;display:inline-block;position: relative;top: 5%;margin: 0px 32% 0px 32%;"><u><strong>Create New Article</strong></u></h1>
       <br><br>
     {% if success %}
         <h5>form submitted successfully</h5>
@@ -69,7 +69,7 @@ background-size: cover;
         <button type="submit" class="btn btn-primary">Submit</button>
       </form>
       <br>
-      <h5 style="text-align: center;"><a href="{% url 'index' %}"><strong>go to main</strong></a></h5>
+      <h5 style="text-align: center;"><a class="waves-effect waves-light btn" href="{% url 'index' %}">go to main</a></h5>
 </div>
 </div>
 </body>
