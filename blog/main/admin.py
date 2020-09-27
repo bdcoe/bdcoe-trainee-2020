@@ -1,7 +1,4 @@
 from django.contrib import admin
-from main import models
+from .models import Entry
 # Register your models here.
-admin.site.register({
-    models.Author,
-    models.Article
-})
+admin.site.register(Entry)

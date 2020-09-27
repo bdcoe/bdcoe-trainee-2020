@@ -1,14 +1,26 @@
-{% extends 'auth/base.html' %}
+{% extends 'main/base.html'%}
+    {% block content %}
 
-{% block content %}
-    {% csrf_token %}
-    <div class="container">
-        <h2>Sign up</h2>
-        <form method="post">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit">Sign up</button>
-        </form>
-        <h5 style="text-align: center;"><a class="waves-effect waves-light btn" href="{% url 'login' %}">back to login</a></h5>
-    </div>
-{% endblock %}
+    
+      <!-- Blog Entries Column -->
+      <div class="col-md-8">
+        <a href="{% url 'login' %}">Back to Login</a>
+        <!-- Blog Post -->
+        <div class="card mb-4 mt-4">
+          <div class="card-header">
+            Create Your Account:
+          </div>
+          <div class="card-body">
+            <form method="POST" class="form-group">
+                {% csrf_token %}
+                {{ form|linebreaks}}
+                <button type="submit" class="btn btn-success">Register</button>
+                </form>
+          </div>
+        </div>
+
+        <!-- Pagination -->
+  
+      </div>
+
+      {% endblock %}

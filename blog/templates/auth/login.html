@@ -1,33 +1,26 @@
-{% extends 'auth/base.html' %}
+{% extends 'main/base.html'%}
+    {% block content %}
 
-{% block content %}
-<div class="bg"> 
-    <br><br>  
-    <div class="container" style="height: 50%;width: 30%;">
-        <td>
-                                {% if form.password.errors %}
-                                      <div id="password_error_div" class="error">You must specify a password.</div>
-                                  {% endif %}
-                                  {% if form.non_field_errors %}
-                                  <div id="password_error_div" class="error"><em>Invalid username or password.</em></div>
-                                  {% endif %}
-                          </td>
-            <div class="col s12 m6" style="background-color: white;">
-                <h4 class="card-title" style="color:#ed6663;padding-top: 10px;padding-left: 45px;"><strong>Login:</strong></h4>
-                <div class="card-content" style="padding:0px 50px 10px 50px;width:100%">
-                    <form action="" method="post">
-                        {% csrf_token %}
-                            {% for field in form %}
-                            <div class="input-field col s6 ">
-                                {{field}}
-                            </div>
-                            {% endfor %}
-                            <button type="submit" class="waves-effect waves-light btn">login</button>
-                            <a href="{% url 'signup' %}" class="waves-effect waves-light btn">signup</a>
-                    </form>
-                </div>
+    
+      <!-- Blog Entries Column -->
+      <div class="col-md-8">
+        <!-- Blog Post -->
+        <div class="card mb-4 mt-4">
+          <div class="card-header">
+            Login:
           </div>
-    </div>
-    <h6 class="center" style="color:white;background-color: #249e98;padding: 10px;display:inline-block;position: absolute;bottom: 0%;margin: 0px 42% 0px 42%;">@2020 copyright-text: Rohit</h6>
-    </div>
-{% endblock %}
+          <div class="card-body">
+            <form method="POST">
+                {% csrf_token %}
+                {{form.as_p}}
+                <button type="submit" class="btn btn-primary" >Login</button>
+              </form>
+          </div>
+          <a type="submit" class="btn btn-primary" href="{% url 'signup'%}">Don't have an Account?..Signup</a>
+        </div>
+
+        <!-- Pagination -->
+  
+      </div>
+
+      {% endblock %}

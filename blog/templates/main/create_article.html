@@ -1,80 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="shortcut icon" href="http://www.iconj.com/ico/5/q/5qiajui7s6.ico" type="image/x-icon" />
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-    <style>
-      body, html {
-height: 100%;
-}
+{% extends 'main/base.html'%}
+    {% block content %}
 
-.bg {
-  padding: 0px;
-  margin: 0px;
-/* The image used */
-
-
-/* Full height */
-height: 100%;
-
-/* Center and scale the image nicely */
-background-position: center;
-background-repeat: no-repeat;
-background-size: cover;
-}
-  </style>
-</head>
-<body>
-  <div class="bg">    
-    <div class="container">
-      <h1 class="center" style="color:rgb(17, 16, 16);padding: 10px;display:inline-block;position: relative;top: 5%;margin: 0px 32% 0px 32%;"><u><strong>Create New Article</strong></u></h1>
-      <br><br>
-    {% if success %}
-        <h5>form submitted successfully</h5>
-    {% endif %}
-        <br>
     
-
-    <form method="POST">
-        {% csrf_token %}
-        <div class="form-group">
-          <label for="exampleInputEmail1"><strong>Enter article title:</strong></label>
-          <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="title" placeholder="title">
+      <!-- Blog Entries Column -->
+      <div class="col-md-8">
+        <a href="{% url 'blog-home' %}">Back to Home</a>
+        <!-- Blog Post -->
+        <div class="card mb-4 mt-4">
+          <div class="card-header">
+            Create Blog Post
+          </div>
+          <div class="card-body">
+            <form method="POST">
+              {% csrf_token %}
+              {{form.as_p}}
+              <button type="submit" class="btn btn-primary">Post Entry</button>
+            </form>
+          </div>
         </div>
-        <div class="form-group">
-          <label for="exampleInputEmail1"><strong>Enter Authors Email Address:</strong></label>
-          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email" placeholder="author's email address">
-        </div>
-       
-        <div class="form-group">
-          <label for="exampleInputPassword1"><strong>type content of article:</strong></label><br>
-          <textarea class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="content" placeholder="content"></textarea><br>
-        </div>
-        <div class="form-group">
-            <h6>select author:</h6>
-                <select name="author" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                {% for author in authors %}
-                    <option value="{{author.id}}">{{author.first_name}}</option>
-                {% endfor %}
-            
-            </select>
-        </div>
-        <div class="form-group form-check">
-          <input type="checkbox" class="form-check-input" id="exampleCheck1">
-          <label class="form-check-label" for="exampleCheck1">Check me out</label>
-        </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-      </form>
-      <br>
-      <h5 style="text-align: center;"><a class="waves-effect waves-light btn" href="{% url 'index' %}">go to main</a></h5>
-</div>
-</div>
-</body>
-</html>
 
+        <!-- Pagination -->
+  
+      </div>
 
-
-
+      {% endblock %}

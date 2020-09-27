@@ -1,36 +1,94 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog Application</title>
-    <link rel="shortcut icon" href="http://www.iconj.com/ico/5/q/5qiajui7s6.ico" type="image/x-icon" />
-    <!-- Compiled and minified CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" >
-    <style>
-        body, html {
-  height: 100%;
-}
 
-.bg {
-    padding: 0px;
-    margin: 0px;
-  /* The image used */
-  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
 
-  /* Full height */
-  height: 110vh;
+  <title>Blog</title>
 
-  /* Center and scale the image nicely */
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-    </style>
-   
-            
+  <!-- Bootstrap core CSS -->
+  <link href="{% static 'main/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="{% static 'main/css/blog-home.css' %}" rel="stylesheet">
+
 </head>
+
 <body>
-    {% block content %} {% endblock %}
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="{% url 'blog-home' %}">My Blog</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'create_entry'%}">Post Now</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'logout' %}">Log Out</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Content -->
+  <div class="container">
+
+    <div class="row">
+
+    {% block content %}
+    
+    {% endblock %}
+       <!-- Sidebar Widgets Column -->
+    <div class="col-md-4">
+
+                <!-- Side Widget -->
+      <div class="card my-4">
+          <h5 class="card-header text-center">Logged in Information</h5>
+          <div class="card-body">
+            <ul class="list-unstyled mb-0">
+                <li>
+                    <p> <strong>Username:</strong> {{user.username}} </p>
+                </li>
+                <li>
+                    <p> <strong>Email:</strong> {{user.email}}</p>
+                </li>
+            </ul>    
+          </div>
+        </div>
+
+
+      </div>
+
+    </div>
+    <!-- /.row -->
+
+  </div>
+  <!-- /.container -->
+
+  <!-- Footer -->
+  <footer class="py-5 bg-dark">
+    <div class="container">
+      <p class="m-0 text-center text-white">Copyright &copy; Blog Website 2020</p>
+    </div>
+    <!-- /.container -->
+  </footer>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="{% static 'main/vendor/jquery/jquery.min.js' %}"></script>
+  <script src="{% static 'main/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
 </body>
+
 </html>

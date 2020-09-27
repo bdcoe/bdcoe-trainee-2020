@@ -5,5 +5,5 @@ from django.conf.urls import url
 urlpatterns= [
     path('',views.login.as_view(),name='login'),
     path('logout/',views.logout.as_view(),name='logout'),
-    url(r'^signup/$', views.signup, name='signup'),
+    path('signup/', views.register, name="signup")
 ]

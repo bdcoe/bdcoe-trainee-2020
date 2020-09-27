@@ -1,78 +1,27 @@
-from django.shortcuts import render,get_object_or_404
-from main import models
-from django.http import HttpResponse
-from django.core.mail import send_mail
-from django.shortcuts import redirect
-# Create your views here.
-def index(request):
-    #queries are executed lazily
-    latest_articles=models.Article.objects.all().order_by('-CreatedAt')[:10]
-    context={
-        "latest_articles": latest_articles
-    }
-    return render(request, 'main/index.html', context)
+from django.shortcuts import render
+from django.views.generic import ListView,DetailView,CreateView
+from .models import Entry
+from django.contrib.auth.mixins import LoginRequiredMixin
 
-def article(request,pk):
-    article=get_object_or_404(models.Article,pk=pk)
 
-    context={
-        "article":article
-    }
-    return render(request,'main/article.html',context)
 
-def author(request, pk):
-    author=get_object_or_404(models.Author,pk=pk)
 
-    context={
-        "author": author
-    }
-    return render(request, 'main/author.html', context)
+class HomeView(LoginRequiredMixin,ListView):
+    model = Entry
+    template_name = 'main/index.html'
+    context_object_name = "blog_entries"
+    ordering = ['-entry_date']
+    paginate_by = 3
 
-def create_article(request):
+class EntryView(LoginRequiredMixin,DetailView):
+    model = Entry
+    template_name = 'main/article.html'
 
-    authors =models.Author.objects.all()
-    context={
-        "authors":authors
-    }
-    if request.method=="POST":
-        article_data= {
-            "title":request.POST['title'],
-            "Write_article":request.POST['content'],
-            "email":request.POST['email']
-        }
-        article = models.Article.objects.create(**article_data)
-        author = models.Author.objects.filter(pk= request.POST['author'])
-        article.author.set(author)
-        context["success"]= True 
-        try:
-            send_mail("Congratulations!!", "Hi ,You have successfully posted new article named : {}.".format(article_data['title']), "rabhi1611@gmail.com", [article_data['email']])
-        except BadHeaderError:
-            return HttpResponse('Invalid header found.')
-        return redirect('mail_2')
-        
-    return render(request,'main/create_article.html',context)
+class CreateEntryView(LoginRequiredMixin,CreateView):
+    model = Entry
+    template_name = 'main/create_article.html'
+    fields = ['entry_title','entry_text']
 
-def create_author(request):
-    authors =models.Author.objects.all()
-    context={
-        "authors":authors
-    }
-    if request.method=="POST":
-        author_data= {
-            "first_name":request.POST['title'],
-            "email":request.POST['email']
-        }
-        author = models.Author.objects.create(**author_data)
-        context["success"]= True
-        try:
-            send_mail("Congratulations!!", "Hi {},You have successfully created new author.".format(author_data['first_name']), "rabhi1611@gmail.com", [author_data['email']])
-        except BadHeaderError:
-            return HttpResponse('Invalid header found.')
-        return redirect('mail_1')
-    return render(request,'main/create_author.html',context)
-
-def mail1(request):
-    return render(request,'main/mail1.html',{})
-
-def mail2(request):
-    return render(request,'main/mail1.html',{})
+    def form_valid(self,form):
+        form.instance.entry_author = self.request.user
+        return super().form_valid(form)

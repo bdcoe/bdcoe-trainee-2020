@@ -123,6 +123,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR,'static')
+]
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'assets')
 
 
 EMAIL_HOST = 'smtp.gmail.com'
@@ -132,5 +137,6 @@ EMAIL_HOST_PASSWORD = 'sonybraviaw512'
 EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
 
-LOGIN_REDIRECT_URL = 'index'
+LOGIN_REDIRECT_URL = 'blog-home'
 LOGOUT_REDIRECT_URL = 'login'
+LOGIN_URL = 'login'
