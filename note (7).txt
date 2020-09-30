@@ -1,0 +1,181 @@
+Exploring new thing:
+DART 
+
+void main() {
+
+	// DO-WHILE Loop
+	// WAP to find the even numbers between 1 to 10
+
+	int i = 1;
+
+	do {
+
+		if ( i % 2 == 0) {
+			print(i);
+		}
+
+		i++;
+	} while ( i <= 10);
+}
+
+
+
+break keyword:
+void main() {
+
+	// BREAK keyword
+	// Using Labels
+	// Nested FOR Loop
+
+	myOuterLoop: for (int i = 1; i <= 3; i++) {
+
+		innerLoop: for (int j = 1; j <= 3; j++) {
+			print("$i $j");
+
+			if (i == 2 && j == 2) {
+				break myOuterLoop;
+			}
+		}
+	}
+}
+
+
+continue keyword:
+void main() {
+
+	// CONTINUE keyword
+	// Using Labels
+
+	myLoop: for (int i = 1; i <= 3; i++) {
+
+		myInnerLoop: for (int j = 1; j <= 3; j++) {
+
+			if (i == 2 && j == 2) {
+				continue myLoop;
+			}
+			print("$i  $j");
+		}
+	}
+}
+
+
+function:
+// 1. Define a Function
+// 2. Pass parameters to a Function
+// 3. Return value from a Function
+// 4. Test that by default a Function returns null
+
+void main() {
+
+	findPerimeter(4, 2);
+
+	int rectArea = getArea(10, 5);
+	print("The area is $rectArea");
+}
+
+void findPerimeter(int length, int breadth) {
+
+	int perimeter = 2 * (length + breadth);
+	print("The perimeter is $perimeter");
+}
+
+int getArea(int length, int breadth) {
+
+	int area = length * breadth;
+	return area;
+}
+
+
+fat arrow:
+void main() {
+
+	findPerimeter(4, 2);
+
+	int rectArea = getArea(10, 5);
+	print("The area is $rectArea");
+}
+
+void findPerimeter(int length, int breadth) => print("The perimeter is ${2 * (length + breadth)}");
+
+int getArea(int length, int breadth) => length * breadth;
+
+
+// "=>" is known as FAT ARROW
+// "=> expression" is a SHORT HAND SYNTAX for { return expression; }
+// Example "=> length * breadth" is SHORT HAND SYNTAX for { return length * breadth; }
+
+optional named parameters:
+// Optional Named Parameters
+
+void main() {
+	findVolume(10, breadth: 5, height: 20);
+	print("");
+
+	findVolume(10, height: 20, breadth: 5);     // Sequence doesn't matter in Named Parameter
+}
+
+
+int findVolume(int length, {int breadth, int height}) {
+
+	print("Length is $length");
+	print("Breadth is $breadth");
+	print("Height is $height");
+
+	print("Volume is ${length * breadth * height}");
+}
+
+optional positional parameters:
+// 1. Required Parameters
+// 2. Optional Positional Parameters
+
+void main() {
+
+	printCities("New York", "New Delhi", "Sydney");
+	print("");
+
+	printCountries("USA");  // You can skip the Optional Positional Parameters
+
+}
+
+// Required Parameters
+void printCities(String name1, String name2, String name3) {
+
+	print("Name 1 is $name1");
+	print("Name 2 is $name2");
+	print("Name 3 is $name3");
+}
+
+// Optional Positional Parameters
+void printCountries(String name1, [String name2, String name3]) {
+
+	print("Name 1 is $name1");
+	print("Name 2 is $name2");
+	print("Name 3 is $name3");
+}
+
+optional dfefault parameters:
+// Optional Default Parameters
+
+void main() {
+
+	findVolume(10);     // Default value comes into action
+	print("");
+
+	findVolume(10, breadth: 5, height: 30);     // Overrides the old value with new one
+	print("");
+
+	findVolume(10, height: 30, breadth: 5);     // Making use of Named Parameters with Default values
+}
+
+
+int findVolume(int length, {int breadth = 2, int height = 20}) {
+
+	print("Lenght is $length");
+	print("Breadth is $breadth");
+	print("Height is $height");
+
+	print("Volume is ${length * breadth * height}");
+}
+
+
+lessons taken of above code.

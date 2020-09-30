@@ -1,0 +1,42 @@
+    ___~ DATA STRUCTURE~__
+
+LINKED LIST:
+
+ Linked list is a linear data structure .Unlike arrays,Linked list elements are not stored at a contagious location;the lements are linked 
+ using pointer .
+
+WHY SHOULD WE USE LINKED LIST ?
+
+--> Arrays can be used to store linear data of similar types, but arrays have following limitations:
+1. The size of the array is fixed,so we must know the upper limit .
+2. Inserting a new element in the array is expensive because new room has to be created for new elements and others needed to  be shifted .
+
+ADVATAGES OF LINKED LIST OVER ARRAYS :
+1.Dynamic size 
+2.Ease of insertion/deletion
+
+CREATION OF LINKED LIST :
+
+in c:
+ struct node{
+    int data;
+     struct node* next;
+};
+  
+in cpp:
+class Node {
+
+      public:
+          int data;
+          Node* next ;
+}:
+
+chocolate tip:  what does this function do?
+void fun1(struct node* head)
+{
+  if(head==null)                                    [PRINTS ALL NODES OF LINKED LIST IN REVERSE ORDER....]
+  return;
+  fun1(head-->next);
+  printf("%d ",head->data);
+  }          
+
