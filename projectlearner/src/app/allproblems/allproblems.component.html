@@ -19,6 +19,16 @@
                     <p>{{sol['sol']}}</p>
                     <p>{{sol['solapp']}}</p>
                 </div>
+                <button mat-icon-button (click)="toggle(sol['_id'])">
+                    <mat-icon [class]="like ? 'green' : 'black'">
+                        thumb_up
+                    </mat-icon>
+                </button>
+                <button mat-icon-button (click)="togglered(sol['_id'])">
+                    <mat-icon [class]="dislike ? 'red' : 'black'">
+                        thumb_down
+                    </mat-icon>
+                </button>
             </div>
             <button mat-stroked-button type="button" (click)='addsolution(problem["problem"]["_id"])'>Submit
                 Solution</button>

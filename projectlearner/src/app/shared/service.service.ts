@@ -156,6 +156,13 @@ export class ServiceComp implements OnInit {
     })
     return this.http.get(this.URL + 'dashboard', { headers: headers })
   }
+  onliketoggle(post) {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'authorization': `Bearer ${localStorage.getItem('token')}`
+    })
+    return this.http.post(this.URL + 'like', post, { headers: headers })
+  }
 
   isloggedin() {
     return !!localStorage.getItem('token')

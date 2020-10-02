@@ -9,7 +9,6 @@ import { ServiceComp } from '../shared/service.service';
   styleUrls: ['./login.component.css']
 })
 export class loginComponent implements OnInit {
-
   constructor(public Loginf: ServiceComp, private router: Router) { }
 
   login(data: NgForm) {
@@ -24,6 +23,7 @@ export class loginComponent implements OnInit {
       })
   }
   hide: boolean = true;
+  siteKey = '6Lc7ydIZAAAAAHX57_w0kSqqkeZK8bA7WeHBEQ64'
 
   ngOnInit(): void {
     if (localStorage.getItem('token') != null) {

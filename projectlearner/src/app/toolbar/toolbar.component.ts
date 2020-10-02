@@ -35,7 +35,7 @@ export class ToolbarComponent implements OnInit {
   }
   ngOnInit(): void {
     this.res.ondashboard().subscribe(ele=>{
-      console.log(ele['message'][0]['mywork']);
+      console.log(ele['message']);
       this.work = ele['message'][0]['mywork']
       
     },error=>{

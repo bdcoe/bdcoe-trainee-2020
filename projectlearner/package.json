@@ -28,6 +28,7 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.10.3",
     "multer": "^1.4.2",
+    "ngx-captcha": "^8.0.1",
     "node-cron": "^2.0.3",
     "node-fetch": "^2.6.1",
     "rxjs": "~6.5.5",

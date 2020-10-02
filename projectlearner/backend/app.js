@@ -164,8 +164,11 @@ router.get('/dashboard', checkauth, async (req, res) => {
     var userId = headers(req, res);
     var dash = [], problem;
     var f = await Register.findOne({ _id: userId });
+
     if (f['language'] != '') {
-      problem = await ProblemModel.count({ tech: f['language'], owner: { $nin: [userId] } });
+      var reg = new RegExp(f['language'], 'ig')
+      console.log(reg)
+      problem = await ProblemModel.count({ tech: reg, owner: { $nin: [userId] } });
     }
     dash.push({
       skills: f['language'], imagePath: f['imagePath'],
@@ -239,9 +242,12 @@ router.get('/work', checkauth, async (req, res) => {
       return res.status(201).json({ message: 'Please set Your Tech', bool: true })
     }
     var exp = new RegExp(user['language'], 'ig');
+    // var problems = await ProblemModel.find({ tech: exp, owner: { $nin: [userId], solution: { $in: [userId] } } });
+    // console.log(problems)
     var problem = await ProblemModel.find({ tech: exp, owner: { $nin: [userId] } });
     return res.status(200).json({ message: problem })
   } catch (error) {
+    console.log(error)
     return res.status(401).json({ message: error })
   }
 })
@@ -295,6 +301,61 @@ router.get('/problem', checkauth, async (req, res) => {
   var problems = await ProblemModel.find({ owner: userId });
   return res.status(200).json({ problems: problems })
 });
+
+router.post('/like', checkauth, async (req, res) => {
+  console.log(req.body)
+  const userId = headers(req, res);
+  try {
+    if (req.body.like) {
+      SolutionModel.findOne({ _id: req.body.id })
+        .then(async ele => {
+          if (!ele['like'].includes(userId)) {
+            await SolutionModel.updateOne({ _id: req.body.id }, { $push: { like: userId } })
+            await Register.updateOne({ _id: userId }, { $inc: { rating: 10 } })
+            if (ele['dislike'].includes(userId)) {
+              await SolutionModel.updateOne({ _id: req.body.id }, { $pull: { dislike: userId } })
+              await Register.updateOne({ _id: userId }, { $inc: { rating: 10 } })
+            }
+          }
+          return res.status(200).json(ele)
+        })
+        .catch(error => {
+          console.error(error)
+        })
+    } else {
+      SolutionModel.findOne({ _id: req.body.id })
+        .then(async ele => {
+          if (ele['like'].includes(userId)) {
+            await SolutionModel.updateOne({ _id: req.body.id }, { $pull: { like: userId } })
+          }
+        })
+    }
+    if (req.body.dislike) {
+      SolutionModel.findOne({ _id: req.body.id })
+        .then(async ele => {
+          if (!ele['dislike'].includes(userId)) {
+            await SolutionModel.updateOne({ _id: req.body.id }, { $push: { dislike: userId } })
+            await Register.updateOne({ _id: userId }, { $inc: { rating: -10 } })
+            if (ele['like'].includes(userId)) {
+              await SolutionModel.updateOne({ _id: req.body.id }, { $pull: { like: userId } })
+              await Register.updateOne({ _id: userId }, { $inc: { rating: -10 } })
+            }
+          }
+        })
+    } else {
+      SolutionModel.findOne({ _id: req.body.id })
+        .then(async ele => {
+          if (ele['dislike'].includes(userId)) {
+            await SolutionModel.updateOne({ _id: req.body.id }, { $pull: { dislike: userId } })
+          }
+        })
+    }
+
+  } catch (error) {
+    res.status(401).json({ message: error })
+  }
+
+})
 
 router.post('/', async (req, res) => {
   const email = req.body.email;

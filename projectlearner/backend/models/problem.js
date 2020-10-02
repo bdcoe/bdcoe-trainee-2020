@@ -21,9 +21,8 @@ const ProblemSchema = mongoose.Schema({
         required:false
     },
     solution:{
-        type:Array,
-        required:false,
-        default:[]
+        type:[String],
+        required:false
     },
     date:{
         type:Date,

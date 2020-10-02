@@ -42,7 +42,7 @@ app.use((req, res, next) => {
     'GET,PUT,POST,PATCH,DELETE,OPTIONS')
   next();
 })
-cron.schedule("* * 28 * *", async () => {
+cron.schedule("0 0 28 * *", async () => {
   await Register.updateMany({ rating: { $gte: 0 } }, { rating: 0 })
 })
 

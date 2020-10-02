@@ -33,7 +33,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { MatBadgeModule } from '@angular/material/badge';
-import { MatDividerModule } from '@angular/material/divider'
+import { MatDividerModule } from '@angular/material/divider';
+import {NgxCaptchaModule} from 'ngx-captcha'
 @NgModule({
   declarations: [
     AppComponent,
@@ -73,7 +74,8 @@ import { MatDividerModule } from '@angular/material/divider'
     MatSnackBarModule,
     ReactiveFormsModule,
     MatBadgeModule,
-    MatDividerModule
+    MatDividerModule,
+    NgxCaptchaModule
   ], entryComponents: [ProfileEditDialogComponent, AddproblemComponent, AddsolutionComponent, ConfirmationComponent],
   providers: [],
   bootstrap: [AppComponent]

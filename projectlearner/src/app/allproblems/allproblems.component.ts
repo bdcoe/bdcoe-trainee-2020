@@ -20,17 +20,40 @@ export class AllproblemsComponent implements OnInit {
     dialogConfig.data = { post: post };
     dialogConfig.width = '700px';
     dialogConfig.height = '550px'
-    const addsol=this.dialog.open(AddsolutionComponent, dialogConfig)
-    addsol.afterClosed().subscribe(elem=>{
-      this.spinner=true
-      this.res.fetchallProblem().subscribe(ele=>{
-        this.spinner=false
-        this.AllProblems=ele['message']
+    const addsol = this.dialog.open(AddsolutionComponent, dialogConfig)
+    addsol.afterClosed().subscribe(elem => {
+      this.spinner = true
+      this.res.fetchallProblem().subscribe(ele => {
+        this.spinner = false
+        this.AllProblems = ele['message']
       })
+    })
+  }
+  dislike: boolean = false;
+  like: boolean = false;
+  toggle(id) {
+    console.log(id)
+    this.like = !this.like;
+    if (this.like && this.dislike) {
+      this.dislike = !this.dislike
+    }
+    this.res.onliketoggle({ like: this.like, dislike: this.dislike, id: id }).subscribe(ele => {
+      console.log(ele)
+    })
+  }
+  togglered(id) {
+    console.log(id)
+    this.dislike = !this.dislike;
+    if (this.dislike && this.like) {
+      this.like = !this.like
+    }
+    this.res.onliketoggle({ like: this.like, dislike: this.dislike, id: id }).subscribe(ele => {
+      console.log(ele)
     })
   }
   AllProblems: []
   spinner: boolean = false;
+
   ngOnInit(): void {
     if (!this.res.isloggedin()) {
       this.router.navigate([''])
@@ -38,7 +61,11 @@ export class AllproblemsComponent implements OnInit {
     this.spinner = true;
     this.res.fetchallProblem().subscribe(ele => {
       this.spinner = false
+      console.log(ele)
       this.AllProblems = ele['message']
+      for( let user of ele['message']){
+          console.log(user['solution'])
+      }  
     }, error => {
       this.router.navigate([''])
       this.res.openSnackBar('Error', error['error']['message'])
