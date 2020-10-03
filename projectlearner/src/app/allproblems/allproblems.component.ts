@@ -64,7 +64,9 @@ export class AllproblemsComponent implements OnInit {
       console.log(ele)
       this.AllProblems = ele['message']
       for( let user of ele['message']){
-          console.log(user['solution'])
+          for(let us of user['solution']){
+              console.log(us)
+          }
       }  
     }, error => {
       this.router.navigate([''])

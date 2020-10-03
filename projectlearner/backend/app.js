@@ -167,8 +167,11 @@ router.get('/dashboard', checkauth, async (req, res) => {
 
     if (f['language'] != '') {
       var reg = new RegExp(f['language'], 'ig')
-      console.log(reg)
-      problem = await ProblemModel.count({ tech: reg, owner: { $nin: [userId] } });
+      console.log(await ProblemModel.find({
+        tech: reg, owner: { $nin: [userId] },
+        solution: { $nin: [userId] }
+      }))
+      problem = await ProblemModel.find({ tech: reg, owner: { $nin: [userId] } }).count();
     }
     dash.push({
       skills: f['language'], imagePath: f['imagePath'],

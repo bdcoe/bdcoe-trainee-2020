@@ -20,12 +20,14 @@
                     <p>{{sol['solapp']}}</p>
                 </div>
                 <button mat-icon-button (click)="toggle(sol['_id'])">
-                    <mat-icon [class]="like ? 'green' : 'black'">
+                    <mat-icon matBadge="{{sol['like'].length}}" matBadgePosition="before"
+                    matBadgeColor="warn" [class]="like ? 'green' : 'black'">
                         thumb_up
                     </mat-icon>
                 </button>
                 <button mat-icon-button (click)="togglered(sol['_id'])">
-                    <mat-icon [class]="dislike ? 'red' : 'black'">
+                    <mat-icon matBadge="{{sol['dislike'].length}}" matBadgePosition="before"
+                    matBadgeColor="warn" [class]="dislike ? 'red' : 'black'">
                         thumb_down
                     </mat-icon>
                 </button>

@@ -30,8 +30,9 @@ export class ProfileComponent implements OnInit {
       this.phone = ele['phone'];
       this.language = ele['language'];
       console.log(ele)
+      this.router.navigate(['dashboard'])
       if(ele['imagePath']!=null)
-      this.img = ele['imagePath']
+      this.img = ele['imagePath'];
     })
   }
   constructor(private res: ServiceComp, private router: Router, private dialog: MatDialog) {
@@ -53,7 +54,7 @@ export class ProfileComponent implements OnInit {
       this.myquestion = user['myquestion'];
       this.mysolution = user['mysolution'];
       this.language = user['language'];
-      this.img = user['imagePath']
+      this.img = user['imagePath'];
     }, error => {
       this.router.navigate([''])
       this.res.openSnackBar('Error', error['error']['message'])
