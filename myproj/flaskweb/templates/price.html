@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Price</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+
+    <style type="text/css">
+        body{
+            background-color:#f8bd7f;
+        }
+        .text{
+            margin:10px 20px;
+            color:#290001;
+        }
+        .tol{
+            color:#ea5455;
+        }
+    </style>
+</head>
+<body>
+    <!--<h1> Stock price of {{char}} is {{price}}</h1>-->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+ <!-- <a class="navbar-brand" href="#">Navbar</a>-->
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="/">Home </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/about">About </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/register">Register</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/login">Login</a>
+      </li>
+
+    </ul>
+  </div>
+</nav>
+<div class="container">
+    <div class="jumbotron" style="background-color:#87431d;margin-top:60px">
+    <h1 class="text">Stock price of <spam class="tol"> {{char}} is  {{price}} </spam> in {{cur}}.</h1><br>
+    <h1 class="text">It's today fluctuation is<spam class="tol"> {{diff}}</spam></h1>
+    <small class="text"> For more information <a href="{{link}}"> Click here</a></small>
+</div>
+    <h1>{{msg}}</h1>
+    <br><br>
+</div>
+<div class="container">
+    <h3 class="display" style="font-family:'Avenir Next';">Click here if you want to track again
+    <a class="btn btn-outline-danger btn-lg" style="margin:30px; " role="button" href="/tracker">Track another stock</a>
+    </h3>
+    <h3 class="display" style="font-family:'Avenir Next';">Click here if you want notification on your given email. 
+    <a class="btn btn-outline-danger btn-lg" style="margin:30px;"role="button" href="/price">Notify me</a>
+    </h3>
+</div>
+
+
+</body>
+</html>
+<!--<h1>Fuck</h1>-->

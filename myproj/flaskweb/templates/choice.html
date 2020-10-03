@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Selection</title>
+			<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+
+	<style type="text/css">
+		body{
+			background-color:#ffbb91;
+		}
+		.container{
+			margin-top:100px;
+		}
+		.op{
+			color:#ff4b5c;
+			font-size:3vw;
+
+		}
+		.heading{
+			font-size:7vw;
+			margin:100px;
+			text-align:center;
+		}
+		a:hover{
+			color: #d54062;
+    		text-shadow: 0 2px;
+		}
+	</style>
+</head>
+<body>
+		<nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="height:80px">
+  <a class="navbar-brand" href="/login">Start Tracking</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="/">Home </span></a>
+      </li>
+      <li class="nav-item">
+      	<a class="nav-link" href="/about">About</a>
+      </li>
+
+     <li class="nav-item">
+        <a class="nav-link" href="/register">Register</a>
+    </li>
+    <li class="nav-item">
+    	<a class="nav-link" href="/login">Login</a>
+    </li> 	
+     
+      <li class="nav-item">
+        <a class="nav-link" href="/logout" style="position:right">Logout</a>
+     </li>
+
+    </ul>
+  </div>
+</nav>
+<div class="top-content">
+	<h1 class="heading" style="font-family:'Ranchers', cursive;color:#ff4301;">Start Now</h1>
+<div class="container">
+	<h3 class="op" style="font-family:'Avenier Next';">If you want to track stock only then click below </h3>
+	<a class="btn btn-success btn-lg" id="start" style="color:white;margin-bottom:20px;"   role="button" href="/choice" class="des" >Start Tracking</a>
+	<br>
+	<h3 class="op" style="font-family:'Avenier Next'">If you want to track stock and email notification as well,  then click below</h3>
+	<a class="btn btn-success btn-lg" id="start" style="color:white;"   role="button" href="/tracker" class="des" >Start Tracking</a>
+</div>
+</div>
+</body>
+</html>
