@@ -35,7 +35,7 @@
     Body-Parser(For Parsing Json data from body)
     Multer(For Image Upload)
     JsonWebToken/JWT(For Authentication)
-    Bcrypt(For Password Encryption)
+    Bcryptjs(For Password Encryption)
     Dotenv(For Environment variable)
     Nodemon(For Development)
     GoogleApis(for Saving file to Drive)
@@ -48,3 +48,11 @@
     Website Adds
     Training
     Registering Fee
+
+### Update
+    Add Captcha
+    Use Regex  in place of exact match
+    Add Like and Dislike Front-end
+    Add like and Dislike back-End
+    Chane in Problem model with solution:Array to solution:[String]
+    Add Rerouting after profile update

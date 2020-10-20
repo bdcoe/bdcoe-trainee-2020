@@ -23,6 +23,7 @@ export class loginComponent implements OnInit {
       })
   }
   hide: boolean = true;
+  tick: boolean = true;
   siteKey = '6Lc7ydIZAAAAAHX57_w0kSqqkeZK8bA7WeHBEQ64'
 
   ngOnInit(): void {

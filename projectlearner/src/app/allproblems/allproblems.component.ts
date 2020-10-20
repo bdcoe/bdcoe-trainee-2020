@@ -1,4 +1,4 @@
-import { Component, OnInit, ɵINJECTOR_IMPL__POST_R3__ } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { ServiceComp } from '../shared/service.service'
 import { Router } from '@angular/router';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
